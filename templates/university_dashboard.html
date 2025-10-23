@@ -1,0 +1,331 @@
+{% extends 'base.html' %}
+{% block title %}University Dashboard - BPUT Analytics{% endblock %}
+
+{% block head_extra %}
+{# Added Chart.js library #}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+    .glass-card {
+        background: rgba(26, 27, 46, 0.6); backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        transition: all 0.3s ease;
+    }
+    .hover-lift:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 30px rgba(99, 102, 241, 0.2);
+    }
+    .stat-card {
+        background: rgba(30, 41, 59, 0.7);
+        border: 1px solid rgba(71, 85, 105, 0.3);
+    }
+    .table-dark-glass th { background-color: rgba(17, 24, 39, 0.8); }
+    .table-dark-glass td { background-color: rgba(31, 41, 55, 0.7); border-color: rgba(55, 65, 81, 0.5); }
+    .table-dark-glass tr:hover td { background-color: rgba(55, 65, 81, 0.8); }
+    a.college-link:hover { color: #818cf8; text-decoration: underline; }
+
+    /* Custom Chart Tooltip Styles */
+    .chartjs-tooltip {
+        opacity: 1; position: absolute; background: rgba(17, 24, 39, 0.9);
+        color: white; border-radius: 6px; padding: 6px 10px;
+        transition: all .1s ease; pointer-events: none; transform: translate(-50%, 0);
+        box-shadow: 0 3px 10px rgba(0,0,0,0.3); border: 1px solid rgba(255, 255, 255, 0.1);
+        font-size: 0.8rem;
+    }
+    .chartjs-tooltip-key {
+        display: inline-block; width: 10px; height: 10px;
+        margin-right: 6px; border-radius: 2px;
+    }
+    /* Ensure canvas container has dimensions */
+    .chart-container {
+        position: relative;
+        height: 40vh; /* Adjust height as needed */
+        width: 100%;
+        max-width: 900px; /* Optional: Limit max width */
+        margin: auto; /* Center the chart */
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container mx-auto px-4 py-8 max-w-7xl">
+    <h2 class="text-3xl font-bold mb-8 text-center bg-gradient-to-r from-violet-400 to-fuchsia-400 bg-clip-text text-transparent">
+        BPUT University Internship Analytics 📊
+    </h2>
+
+    {# --- STAT CARDS --- #}
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
+        <div class="stat-card p-6 rounded-xl hover-lift text-center">
+            <p class="text-4xl font-bold text-cyan-400">75%</p> {# Keep fake data or calculate if needed #}
+            <p class="text-gray-400 mt-2">Overall Placement Rate (Est.)</p>
+        </div>
+        <div class="stat-card p-6 rounded-xl hover-lift text-center">
+            <p class="text-4xl font-bold text-indigo-400">120+</p> {# Keep fake data or calculate if needed #}
+            <p class="text-gray-400 mt-2">Companies Participated</p>
+        </div>
+        {# Removed Average Package card #}
+    </div>
+
+    {# --- TABLE SECTION (MOVED UP) --- #}
+    <div class="glass-card rounded-2xl p-6 overflow-x-auto mb-10 hover-lift"> {# Added mb-10 for spacing #}
+        <h3 class="text-xl font-semibold mb-4 text-gray-200">College Placement Summary</h3>
+        <table class="w-full text-sm text-left text-gray-300 table-dark-glass rounded-lg overflow-hidden">
+            <thead class="text-xs uppercase">
+                <tr>
+                    <th scope="col" class="px-6 py-3">College Name</th>
+                    <th scope="col" class="px-6 py-3 text-center">Registered Students</th>
+                    <th scope="col" class="px-6 py-3 text-center">Students Placed</th>
+                    <th scope="col" class="px-6 py-3 text-center">Placement Rate</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for stats in college_stats %}
+                <tr class="border-b border-gray-700">
+                    <td class="px-6 py-4 font-medium whitespace-nowrap">
+                        {# Link to the new college details page #}
+                        <a href="{{ url_for('college_placement_details', college_name=stats.name) }}" class="college-link text-indigo-300">
+                            {{ stats.name }}
+                        </a>
+                    </td>
+                    <td class="px-6 py-4 text-center">{{ stats.total_students }}</td>
+                    <td class="px-6 py-4 text-center">{{ stats.placed_students }}</td>
+                    <td class="px-6 py-4 text-center">
+                        {% set rate = (stats.placed_students / stats.total_students * 100) if stats.total_students > 0 else 0 %}
+                        <span class="font-semibold {% if rate >= 75 %}text-green-400{% elif rate >= 50 %}text-yellow-400{% else %}text-red-400{% endif %}">
+                            {{ "%.1f"|format(rate) }}%
+                        </span>
+                    </td>
+                </tr>
+                {% else %}
+                <tr>
+                    <td colspan="4" class="text-center py-4 text-gray-500">No college data available.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    {# --- CHART SECTION (MOVED DOWN) --- #}
+    <div class="glass-card rounded-2xl p-6 hover-lift">
+         <h3 class="text-xl font-semibold mb-6 text-center text-gray-200">Placement Rate by College</h3>
+         <div class="chart-container">
+            <canvas id="placementChart"></canvas> </div>
+    </div>
+
+</div>
+{% endblock %}
+
+{# --- ADDED SCRIPT BLOCK FOR CHART --- #}
+{% block scripts_extra %}
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const canvasElement = document.getElementById('placementChart');
+    if (!canvasElement) {
+        console.error("Canvas element 'placementChart' not found!");
+        return; // Stop if canvas doesn't exist
+    }
+    const ctx = canvasElement.getContext('2d');
+
+    // Prepare data for the chart (using Jinja loop)
+    const collegeNames = [{% for stats in college_stats %}'{{ stats.name | replace("'", "\\'") | replace('"', '\\"') }}',{% endfor %}]; // Handle quotes
+    const placementRates = [{% for stats in college_stats %}{{ (stats.placed_students / stats.total_students * 100) if stats.total_students > 0 else 0 }},{% endfor %}];
+    const registeredCounts = [{% for stats in college_stats %}{{ stats.total_students }},{% endfor %}];
+    const placedCounts = [{% for stats in college_stats %}{{ stats.placed_students }},{% endfor %}];
+
+    // Shorten long college names for labels
+    const shortLabels = collegeNames.map(name => {
+        const parts = name.split(',');
+        let shortName = parts[0];
+        // Shortening logic (adjust length limits if needed)
+        if (shortName.length > 20) {
+             shortName = shortName.substring(0, 18) + '...';
+        }
+        return shortName;
+    });
+
+    const backgroundColors = placementRates.map(rate => {
+        if (rate >= 75) return 'rgba(52, 211, 153, 0.6)'; // Emerald-400
+        if (rate >= 50) return 'rgba(250, 204, 21, 0.6)';  // Yellow-400
+        return 'rgba(248, 113, 113, 0.6)'; // Red-400
+    });
+    const borderColors = placementRates.map(rate => {
+        if (rate >= 75) return 'rgba(16, 185, 129, 1)'; // Emerald-500
+        if (rate >= 50) return 'rgba(234, 179, 8, 1)';   // Yellow-500
+        return 'rgba(239, 68, 68, 1)';  // Red-500
+    });
+
+    // Custom Tooltip Function
+    const getOrCreateTooltip = (chart) => {
+      let tooltipEl = chart.canvas.parentNode.querySelector('div.chartjs-tooltip');
+      if (!tooltipEl) {
+        tooltipEl = document.createElement('div');
+        tooltipEl.classList.add('chartjs-tooltip'); // Add class for styling
+        tooltipEl.style.opacity = 1;
+        tooltipEl.style.pointerEvents = 'none';
+        tooltipEl.style.position = 'absolute';
+        tooltipEl.style.transform = 'translate(-50%, 0)';
+        tooltipEl.style.transition = 'all .1s ease';
+
+        const table = document.createElement('table');
+        table.style.margin = '0px';
+
+        tooltipEl.appendChild(table);
+        chart.canvas.parentNode.appendChild(tooltipEl);
+      }
+      return tooltipEl;
+    };
+
+    const externalTooltipHandler = (context) => {
+        const {chart, tooltip} = context;
+        const tooltipEl = getOrCreateTooltip(chart);
+
+        if (tooltip.opacity === 0) {
+            tooltipEl.style.opacity = 0;
+            return;
+        }
+
+        if (tooltip.body) {
+            const titleLines = tooltip.title || [];
+            const bodyLines = tooltip.body.map(b => b.lines);
+            const dataIndex = tooltip.dataPoints[0]?.dataIndex; // Get index
+
+            const tableHead = document.createElement('thead');
+            titleLines.forEach(title => {
+                const tr = document.createElement('tr');
+                tr.style.borderWidth = 0;
+                const th = document.createElement('th');
+                th.style.borderWidth = 0;
+                th.colSpan = 2; // Span across two columns
+                // Use the full college name from the original data
+                const text = document.createTextNode(collegeNames[dataIndex] || title);
+                th.appendChild(text);
+                tr.appendChild(th);
+                tableHead.appendChild(tr);
+            });
+
+            const tableBody = document.createElement('tbody');
+            bodyLines.forEach((body, i) => {
+                 const colors = tooltip.labelColors[i];
+
+                 // Row for Rate
+                 const trRate = document.createElement('tr');
+                 trRate.style.backgroundColor = 'inherit';
+                 trRate.style.borderWidth = 0;
+
+                 const tdRateLabel = document.createElement('td');
+                 tdRateLabel.style.borderWidth = 0;
+                 tdRateLabel.style.paddingRight = '5px';
+                 const rateKey = document.createElement('span');
+                 rateKey.className = 'chartjs-tooltip-key';
+                 rateKey.style.backgroundColor = colors.backgroundColor;
+                 rateKey.style.borderColor = colors.borderColor;
+                 rateKey.style.borderWidth = '1px';
+                 tdRateLabel.appendChild(rateKey);
+                 tdRateLabel.appendChild(document.createTextNode('Rate:'));
+                 trRate.appendChild(tdRateLabel);
+
+                 const tdRateValue = document.createElement('td');
+                 tdRateValue.style.borderWidth = 0;
+                 tdRateValue.style.textAlign = 'right';
+                 tdRateValue.appendChild(document.createTextNode(body[0])); // The rate value
+                 trRate.appendChild(tdRateValue);
+                 tableBody.appendChild(trRate);
+
+                 // Add Rows for Registered and Placed counts
+                if (dataIndex !== undefined) {
+                     const counts = [
+                        { label: 'Registered:', value: registeredCounts[dataIndex] },
+                        { label: 'Placed:', value: placedCounts[dataIndex] }
+                     ];
+                     counts.forEach(item => {
+                        const trCount = document.createElement('tr');
+                        trCount.style.backgroundColor = 'inherit';
+                        trCount.style.borderWidth = 0;
+
+                        const tdCountLabel = document.createElement('td');
+                        tdCountLabel.style.borderWidth = 0;
+                        tdCountLabel.style.color = '#9ca3af'; // gray-400
+                        tdCountLabel.appendChild(document.createTextNode(item.label));
+                        trCount.appendChild(tdCountLabel);
+
+                        const tdCountValue = document.createElement('td');
+                        tdCountValue.style.borderWidth = 0;
+                        tdCountValue.style.textAlign = 'right';
+                        tdCountValue.appendChild(document.createTextNode(item.value));
+                        trCount.appendChild(tdCountValue);
+                        tableBody.appendChild(trCount);
+                     });
+                 }
+            });
+
+            const tableRoot = tooltipEl.querySelector('table');
+            // Clear previous content
+            while (tableRoot.firstChild) {
+                tableRoot.firstChild.remove();
+            }
+            // Add new content
+            tableRoot.appendChild(tableHead);
+            tableRoot.appendChild(tableBody);
+        }
+
+        // Positioning the tooltip
+        const {offsetLeft: positionX, offsetTop: positionY} = chart.canvas;
+        tooltipEl.style.opacity = 1;
+        tooltipEl.style.left = positionX + tooltip.caretX + 'px';
+        tooltipEl.style.top = positionY + tooltip.caretY + 'px';
+        tooltipEl.style.font = tooltip.options.bodyFont.string; // Use chart's font
+        tooltipEl.style.padding = tooltip.options.padding + 'px ' + tooltip.options.padding + 'px';
+    };
+
+    // --- Chart Configuration ---
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: shortLabels, // Use shortened labels
+            datasets: [{
+                label: 'Placement Rate (%)',
+                data: placementRates,
+                backgroundColor: backgroundColors,
+                borderColor: borderColors,
+                borderWidth: 1,
+                borderRadius: 4, // Slightly rounded bars
+                borderSkipped: false, // Apply radius to all corners
+            }]
+        },
+        options: {
+            maintainAspectRatio: false, // Allow chart to fill container height
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    max: 100,
+                    ticks: { color: '#9ca3af' }, // Y-axis text color (gray-400)
+                    grid: { color: 'rgba(255, 255, 255, 0.1)' } // Grid line color
+                },
+                x: {
+                    ticks: {
+                        color: '#9ca3af', // X-axis text color (gray-400)
+                        maxRotation: 0, // Prevent label rotation
+                        minRotation: 0
+                     },
+                    grid: { display: false } // Hide X-axis grid lines
+                }
+            },
+            plugins: {
+                legend: { display: false }, // Hide the legend
+                 tooltip: {
+                    enabled: false, // Disable default tooltip
+                    position: 'nearest',
+                    external: externalTooltipHandler // Use custom handler
+                 }
+            },
+            interaction: {
+                 mode: 'index', // Show tooltip for the bar under the cursor
+                 intersect: false,
+             },
+             onHover: (event, chartElement) => { // Change cursor on hover
+                event.native.target.style.cursor = chartElement[0] ? 'pointer' : 'default';
+             },
+        }
+    });
+});
+</script>
+{% endblock %}

@@ -1,0 +1,122 @@
+{% extends 'base.html' %}
+{% block title %}Post a New Job{% endblock %}
+
+{% block head_extra %}
+<!-- Add Flowbite CSS -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.0.0/flowbite.min.css" rel="stylesheet" />
+
+<style>
+    /* Update body background */
+    body {
+        margin: 0;
+        padding: 0;
+        min-height: 100vh;
+        background: #0a0a1a;
+    }
+
+    .post-job-container {
+        min-height: 100vh;
+        padding: 2rem;
+        padding-top: 6rem;
+        position: relative;
+        z-index: 1;
+        background: transparent;
+    }
+
+    .glass-card {
+        background: rgba(30, 41, 59, 0.7);
+        backdrop-filter: blur(12px);
+        border: 1px solid rgba(71, 85, 105, 0.3);
+        border-radius: 16px;
+        box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
+        transition: all 0.3s ease;
+        animation: slideUp 0.6s ease forwards;
+    }
+
+    @keyframes slideUp {
+        from {
+            transform: translateY(30px);
+            opacity: 0;
+        }
+        to {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="post-job-container">
+    <div class="container mx-auto px-4">
+        <div class="max-w-3xl mx-auto">
+            <div class="glass-card p-6 sm:p-8">
+                <h2 class="text-3xl font-bold text-white mb-8 text-center">Post a New Job or Internship</h2>
+                
+                <form method="POST" action="{{ url_for('post_job') }}" class="space-y-6">
+                    <div>
+                        <label for="job_role" class="block mb-2 text-sm font-medium text-gray-300">Job Role</label>
+                        <input type="text" id="job_role" name="job_role" 
+                               class="bg-gray-700/50 border border-gray-600 text-white text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block w-full p-3"
+                               required>
+                    </div>
+                    
+                    <div>
+                        <label for="description" class="block mb-2 text-sm font-medium text-gray-300">Job Description</label>
+                        <textarea id="description" name="description" rows="4" 
+                                  class="bg-gray-700/50 border border-gray-600 text-white text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block w-full p-3"></textarea>
+                    </div>
+                    
+                    <div>
+                        <label for="required_skills" class="block mb-2 text-sm font-medium text-gray-300">Required Skills</label>
+                        <input type="text" id="required_skills" name="required_skills" 
+                               class="bg-gray-700/50 border border-gray-600 text-white text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block w-full p-3"
+                               placeholder="e.g., Java, SQL, Git, Problem Solving" required>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="cgpa_required" class="block mb-2 text-sm font-medium text-gray-300">Minimum CGPA</label>
+                            <input type="number" step="0.1" id="cgpa_required" name="cgpa_required" 
+                                   class="bg-gray-700/50 border border-gray-600 text-white text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block w-full p-3"
+                                   required>
+                        </div>
+                        <div>
+                            <label for="location" class="block mb-2 text-sm font-medium text-gray-300">Location</label>
+                            <select id="location" name="location" 
+                                    class="bg-gray-700/50 border border-gray-600 text-white text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block w-full p-3"
+                                    required>
+                                <option selected disabled value="">Choose a city...</option>
+                                {% for city in cities %}
+                                    <option value="{{ city }}">{{ city }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="contact_email" class="block mb-2 text-sm font-medium text-gray-300">Contact Email</label>
+                            <input type="email" id="contact_email" name="contact_email" 
+                                   class="bg-gray-700/50 border border-gray-600 text-white text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block w-full p-3">
+                        </div>
+                        <div>
+                            <label for="contact_mobile" class="block mb-2 text-sm font-medium text-gray-300">Contact Mobile</label>
+                            <input type="text" id="contact_mobile" name="contact_mobile" 
+                                   class="bg-gray-700/50 border border-gray-600 text-white text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block w-full p-3">
+                        </div>
+                    </div>
+                    
+                    <button type="submit" 
+                            class="w-full text-white bg-gradient-to-r from-indigo-500 to-indigo-600 hover:bg-gradient-to-br focus:ring-4 focus:ring-indigo-300 dark:focus:ring-indigo-800 font-medium rounded-lg text-sm px-5 py-4 text-center transition-all duration-300 hover:transform hover:-translate-y-1">
+                        Post Job
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Add Flowbite JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.0.0/flowbite.min.js"></script>
+{% endblock %}

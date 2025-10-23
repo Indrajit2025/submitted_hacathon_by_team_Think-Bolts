@@ -1,0 +1,1110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Resources Hub</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* [Previous CSS styles remain the same] */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in-up {
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+        .category-card {
+            transition: all 0.3s ease;
+        }
+
+        .category-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        .resource-item {
+            transition: all 0.2s ease;
+        }
+
+        .resource-item:hover {
+            background: linear-gradient(to right, #f3f4f6, #ffffff);
+            transform: translateX(5px);
+        }
+
+        .search-glow:focus {
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+
+        .section-collapsed {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            padding-top: 0;
+            padding-bottom: 0;
+        }
+
+        .section-expanded {
+            max-height: 2000px;
+            /* Adjust as needed for max content height */
+            transition: max-height 0.5s ease-in;
+        }
+
+        .star-icon {
+            transition: transform 0.2s ease;
+        }
+
+        .star-icon:hover {
+            transform: scale(1.2) rotate(15deg);
+        }
+
+        .gradient-text {
+            background: linear-gradient(to right, #3b82f6, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .badge {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.7;
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-white-900 text-gray-200 min-h-screen pt-24">
+
+    <a class="" href="/student_profile"><button onclick="history.back()"
+            class="bg-gray-200 hover:bg-blue-300 text-blue-800 font-bold py-2 px-20 rounded">
+            Go Back
+        </button></a>
+    <header class="container mx-auto px-4 pt-12 pb-8">
+        <div class="flex flex-col items-center gap-6 text-center">
+            <div class="flex items-center gap-3">
+                <div class="bg-gradient-to-r from-blue-500 to-purple-600 p-3 rounded-xl shadow-lg">
+                    <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253">
+                        </path>
+                    </svg>
+                </div>
+                <div>
+                    <h1 class="text-4xl font-bold gradient-text">Learning Resources Hub</h1>
+                    <p class="text-gray-600 text-md mt-1">🚀 Your gateway to endless learning opportunities</p>
+                </div>
+            </div>
+
+            <div class="relative w-full max-w-lg">
+                <input type="text" id="searchInput" placeholder="🔍 Search resources..."
+                    class="w-full px-4 py-3 pl-12 rounded-xl border-2 border-gray-200 focus:border-blue-500 focus:outline-none search-glow shadow-md" />
+                <svg class="w-5 h-5 text-gray-400 absolute left-4 top-4" fill="none" stroke="currentColor"
+                    viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                </svg>
+            </div>
+
+        </div>
+        </div>
+    </header>
+
+    <div class="container mx-auto px-4 py-6">
+        <div class="flex flex-wrap gap-3 justify-center">
+            <button onclick="filterCategory('all')"
+                class="filter-btn px-6 py-2 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold shadow-lg hover:shadow-xl transition-all active"
+                data-category="all">
+                🌟 All Resources
+            </button>
+            <button onclick="filterCategory('engineering')"
+                class="filter-btn px-6 py-2 rounded-full bg-white text-gray-700 font-semibold shadow hover:shadow-lg transition-all"
+                data-category="engineering">
+                ⚙️ Engineering
+            </button>
+            <button onclick="filterCategory('developer')"
+                class="filter-btn px-6 py-2 rounded-full bg-white text-gray-700 font-semibold shadow hover:shadow-lg transition-all"
+                data-category="developer">
+                💻 Developer
+            </button>
+            <button onclick="filterCategory('web')"
+                class="filter-btn px-6 py-2 rounded-full bg-white text-gray-700 font-semibold shadow hover:shadow-lg transition-all"
+                data-category="web">
+                🌐 Web Dev
+            </button>
+            <button onclick="filterCategory('cs')"
+                class="filter-btn px-6 py-2 rounded-full bg-white text-gray-700 font-semibold shadow hover:shadow-lg transition-all"
+                data-category="cs">
+                🎓 Computer Science
+            </button>
+            <button onclick="filterCategory('security')"
+                class="filter-btn px-6 py-2 rounded-full bg-white text-gray-700 font-semibold shadow hover:shadow-lg transition-all"
+                data-category="security">
+                🛡️ Security
+            </button>
+            <button onclick="filterCategory('gamedev')"
+                class="filter-btn px-6 py-2 rounded-full bg-white text-gray-700 font-semibold shadow hover:shadow-lg transition-all"
+                data-category="gamedev">
+                🎮 Game Dev
+            </button>
+        </div>
+    </div>
+
+    <main class="container mx-auto px-4 pb-12">
+
+        <div class="resource-section mb-8 fade-in-up" data-category="engineering">
+            <div class="bg-white rounded-2xl shadow-xl overflow-hidden">
+                <div class="bg-gradient-to-r from-blue-500 to-cyan-500 px-6 py-4 cursor-pointer"
+                    onclick="toggleSection('engineering')">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-3">
+                            <span class="text-4xl">⚙️</span>
+                            <h2 class="text-2xl font-bold text-white">Engineering Resources</h2>
+                            <span class="badge bg-white text-blue-600 px-3 py-1 rounded-full text-sm font-semibold">8
+                                Resources</span>
+                        </div>
+                        <svg class="w-6 h-6 text-white transition-transform section-arrow" id="arrow-engineering"
+                            fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7">
+                            </path>
+                        </svg>
+                    </div>
+                </div>
+                <div class="section-content section-expanded px-6 py-4" id="content-engineering">
+                    <ul class="space-y-2">
+                        <li class="resource-item p-3 rounded-lg border border-gray-100">
+                            <a href="https://www.engineeringtoolbox.com/" target="_blank" rel="noopener noreferrer"
+                                class="flex items-center justify-between group">
+                                <span class="text-gray-700 group-hover:text-blue-600 font-medium">🌐 The Engineering
+                                    Toolbox</span>
+                                <svg class="w-5 h-5 text-gray-400 group-hover:text-blue-600" fill="none"
+                                    stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14">
+                                    </path>
+                                </svg>
+                            </a>
+                        </li>
+                        <li class="resource-item p-3 rounded-lg border border-gray-100">
+                            <a href="https://www.engineersedge.com/" target="_blank" rel="noopener noreferrer"
+                                class="flex items-center justify-between group">
+                                <span class="text-gray-700 group-hover:text-blue-600 font-medium">🌐
+                                    EngineersEdge</span>
+                                <svg class="w-5 h-5 text-gray-400 group-hover:text-blue-600" fill="none"
+                                    stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14">
+                                    </path>
+                                </svg>
+                            </a>
+                        </li>
+                        <li class="resource-item p-3 rounded-lg border border-gray-100 bg-yellow-50">
+                            <a href="https://www.reddit.com/r/AskEngineers/" target="_blank" rel="noopener noreferrer"
+                                class="flex items-center justify-between group">
+                                <span
+                                    class="text-gray-700 group-hover:text-blue-600 font-medium flex items-center gap-2">
+                                    <span class="star-icon text-yellow-500">⭐</span>
+                                    r/AskEngineers - Engineering Community
+                                </span>
+                                <svg class="w-5 h-5 text-gray-400 group-hover:text-blue-600" fill="none"
+                                    stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14">
+                                    </path>
+                                </svg>
+                            </a>
+                        </li>
+                        <li class="resource-item p-3 rounded-lg border border-gray-100 bg-yellow-50">
+                            <a href="https://nptel.ac.in/courses" target="_blank" rel="noopener noreferrer"
+                                class="flex items-center justify-between group">
+                                <span
+                                    class="text-gray-700 group-hover:text-blue-600 font-medium flex items-center gap-2">
+                                    <span class="star-icon text-yellow-500">⭐</span>
+                                    NPTEL - Engineering Courses
+                                </span>
+                                <svg class="w-5 h-5 text-gray-400 group-hover:text-blue-600" fill="none"
+                                    stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14">
+                                    </path>
+                                </svg>
+                            </a>
+                        </li>
+                        <li class="resource-item p-3 rounded-lg border border-gray-100 bg-yellow-50">
+                            <a href="https://www.kicad.org/" target="_blank" rel="noopener noreferrer"
+                                class="flex items-center justify-between group">
+                                <span
+                                    class="text-gray-700 group-hover:text-blue-600 font-medium flex items-center gap-2">
+                                    <span class="star-icon text-yellow-500">⭐</span>
+                                    KiCad - PCB Design Tool
+                                </span>
+                                <svg class="w-5 h-5 text-gray-400 group-hover:text-blue-600" fill="none"
+                                    stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14">
+                                    </path>
+                                </svg>
+                            </a>
+                        </li>
+                        <li class="resource-item p-3 rounded-lg border border-gray-100">
+                            <a href="https://github.com/m2n037/awesome-mecheng" target="_blank"
+                                rel="noopener noreferrer" class="flex items-center justify-between group">
+                                <span class="text-gray-700 group-hover:text-blue-600 font-medium">🔧 Awesome Mechanical
+                                    Engineering</span>
+                                <svg class="w-5 h-5 text-gray-400 group-hover:text-blue-600" fill="none"
+                                    stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14">
+                                    </path>
+                                </svg>
+                            </a>
+                        </li>
+                        <li class="resource-item p-3 rounded-lg border border-gray-100">
+                            <a href="https://github.com/kitspace/awesome-electronics" target="_blank"
+                                rel="noopener noreferrer" class="flex items-center justify-between group">
+                                <span class="text-gray-700 group-hover:text-blue-600 font-medium">⚡ Awesome
+                                    Electronics</span>
+                                <svg class="w-5 h-5 text-gray-400 group-hover:text-blue-600" fill="none"
+                                    stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14">
+                                    </path>
+                                </svg>
+                            </a>
+                        </li>
+                        <li class="resource-item p-3 rounded-lg border border-gray-100">
+                            <a href="https://www.sanfoundry.com/" target="_blank" rel="noopener noreferrer"
+                                class="flex items-center justify-between group">
+                                <span class="text-gray-700 group-hover:text-blue-600 font-medium">📝 Sanfoundry -
+                                    Engineering Q&A</span>
+                                <svg class="w-5 h-5 text-gray-400 group-hover:text-blue-600" fill="none"
+                                    stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14">
+                                    </path>
+                                </svg>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="resource-section mb-8 fade-in-up" data-category="developer" style="animation-delay: 0.1s">
+            <div class="bg-white rounded-2xl shadow-xl overflow-hidden">
+                <div class="bg-gradient-to-r from-purple-500 to-pink-500 px-6 py-4 cursor-pointer"
+                    onclick="toggleSection('developer')">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-3">
+                            <span class="text-4xl">💻</span>
+                            <h2 class="text-2xl font-bold text-white">Developer Learning</h2>
+                            <span
+                                class="badge bg-white text-purple-600 px-3 py-1 rounded-full text-sm font-semibold">10+
+                                Resources</span>
+                        </div>
+                        <svg class="w-6 h-6 text-white transition-transform section-arrow" id="arrow-developer"
+                            fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7">
+                            </path>
+                        </svg>
+                    </div>
+                </div>
+                <div class="section-content section-expanded px-6 py-4" id="content-developer">
+                    <ul class="space-y-2">
+                        <li class="resource-item p-3 rounded-lg border border-gray-100 bg-yellow-50">
+                            <a href="https://www.freecodecamp.org/" target="_blank" rel="noopener noreferrer"
+                                class="flex items-center justify-between group">
+                                <span
+                                    class="text-gray-700 group-hover:text-purple-600 font-medium flex items-center gap-2">
+                                    <span class="star-icon text-yellow-500">⭐</span>
+                                    freeCodeCamp - Interactive Learning
+                                </span>
+                                <svg class="w-5 h-5 text-gray-400 group-hover:text-purple-600" fill="none"
+                                    stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14">
+                                    </path>
+                                </svg>
+                            </a>
+                        </li>
+                        <li class="resource-item p-3 rounded-lg border border-gray-100 bg-yellow-50">
+                            <a href="https://github.com/arslanbilal/git-cheat-sheet" target="_blank"
+                                rel="noopener noreferrer" class="flex items-center justify-between group">
+                                <span
+                                    class="text-gray-700 group-hover:text-purple-600 font-medium flex items-center gap-2">
+                                    <span class="star-icon text-yellow-500">⭐</span>
+                                    Git Cheat Sheet
+                                </span>
+                                <svg class="w-5 h-5 text-gray-400 group-hover:text-purple-600" fill="none"
+                                    stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14">
+                                    </path>
+                                </svg>
+                            </a>
+                        </li>
+                        <li class="resource-item p-3 rounded-lg border border-gray-100 bg-yellow-50">
+                            <a href="https://openvim.com/" target="_blank" rel="noopener noreferrer"
+                                class="flex items-center justify-between group">
+                                <span
+                                    class="text-gray-700 group-hover:text-purple-600 font-medium flex items-center gap-2">
+                                    <span class="star-icon text-yellow-500">⭐</span>
+                                    OpenVim - Interactive Tutorial
+                                </span>
+                                <svg class="w-5 h-5 text-gray-400 group-hover:text-purple-600" fill="none"
+                                    stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14">
+                                    </path>
+                                </svg>
+                            </a>
+                        </li>
+                        <li class="resource-item p-3 rounded-lg border border-gray-100 bg-yellow-50">
+                            <a href="https://selectstarsql.com/" target="_blank" rel="noopener noreferrer"
+                                class="flex items-center justify-between group">
+                                <span
+                                    class="text-gray-700 group-hover:text-purple-600 font-medium flex items-center gap-2">
+                                    <span class="star-icon text-yellow-500">⭐</span>
+                                    SQL Practice & Learning
+                                </span>
+                                <svg class="w-5 h-5 text-gray-400 group-hover:text-purple-600" fill="none"
+                                    stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14">
+                                    </path>
+                                </svg>
+                            </a>
+                        </li>
+                        <li class="resource-item p-3 rounded-lg border border-gray-100">
+                            <a href="https://roadmap.sh/" target="_blank" rel="noopener noreferrer"
+                                class="flex items-center justify-between group">
+                                <span class="text-gray-700 group-hover:text-purple-600 font-medium">🗺️ Developer
+                                    Roadmaps</span>
+                                <svg class="w-5 h-5 text-gray-400 group-hover:text-purple-600" fill="none"
+                                    stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14">
+                                    </path>
+                                </svg>
+                            </a>
+                        </li>
+                        <li class="resource-item p-3 rounded-lg border border-gray-100">
+                            <a href="https://scrimba.com/" target="_blank" rel="noopener noreferrer"
+                                class="flex items-center justify-between group">
+                                <span class="text-gray-700 group-hover:text-purple-600 font-medium">🎥 Scrimba -
+                                    Interactive Courses</span>
+                                <svg class="w-5 h-5 text-gray-400 group-hover:text-purple-600" fill="none"
+                                    stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14">
+                                    </path>
+                                </svg>
+                            </a>
+                        </li>
+                        <li class="resource-item p-3 rounded-lg border border-gray-100">
+                            <a href="https://learngitbranching.js.org/" target="_blank" rel="noopener noreferrer"
+                                class="flex items-center justify-between group">
+                                <span class="text-gray-700 group-hover:text-purple-600 font-medium">🌳 Learn Git
+                                    Branching</span>
+                                <svg class="w-5 h-5 text-gray-400 group-hover:text-purple-600" fill="none"
+                                    stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14">
+                                    </path>
+                                </svg>
+                            </a>
+                        </li>
+                        <li class="resource-item p-3 rounded-lg border border-gray-100">
+                            <a href="https://github.com/practical-tutorials/project-based-learning" target="_blank"
+                                rel="noopener noreferrer" class="flex items-center justify-between group">
+                                <span class="text-gray-700 group-hover:text-purple-600 font-medium">🎯 Project-Based
+                                    Learning</span>
+                                <svg class="w-5 h-5 text-gray-400 group-hover:text-purple-600" fill="none"
+                                    stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14">
+                                    </path>
+                                </svg>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="resource-section mb-8 fade-in-up" data-category="web" style="animation-delay: 0.2s">
+            <div class="bg-white rounded-2xl shadow-xl overflow-hidden">
+                <div class="bg-gradient-to-r from-indigo-500 to-blue-500 px-6 py-4 cursor-pointer"
+                    onclick="toggleSection('web')">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-3">
+                            <span class="text-4xl">🌐</span>
+                            <h2 class="text-2xl font-bold text-white">Web Development</h2>
+                            <span
+                                class="badge bg-white text-indigo-600 px-3 py-1 rounded-full text-sm font-semibold">15+
+                                Resources</span>
+                        </div>
+                        <svg class="w-6 h-6 text-white transition-transform section-arrow" id="arrow-web" fill="none"
+                            stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7">
+                            </path>
+                        </svg>
+                    </div>
+                </div>
+                <div class="section-content section-expanded px-6 py-4" id="content-web">
+                    <ul class="space-y-2">
+                        <li class="resource-item p-3 rounded-lg border border-gray-100">
+                            <a href="https://developer.mozilla.org/" target="_blank" rel="noopener noreferrer"
+                                class="flex items-center justify-between group">
+                                <span class="text-gray-700 group-hover:text-indigo-600 font-medium">📚 MDN Web
+                                    Docs</span>
+                                <svg class="w-5 h-5 text-gray-400 group-hover:text-indigo-600" fill="none"
+                                    stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14">
+                                    </path>
+                                </svg>
+                            </a>
+                        </li>
+                        <li class="resource-item p-3 rounded-lg border border-gray-100 bg-yellow-50">
+                            <a href="https://www.theodinproject.com/" target="_blank" rel="noopener noreferrer"
+                                class="flex items-center justify-between group">
+                                <span
+                                    class="text-gray-700 group-hover:text-indigo-600 font-medium flex items-center gap-2">
+                                    <span class="star-icon text-yellow-500">⭐</span>
+                                    The Odin Project
+                                </span>
+                                <svg class="w-5 h-5 text-gray-400 group-hover:text-indigo-600" fill="none"
+                                    stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14">
+                                    </path>
+                                </svg>
+                            </a>
+                        </li>
+                        <li class="resource-item p-3 rounded-lg border border-gray-100 bg-yellow-50">
+                            <a href="https://fullstackopen.com/en/" target="_blank" rel="noopener noreferrer"
+                                class="flex items-center justify-between group">
+                                <span
+                                    class="text-gray-700 group-hover:text-indigo-600 font-medium flex items-center gap-2">
+                                    <span class="star-icon text-yellow-500">⭐</span>
+                                    FullStackOpen
+                                </span>
+                                <svg class="w-5 h-5 text-gray-400 group-hover:text-indigo-600" fill="none"
+                                    stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14">
+                                    </path>
+                                </svg>
+                            </a>
+                        </li>
+                        <li class="resource-item p-3 rounded-lg border border-gray-100 bg-yellow-50">
+                            <a href="https://javascript.info/" target="_blank" rel="noopener noreferrer"
+                                class="flex items-center justify-between group">
+                                <span
+                                    class="text-gray-700 group-hover:text-indigo-600 font-medium flex items-center gap-2">
+                                    <span class="star-icon text-yellow-500">⭐</span>
+                                    JavaScript.info
+                                </span>
+                                <svg class="w-5 h-5 text-gray-400 group-hover:text-indigo-600" fill="none"
+                                    stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14">
+                                    </path>
+                                </svg>
+                            </a>
+                        </li>
+                        <li class="resource-item p-3 rounded-lg border border-gray-100 bg-yellow-50">
+                            <a href="https://learn.shayhowe.com/" target="_blank" rel="noopener noreferrer"
+                                class="flex items-center justify-between group">
+                                <span
+                                    class="text-gray-700 group-hover:text-indigo-600 font-medium flex items-center gap-2">
+                                    <span class="star-icon text-yellow-500">⭐</span>
+                                    Learn HTML & CSS (Shay Howe)
+                                </span>
+                                <svg class="w-5 h-5 text-gray-400 group-hover:text-indigo-600" fill="none"
+                                    stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14">
+                                    </path>
+                                </svg>
+                            </a>
+                        </li>
+                        <li class="resource-item p-3 rounded-lg border border-gray-100">
+                            <a href="https://web.dev/learn" target="_blank" rel="noopener noreferrer"
+                                class="flex items-center justify-between group">
+                                <span class="text-gray-700 group-hover:text-indigo-600 font-medium">🎓 Web.dev
+                                    Learn</span>
+                                <svg class="w-5 h-5 text-gray-400 group-hover:text-indigo-600" fill="none"
+                                    stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14">
+                                    </path>
+                                </svg>
+                            </a>
+                        </li>
+                        <li class="resource-item p-3 rounded-lg border border-gray-100">
+                            <a href="https://cssgridgarden.com/" target="_blank" rel="noopener noreferrer"
+                                class="flex items-center justify-between group">
+                                <span class="text-gray-700 group-hover:text-indigo-600 font-medium">🎮 CSS Grid
+                                    Garden</span>
+                                <svg class="w-5 h-5 text-gray-400 group-hover:text-indigo-600" fill="none"
+                                    stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14">
+                                    </path>
+                                </svg>
+                            </a>
+                        </li>
+                        <li class="resource-item p-3 rounded-lg border border-gray-100">
+                            <a href="https://flexboxfroggy.com/" target="_blank" rel="noopener noreferrer"
+                                class="flex items-center justify-between group">
+                                <span class="text-gray-700 group-hover:text-indigo-600 font-medium">🐸 Flexbox
+                                    Froggy</span>
+                                <svg class="w-5 h-5 text-gray-400 group-hover:text-indigo-600" fill="none"
+                                    stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14">
+                                    </path>
+                                </svg>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="resource-section mb-8 fade-in-up" data-category="cs" style="animation-delay: 0.3s">
+            <div class="bg-white rounded-2xl shadow-xl overflow-hidden">
+                <div class="bg-gradient-to-r from-red-500 to-pink-500 px-6 py-4 cursor-pointer"
+                    onclick="toggleSection('cs')">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-3">
+                            <span class="text-4xl">🎓</span>
+                            <h2 class="text-2xl font-bold text-white">Computer Science</h2>
+                            <span class="badge bg-white text-red-600 px-3 py-1 rounded-full text-sm font-semibold">12+
+                                Resources</span>
+                        </div>
+                        <svg class="w-6 h-6 text-white transition-transform section-arrow" id="arrow-cs" fill="none"
+                            stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7">
+                            </path>
+                        </svg>
+                    </div>
+                </div>
+                <div class="section-content section-expanded px-6 py-4" id="content-cs">
+                    <ul class="space-y-2">
+                        <li class="resource-item p-3 rounded-lg border border-gray-100 bg-yellow-50">
+                            <a href="https://teachyourselfcs.com/" target="_blank" rel="noopener noreferrer"
+                                class="flex items-center justify-between group">
+                                <span
+                                    class="text-gray-700 group-hover:text-red-600 font-medium flex items-center gap-2">
+                                    <span class="star-icon text-yellow-500">⭐</span>
+                                    Teach Yourself CS
+                                </span>
+                                <svg class="w-5 h-5 text-gray-400 group-hover:text-red-600" fill="none"
+                                    stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14">
+                                    </path>
+                                </svg>
+                            </a>
+                        </li>
+                        <li class="resource-item p-3 rounded-lg border border-gray-100 bg-yellow-50">
+                            <a href="https://github.com/ossu/computer-science" target="_blank" rel="noopener noreferrer"
+                                class="flex items-center justify-between group">
+                                <span
+                                    class="text-gray-700 group-hover:text-red-600 font-medium flex items-center gap-2">
+                                    <span class="star-icon text-yellow-500">⭐</span>
+                                    OSSU Computer Science
+                                </span>
+                                <svg class="w-5 h-5 text-gray-400 group-hover:text-red-600" fill="none"
+                                    stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14">
+                                    </path>
+                                </svg>
+                            </a>
+                        </li>
+                        <li class="resource-item p-3 rounded-lg border border-gray-100 bg-yellow-50">
+                            <a href="https://cs50.harvard.edu/x/" target="_blank" rel="noopener noreferrer"
+                                class="flex items-center justify-between group">
+                                <span
+                                    class="text-gray-700 group-hover:text-red-600 font-medium flex items-center gap-2">
+                                    <span class="star-icon text-yellow-500">⭐</span>
+                                    CS50 - Harvard Course
+                                </span>
+                                <svg class="w-5 h-5 text-gray-400 group-hover:text-red-600" fill="none"
+                                    stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14">
+                                    </path>
+                                </svg>
+                            </a>
+                        </li>
+                        <li class="resource-item p-3 rounded-lg border border-gray-100 bg-yellow-50">
+                            <a href="https://nandgame.com/" target="_blank" rel="noopener noreferrer"
+                                class="flex items-center justify-between group">
+                                <span
+                                    class="text-gray-700 group-hover:text-red-600 font-medium flex items-center gap-2">
+                                    <span class="star-icon text-yellow-500">⭐</span>
+                                    NandGame - Build a Computer
+                                </span>
+                                <svg class="w-5 h-5 text-gray-400 group-hover:text-red-600" fill="none"
+                                    stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14">
+                                    </path>
+                                </svg>
+                            </a>
+                        </li>
+                        <li class="resource-item p-3 rounded-lg border border-gray-100 bg-yellow-50">
+                            <a href="http://www.craftinginterpreters.com/" target="_blank" rel="noopener noreferrer"
+                                class="flex items-center justify-between group">
+                                <span
+                                    class="text-gray-700 group-hover:text-red-600 font-medium flex items-center gap-2">
+                                    <span class="star-icon text-yellow-500">⭐</span>
+                                    Crafting Interpreters Book
+                                </span>
+                                <svg class="w-5 h-5 text-gray-400 group-hover:text-red-600" fill="none"
+                                    stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14">
+                                    </path>
+                                </svg>
+                            </a>
+                        </li>
+                        <li class="resource-item p-3 rounded-lg border border-gray-100">
+                            <a href="https://www.bigocheatsheet.com/" target="_blank" rel="noopener noreferrer"
+                                class="flex items-center justify-between group">
+                                <span class="text-gray-700 group-hover:text-red-600 font-medium">📈 Big-O
+                                    Cheatsheet</span>
+                                <svg class="w-5 h-5 text-gray-400 group-hover:text-red-600" fill="none"
+                                    stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14">
+                                    </path>
+                                </svg>
+                            </a>
+                        </li>
+                        <li class="resource-item p-3 rounded-lg border border-gray-100">
+                            <a href="https://visualgo.net/" target="_blank" rel="noopener noreferrer"
+                                class="flex items-center justify-between group">
+                                <span class="text-gray-700 group-hover:text-red-600 font-medium">🎬 VisuAlgo - Algorithm
+                                    Animations</span>
+                                <svg class="w-5 h-5 text-gray-400 group-hover:text-red-600" fill="none"
+                                    stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14">
+                                    </path>
+                                </svg>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="resource-section mb-8 fade-in-up" data-category="security" style="animation-delay: 0.4s">
+            <div class="bg-white rounded-2xl shadow-xl overflow-hidden">
+                <div class="bg-gradient-to-r from-gray-700 to-gray-900 px-6 py-4 cursor-pointer"
+                    onclick="toggleSection('security')">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-3">
+                            <span class="text-4xl">🛡️</span>
+                            <h2 class="text-2xl font-bold text-white">Cybersecurity</h2>
+                            <span class="badge bg-white text-gray-800 px-3 py-1 rounded-full text-sm font-semibold">10+
+                                Resources</span>
+                        </div>
+                        <svg class="w-6 h-6 text-white transition-transform section-arrow" id="arrow-security"
+                            fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7">
+                            </path>
+                        </svg>
+                    </div>
+                </div>
+                <div class="section-content section-expanded px-6 py-4" id="content-security">
+                    <ul class="space-y-2">
+                        <li class="resource-item p-3 rounded-lg border border-gray-100 bg-yellow-50">
+                            <a href="https://book.hacktricks.wiki/" target="_blank" rel="noopener noreferrer"
+                                class="flex items-center justify-between group">
+                                <span
+                                    class="text-gray-700 group-hover:text-gray-800 font-medium flex items-center gap-2">
+                                    <span class="star-icon text-yellow-500">⭐</span>
+                                    HackTricks - Pentesting Guide
+                                </span>
+                                <svg class="w-5 h-5 text-gray-400 group-hover:text-gray-800" fill="none"
+                                    stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14">
+                                    </path>
+                                </svg>
+                            </a>
+                        </li>
+                        <li class="resource-item p-3 rounded-lg border border-gray-100 bg-yellow-50">
+                            <a href="https://portswigger.net/web-security" target="_blank" rel="noopener noreferrer"
+                                class="flex items-center justify-between group">
+                                <span
+                                    class="text-gray-700 group-hover:text-gray-800 font-medium flex items-center gap-2">
+                                    <span class="star-icon text-yellow-500">⭐</span>
+                                    PortSwigger Academy
+                                </span>
+                                <svg class="w-5 h-5 text-gray-400 group-hover:text-gray-800" fill="none"
+                                    stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14">
+                                    </path>
+                                </svg>
+                            </a>
+                        </li>
+                        <li class="resource-item p-3 rounded-lg border border-gray-100 bg-yellow-50">
+                            <a href="https://cheatsheetseries.owasp.org/" target="_blank" rel="noopener noreferrer"
+                                class="flex items-center justify-between group">
+                                <span
+                                    class="text-gray-700 group-hover:text-gray-800 font-medium flex items-center gap-2">
+                                    <span class="star-icon text-yellow-500">⭐</span>
+                                    OWASP Cheatsheet
+                                </span>
+                                <svg class="w-5 h-5 text-gray-400 group-hover:text-gray-800" fill="none"
+                                    stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14">
+                                    </path>
+                                </svg>
+                            </a>
+                        </li>
+                        <li class="resource-item p-3 rounded-lg border border-gray-100">
+                            <a href="https://tryhackme.com/" target="_blank" rel="noopener noreferrer"
+                                class="flex items-center justify-between group">
+                                <span class="text-gray-700 group-hover:text-gray-800 font-medium">🎯 TryHackMe</span>
+                                <svg class="w-5 h-5 text-gray-400 group-hover:text-gray-800" fill="none"
+                                    stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14">
+                                    </path>
+                                </svg>
+                            </a>
+                        </li>
+                        <li class="resource-item p-3 rounded-lg border border-gray-100">
+                            <a href="https://www.hackthebox.com/" target="_blank" rel="noopener noreferrer"
+                                class="flex items-center justify-between group">
+                                <span class="text-gray-700 group-hover:text-gray-800 font-medium">📦 Hack The Box</span>
+                                <svg class="w-5 h-5 text-gray-400 group-hover:text-gray-800" fill="none"
+                                    stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14">
+                                    </path>
+                                </svg>
+                            </a>
+                        </li>
+                        <li class="resource-item p-3 rounded-lg border border-gray-100">
+                            <a href="https://overthewire.org/wargames/" target="_blank" rel="noopener noreferrer"
+                                class="flex items-center justify-between group">
+                                <span class="text-gray-700 group-hover:text-gray-800 font-medium">⚔️ OverTheWire
+                                    Wargames</span>
+                                <svg class="w-5 h-5 text-gray-400 group-hover:text-gray-800" fill="none"
+                                    stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14">
+                                    </path>
+                                    svg>
+                            </a>
+                        </li>
+                        <li class="resource-item p-3 rounded-lg border border-gray-100">
+                            <a href="https://cryptopals.com/" target="_blank" rel="noopener noreferrer"
+                                class="flex items-center justify-between group">
+                                <span class="text-gray-700 group-hover:text-gray-800 font-medium">🔐 CryptoPals
+                                    Challenges</span>
+                                <svg class="w-5 h-5 text-gray-400 group-hover:text-gray-800" fill="none"
+                                    stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14">
+                                    </path>
+                                </svg>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="resource-section mb-8 fade-in-up" data-category="gamedev" style="animation-delay: 0.5s">
+            <div class="bg-white rounded-2xl shadow-xl overflow-hidden">
+                <div class="bg-gradient-to-r from-orange-500 to-red-500 px-6 py-4 cursor-pointer"
+                    onclick="toggleSection('gamedev')">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-3">
+                            <span class="text-4xl">🎮</span>
+                            <h2 class="text-2xl font-bold text-white">Game Development</h2>
+                            <span class="badge bg-white text-orange-600 px-3 py-1 rounded-full text-sm font-semibold">8+
+                                Resources</span>
+                        </div>
+                        <svg class="w-6 h-6 text-white transition-transform section-arrow" id="arrow-gamedev"
+                            fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7">
+                            </path>
+                        </svg>
+                    </div>
+                </div>
+                <div class="section-content section-expanded px-6 py-4" id="content-gamedev">
+                    <ul class="space-y-2">
+                        <li class="resource-item p-3 rounded-lg border border-gray-100 bg-yellow-50">
+                            <a href="https://www.youtube.com/channel/UCYbK_tjZ2OrIZFBvU6CCMiA" target="_blank"
+                                rel="noopener noreferrer" class="flex items-center justify-between group">
+                                <span
+                                    class="text-gray-700 group-hover:text-orange-600 font-medium flex items-center gap-2">
+                                    <span class="star-icon text-yellow-500">⭐</span>
+                                    Brackeys - Game Dev Tutorials
+                                </span>
+                                <svg class="w-5 h-5 text-gray-400 group-hover:text-orange-600" fill="none"
+                                    stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14">
+                                    </path>
+                                </svg>
+                            </a>
+                        </li>
+                        <li class="resource-item p-3 rounded-lg border border-gray-100 bg-yellow-50">
+                            <a href="https://www.reddit.com/r/gamedev/" target="_blank" rel="noopener noreferrer"
+                                class="flex items-center justify-between group">
+                                <span
+                                    class="text-gray-700 group-hover:text-orange-600 font-medium flex items-center gap-2">
+                                    <span class="star-icon text-yellow-500">⭐</span>
+                                    r/gamedev Community
+                                </span>
+                                <svg class="w-5 h-5 text-gray-400 group-hover:text-orange-600" fill="none"
+                                    stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14">
+                                    </path>
+                                </svg>
+                            </a>
+                        </li>
+                        <li class="resource-item p-3 rounded-lg border border-gray-100">
+                            <a href="https://github.com/FronkonGames/Awesome-Gamedev" target="_blank"
+                                rel="noopener noreferrer" class="flex items-center justify-between group">
+                                <span class="text-gray-700 group-hover:text-orange-600 font-medium">🎯 Awesome
+                                    GameDev</span>
+                                <svg class="w-5 h-5 text-gray-400 group-hover:text-orange-600" fill="none"
+                                    stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14">
+                                    </path>
+                                </svg>
+                            </a>
+                        </li>
+                        <li class="resource-item p-3 rounded-lg border border-gray-100">
+                            <a href="https://www.shadertoy.com/" target="_blank" rel="noopener noreferrer"
+                                class="flex items-center justify-between group">
+                                <span class="text-gray-700 group-hover:text-orange-600 font-medium">✨ Shadertoy</span>
+                                <svg class="w-5 h-5 text-gray-400 group-hover:text-orange-600" fill="none"
+                                    stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14">
+                                    </path>
+                                </svg>
+                            </a>
+                        </li>
+                        <li class="resource-item p-3 rounded-lg border border-gray-100">
+                            <a href="https://book.leveldesignbook.com/" target="_blank" rel="noopener noreferrer"
+                                class="flex items-center justify-between group">
+                                <span class="text-gray-700 group-hover:text-orange-600 font-medium">📖 Level Design
+                                    Book</span>
+                                <svg class="w-5 h-5 text-gray-400 group-hover:text-orange-600" fill="none"
+                                    stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14">
+                                    </path>
+                                </svg>
+                            </a>
+                        </li>
+                        <li class="resource-item p-3 rounded-lg border border-gray-100">
+                            <a href="httpsm://gamemath.com/book/intro.html" target="_blank" rel="noopener noreferrer"
+                                class="flex items-center justify-between group">
+                                <span class="text-gray-700 group-hover:text-orange-600 font-medium">🧮 Game Math</span>
+                                <svg class="w-5 h-5 text-gray-400 group-hover:text-orange-600" fill="none"
+                                    stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14">
+                                    </path>
+                                </svg>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-gradient-to-r from-blue-600 to-purple-600 text-white py-8 mt-12">
+        <div class="container mx-auto px-4 text-center">
+            <p class="text-lg font-semibold mb-2">🚀 Keep Learning, Keep Growing!</p>
+            <p class="text-sm opacity-90">Explore these amazing resources and level up your skills 💪</p>
+        </div>
+    </footer>
+
+    <script>
+        // Function to toggle section visibility
+        function toggleSection(sectionId) {
+            const content = document.getElementById(`content-${sectionId}`);
+            const arrow = document.getElementById(`arrow-${sectionId}`);
+            if (content && arrow) {
+                const isExpanded = content.classList.contains('section-expanded');
+                if (isExpanded) {
+                    content.classList.remove('section-expanded');
+                    content.classList.add('section-collapsed');
+                    arrow.style.transform = 'rotate(-90deg)';
+                } else {
+                    content.classList.remove('section-collapsed');
+                    content.classList.add('section-expanded');
+                    arrow.style.transform = 'rotate(0deg)';
+                }
+            }
+        }
+
+        // Function to filter categories
+        function filterCategory(category) {
+            const sections = document.querySelectorAll('.resource-section');
+            const buttons = document.querySelectorAll('.filter-btn');
+
+            buttons.forEach(button => {
+                if (button.dataset.category === category) {
+                    button.classList.add('bg-gradient-to-r', 'from-blue-500', 'to-purple-600', 'text-white', 'shadow-lg');
+                    button.classList.remove('bg-white', 'text-gray-700', 'shadow');
+                    button.classList.add('active'); // Keep track of active button
+                } else {
+                    button.classList.remove('bg-gradient-to-r', 'from-blue-500', 'to-purple-600', 'text-white', 'shadow-lg');
+                    button.classList.add('bg-white', 'text-gray-700', 'shadow');
+                    button.classList.remove('active');
+                }
+            });
+
+            sections.forEach(section => {
+                // Reset animation before potentially hiding
+                section.classList.remove('fade-in-up');
+                // Use a short timeout to allow removal before re-adding/hiding
+                setTimeout(() => {
+                    if (category === 'all' || section.dataset.category === category) {
+                        section.style.display = 'block';
+                        section.classList.add('fade-in-up'); // Re-apply animation only to visible items
+                    } else {
+                        section.style.display = 'none';
+                    }
+                }, 10); // Small delay
+            });
+
+            // Ensure sections are expanded/collapsed based on their current state after filtering
+            sections.forEach(section => {
+                const sectionId = section.dataset.category;
+                const content = document.getElementById(`content-${sectionId}`);
+                const arrow = document.getElementById(`arrow-${sectionId}`);
+                if (content && arrow) {
+                    if (content.classList.contains('section-collapsed')) {
+                        arrow.style.transform = 'rotate(-90deg)';
+                    } else {
+                        arrow.style.transform = 'rotate(0deg)';
+                    }
+                }
+            });
+        }
+
+        // Search functionality
+        const searchInput = document.getElementById('searchInput');
+        searchInput.addEventListener('input', function () {
+            const searchTerm = searchInput.value.toLowerCase().trim();
+            const resourceItems = document.querySelectorAll('.resource-item');
+            const sections = document.querySelectorAll('.resource-section');
+            const activeCategory = document.querySelector('.filter-btn.active')?.dataset.category || 'all';
+
+            let visibleSections = new Set();
+            let hasVisibleItems = false; // Flag to check if any item is visible after search
+
+            resourceItems.forEach(item => {
+                const text = item.textContent.toLowerCase();
+                const section = item.closest('.resource-section');
+                const itemCategory = section ? section.dataset.category : null;
+
+                // Check if item matches search AND belongs to the currently active category (or if 'all' is active)
+                const matchesSearch = text.includes(searchTerm);
+                const matchesCategory = (activeCategory === 'all' || itemCategory === activeCategory);
+
+                if (matchesSearch && matchesCategory) {
+                    item.style.display = 'block'; // Use block for list items
+                    if (section) {
+                        visibleSections.add(itemCategory);
+                        hasVisibleItems = true;
+                    }
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+
+            // Show/hide sections based on whether they contain visible items matching the current filter AND search term
+            sections.forEach(section => {
+                const sectionCategory = section.dataset.category;
+                // Section should be visible if 'all' categories are selected OR it matches the active category,
+                // AND it contains items visible after the search (tracked by visibleSections set)
+                if ((activeCategory === 'all' || sectionCategory === activeCategory) && visibleSections.has(sectionCategory)) {
+                    section.style.display = 'block';
+                    // Optionally expand section if it contains search results
+                    const content = document.getElementById(`content-${sectionCategory}`);
+                    const arrow = document.getElementById(`arrow-${sectionCategory}`);
+                    if (content && content.classList.contains('section-collapsed')) {
+                        toggleSection(sectionCategory); // Auto-expand section with results
+                    }
+                } else {
+                    section.style.display = 'none';
+                }
+            });
+
+            // If search term is cleared, re-apply the active category filter to show all relevant sections/items
+            if (searchTerm === '') {
+                filterCategory(activeCategory);
+            }
+        });
+
+
+        // Initialize: Ensure arrows match initial state
+        document.addEventListener('DOMContentLoaded', () => {
+            // Default to 'all' category being active visually
+            filterCategory('all');
+
+            // Set initial arrow states based on CSS classes
+            const allSections = document.querySelectorAll('.resource-section');
+            allSections.forEach((section) => {
+                const sectionId = section.dataset.category;
+                const content = document.getElementById(`content-${sectionId}`);
+                const arrow = document.getElementById(`arrow-${sectionId}`);
+                if (content && arrow) {
+                    if (content.classList.contains('section-collapsed')) {
+                        arrow.style.transform = 'rotate(-90deg)';
+                    } else {
+                        arrow.style.transform = 'rotate(0deg)';
+                    }
+                }
+            });
+        });
+
+    </script>
+</body>
+
+</html>

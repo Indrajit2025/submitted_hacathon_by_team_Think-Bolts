@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login / Sign Up</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/login_register_style.css') }}">
+    {# Add other necessary head elements if needed #}
+</head>
+<body>
+    <h2>Student Portal</h2>
+    <div class="container" id="container">
+        {# Sign Up container is included for structure but links to register page #}
+        <div class="form-container sign-up-container">
+            <form action="#"> {# Dummy form for structure #}
+                <h1>Create Account</h1>
+                 {# Social links can be kept or removed #}
+                
+                <span></span>
+                 {# Placeholder inputs, actual registration is on another page #}
+                <h3>ElevatR</h3>
+                <a href="{{ url_for('student_register') }}"><button type="button">Open Register Form</button></a> {# Link to actual register page #}
+            </form>
+        </div>
+
+        {# Sign In container with Flask form #}
+        <div class="form-container sign-in-container">
+            <form method="POST" action="{{ url_for('student_login') }}">
+                <h1>Sign in</h1>
+                 {# Social links can be kept or removed #}
+                
+                <span>or use your account</span>
+
+                {# --- Flash Messages --- #}
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                    {% if messages %}
+                        <div class="flash-messages" style="padding: 10px; width: 100%;">
+                        {% for category, message in messages %}
+                            <p style="text-align: center; font-size: 12px; color: {% if category == 'success' %}green{% else %}red{% endif %}; margin-bottom: 5px;">
+                                {{ message }}
+                            </p>
+                        {% endfor %}
+                        </div>
+                    {% endif %}
+                {% endwith %}
+                {# --- End Flash Messages --- #}
+
+                <input type="email" name="email" placeholder="Email" required/>
+                <input type="password" name="password" placeholder="Password" required/>
+                <a href="#">Forgot your password?</a> {# Add functionality if needed #}
+                <button type="submit">Login</button>
+            </form>
+        </div>
+
+        <div class="overlay-container">
+            <div class="overlay">
+                <div class="overlay-panel overlay-left">
+                    <h1>Welcome Back!</h1>
+                    <p>To keep connected with us please login with your personal info</p>
+                    <button class="ghost" id="signIn">Sign In</button>
+                </div>
+                <div class="overlay-panel overlay-right">
+                    <h1>Hello, Friend!</h1>
+                    <p>Enter your personal details and start journey with us</p>
+                    <button class="ghost" id="signUp">Register</button> {# This button toggles the view #}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {# Removed footer or add back if needed #}
+
+    <script src="{{ url_for('static', filename='js/login_register_script.js') }}"></script>
+</body>
+</html>

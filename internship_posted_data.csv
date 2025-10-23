@@ -1,0 +1,501 @@
+company,role,skills,cgpa_minimum
+CloudSphere Dynamics,Systems Administrator,"Virtualization (VMware, Hyper-V), Security Patching, Active Directory, Linux (Red Hat, Ubuntu), Bash Scripting, Ansible, PowerShell",6.2
+BharatPe,QA Engineer,"Test Planning, Playwright, SQL, Selenium, Automation Testing",7.6
+Flipkart,Mobile App Developer,"React Native, RxSwift, UI/UX Principles, REST APIs, Android SDK, Firebase, Kotlin, iOS SDK",6.9
+Freshworks,DevOps Engineer,"Azure, Linux, GitLab CI, Jenkins, CI/CD, AWS",8.3
+Zephyr Innovations,Full-Stack Developer,"Node.js, Azure, Python, REST APIs, NoSQL, Flask, Java, Express.js, SQL",7.4
+Stellar Solutions,Data Analyst,"Google Analytics, Data Cleaning, JIRA, Data Warehousing, SAS",6.7
+Vortex IO,Mobile App Developer,"React Native, Android SDK, RxJava, REST APIs, RxSwift, Java, Xamarin, Swift, Kotlin",7.0
+Persistent Systems,Frontend Developer,"LESS, Babel, Web Performance, Vuex, ES6+, Vue.js, JavaScript, Yarn, SASS",8.4
+Pinnacle Innovations,Game Developer,"DirectX, Vulkan, Game Physics, Network Programming, OpenGL, 3D Graphics, C#",6.1
+Zenith Labs,Embedded Systems Engineer,"Verilog, Linux Kernel, VHDL, C, Circuit Design, Device Drivers, Python, I2C, SPI, Assembly Language",8.3
+Unacademy,Data Scientist,"Data Warehousing, Python, Data Visualization, Power BI, A/B Testing",9.0
+Vedantu,Software Engineer,"Rust, Integration Testing, Git, Linux/Unix, Kubernetes, Unit Testing, Agile, Object-Oriented Programming (OOP)",8.2
+Udaan,Frontend Developer,"Yarn, TypeScript, Webpack, Jest, Web Performance, JavaScript, Redux, Gatsby, Vuex",8.5
+Udaan,QA Engineer,"Postman, Cypress, Bug Tracking, Performance Testing, Selenium, API Testing",6.2
+PhonePe,Systems Administrator,"Backup Solutions, PowerShell, Linux (Red Hat, Ubuntu), Bash Scripting, Networking (TCP/IP, DNS, DHCP)",8.2
+Meteor Innovations,Full-Stack Developer,"Flask, Git, Docker, Django, REST APIs, React",7.2
+Tech Mahindra,Cloud Engineer,"Go, Serverless, Docker, Azure Functions, Identity and Access Management (IAM), Cost Optimization",8.3
+Kinetic Flow,Systems Administrator,"Active Directory, System Monitoring, Virtualization (VMware, Hyper-V), Security Patching, PowerShell, Backup Solutions",6.5
+Wipro,Mobile App Developer,"Android SDK, Java, UI/UX Principles, Objective-C, RxJava",6.2
+X-Factor Solutions,Business Analyst,"Business Case Development, JIRA, MS Visio, UML, Stakeholder Management, Scrum, Financial Modeling",6.1
+Ola Cabs,Cloud Engineer,"Python, Cost Optimization, AWS Lambda, AWS, CloudFormation, Azure, Serverless, Docker, Identity and Access Management (IAM), Cloud Security",6.8
+Mphasis,UI/UX Designer,"User Research, Agile, Usability Testing, HTML/CSS fundamentals, Design Systems",7.5
+Postman,Backend Developer,"Kubernetes, PHP, MongoDB, SQL, Microservices, GraphQL, Java, Ruby on Rails",8.6
+Helios Systems,Mobile App Developer,"REST APIs, Android Studio, RxSwift, RxJava, Xamarin, Xcode, Realm, Firebase, Java",6.2
+Juno Solutions,Systems Administrator,"Bash Scripting, Linux (Red Hat, Ubuntu), System Monitoring, Windows Server, Networking (TCP/IP, DNS, DHCP)",7.1
+GhostWorks,Mobile App Developer,"UI/UX Principles, REST APIs, RxJava, Android Studio, iOS SDK, Core Data, RxSwift, Swift, React Native, Dart",8.7
+Meteor Innovations,Product Manager,"A/B Testing, Scrum, Product Lifecycle Management, Data Analysis, SQL, Market Research, Kanban, Agile, JIRA",8.9
+Nebula Corporation,Cloud Engineer,"Terraform, Azure Functions, GCP, Kubernetes, AWS Lambda, Go, Identity and Access Management (IAM), Cost Optimization, AWS",8.0
+Razorpay,Network Engineer,"Cisco, DNS, VPN, Network Security, Ansible, Python, Routing (BGP, OSPF), TCP/IP, Network Monitoring (SNMP), Switching",8.7
+TerraForm Inc.,Full-Stack Developer,"Azure, TypeScript, Flask, System Design, PostgreSQL, React, MongoDB, JavaScript, Django",6.2
+Mphasis,Product Manager,"Roadmap Planning, SQL, A/B Testing, Kanban, JIRA, User Stories, Market Research, Product Lifecycle Management, Confluence, Data Analysis",7.3
+CyberGuard Security,Database Administrator (DBA),"PostgreSQL, Oracle DB, Cassandra, Database Design, Backup and Recovery, Shell Scripting, MongoDB, Python",6.6
+NextGen AI Labs,Game Developer,"Unreal Engine, Game Physics, OpenGL, Maya, Shader Programming, Unity",7.9
+DataGenius AI,Database Administrator (DBA),"MySQL, Microsoft SQL Server, SQL, NoSQL, Python, Oracle DB, Backup and Recovery, MongoDB",7.2
+Nebula Corporation,Game Developer,"Shader Programming, Blender, Network Programming, OpenGL, DirectX, AI for Games, Unreal Engine",8.8
+Wipro,DevOps Engineer,"Ansible, Security, Kubernetes, Grafana, Python Scripting, Bash Scripting, Azure, Linux, Jenkins, Networking",6.3
+Ola Cabs,QA Engineer,"JIRA, LoadRunner, Appium, Playwright, Manual Testing, Automation Testing, Selenium, Test Cases, Test Planning, Performance Testing",6.4
+Northstar AI,Full-Stack Developer,"Python, SQL, Git, Angular, Django",6.9
+Zenith Labs,Cloud Engineer,"Terraform, Cost Optimization, Azure Functions, Azure, Docker, Networking (VPC, Subnets), Cloud Security, CloudFormation, AWS",7.8
+Freshworks,DevOps Engineer,"Grafana, Prometheus, Puppet, Networking, Python Scripting, Security, Azure, Google Cloud Platform (GCP)",6.8
+Quasar Data,Mobile App Developer,"Objective-C, REST APIs, Android SDK, RxJava, Realm, Firebase, Xcode, UI/UX Principles, Swift",7.7
+Aperture Science,DevOps Engineer,"Jenkins, Bash Scripting, GitLab CI, AWS, Google Cloud Platform (GCP), Grafana",6.7
+QuantumMetric,Machine Learning Engineer,"NumPy, TensorFlow, PyTorch, Azure ML, Keras, NLP, Java, MLOps, Reinforcement Learning",6.9
+Zomato,Product Manager,"Go-to-Market Strategy, Roadmap Planning, Stakeholder Communication, Product Lifecycle Management, Scrum",6.9
+Wipro,Database Administrator (DBA),"Shell Scripting, MongoDB, Database Design, SQL, NoSQL",8.2
+Paytm,Backend Developer,"MySQL, C#, Redis, Ruby, Kafka",6.9
+Razorpay,Database Administrator (DBA),"Performance Tuning, Shell Scripting, Oracle DB, NoSQL, SQL, Database Design, Cassandra, Microsoft SQL Server, PostgreSQL",6.4
+Nykaa,Database Administrator (DBA),"Backup and Recovery, Python, Performance Tuning, Cassandra, Database Design",6.6
+Infinite Loop Development,Data Scientist,"Data Warehousing, SQL, Pandas, ETL, R, Hive, Python, Airflow",7.9
+Larsen & Toubro Infotech (LTI),Game Developer,"Unreal Engine, Unity, C#, Shader Programming, OpenGL, Vulkan, Game Physics, DirectX",7.9
+TerraForm Inc.,Cybersecurity Analyst,"Scripting, Security Compliance (ISO 27001, NIST), Network Security, Metasploit, SIEM, Python, Firewalls, Penetration Testing",6.5
+Vedantu,Software Engineer,"C#, Unit Testing, Python, Data Structures, Git",7.7
+Stellar Solutions,Embedded Systems Engineer,"SPI, Python, Microcontrollers (ARM, AVR), Verilog, C, Linux Kernel, C++",7.2
+Momentum Dynamics,Cybersecurity Analyst,"Cryptography, Incident Response, Security Compliance (ISO 27001, NIST), Metasploit, Wireshark, Intrusion Detection Systems (IDS), Nmap",8.8
+QuantumLeap Analytics,Frontend Developer,"Gatsby, SASS, Jest, Next.js, Redux, Web Performance, GraphQL",8.3
+Postman,DevOps Engineer,"Prometheus, Kubernetes, AWS, Terraform, Puppet, Networking, Grafana, GitLab CI, Docker",7.3
+Helios Systems,Cybersecurity Analyst,"Network Security, Scripting, Metasploit, Splunk, Cryptography, Security Compliance (ISO 27001, NIST), Intrusion Detection Systems (IDS)",8.7
+Wavefront Labs,Game Developer,"Maya, AI for Games, Shader Programming, C#, Game Physics",8.2
+CloudSphere Dynamics,Machine Learning Engineer,"Kubernetes, PyTorch, GCP AI Platform, Java, Algorithms, Scikit-learn, Data Structures",6.1
+PulsePoint,Machine Learning Engineer,"NLP, Data Structures, PyTorch, NumPy, Caffe",6.8
+Nebula Corporation,Embedded Systems Engineer,"VHDL, Python, Microcontrollers (ARM, AVR), Assembly Language, Circuit Design, Linux Kernel, C++",7.0
+BlueSun Corporation,Cloud Engineer,"Networking (VPC, Subnets), Cost Optimization, Serverless, GCP, AWS Lambda, Go",8.7
+Helios Systems,Cybersecurity Analyst,"Cryptography, Incident Response, Firewalls, Intrusion Detection Systems (IDS), Security Compliance (ISO 27001, NIST), Splunk, Nmap, Scripting, Wireshark, Network Security",8.0
+Jade Mountain,Software Engineer,"System Design, Data Structures, Java, Rust, Scala",7.0
+Freshworks,Network Engineer,"DNS, Network Security, Network Monitoring (SNMP), Load Balancers, TCP/IP, Switching, Juniper, Firewalls, Ansible, Routing (BGP, OSPF)",6.8
+Nykaa,Backend Developer,"SQL, Python, NoSQL, Java, C#",8.0
+EchoSphere,Data Analyst,"Excel, Statistics, SAS, R, Pandas, JIRA, A/B Testing",6.6
+CodeCrafters Inc.,Data Scientist,"Deep Learning, Scikit-learn, PyTorch, Data Visualization, R, Python",7.2
+Lionheart Labs,Product Manager,"SQL, Market Research, Scrum, Data Analysis, JIRA, Product Lifecycle Management, Agile",9.0
+Xenon Dynamics,DevOps Engineer,"Security, AWS, Google Cloud Platform (GCP), Networking, Chef, Grafana, Python Scripting, CI/CD",7.8
+Upstox,Cloud Engineer,"Python, Docker, Kubernetes, GCP, Azure Functions, CloudFormation",6.5
+Zomato,UI/UX Designer,"InVision, Prototyping, User Research, HTML/CSS fundamentals, Adobe XD, Design Systems, Wireframing, User Journey Mapping, A/B Testing",6.4
+Meesho,Game Developer,"AI for Games, Vulkan, Unity, OpenGL, C#",7.5
+SilverLining Cloud,Cybersecurity Analyst,"Incident Response, Python, Cryptography, Network Security, Penetration Testing",9.0
+CyberGuard Security,DevOps Engineer,"Bash Scripting, Jenkins, CI/CD, Prometheus, Grafana, Azure",7.4
+Titan Industries,Machine Learning Engineer,"Keras, MLOps, NLP, C++, Data Structures, Python, Reinforcement Learning, Java, Docker",7.9
+TerraForm Inc.,Frontend Developer,"Gatsby, Responsive Design, Jest, Vuex, ES6+, LESS, GraphQL, Babel",7.9
+Titan Industries,Embedded Systems Engineer,"Linux Kernel, Python, I2C, C, Assembly Language",7.6
+Infosys,Frontend Developer,"NPM, TypeScript, SASS, LESS, Babel",6.9
+Infinite Loop Development,Embedded Systems Engineer,"Verilog, C, Assembly Language, UART, SPI, Microcontrollers (ARM, AVR), Firmware, Linux Kernel, Python, RTOS",6.0
+Umbra Technologies,Database Administrator (DBA),"Database Design, SQL, PostgreSQL, Oracle DB, NoSQL",6.9
+EchoSphere,Business Analyst,"ExTableau, SWOT Analysis, Stakeholder Management, Requirements Gathering, UML, Business Case Development, Financial Modeling",8.2
+Hexaware Technologies,Cybersecurity Analyst,"Network Security, Intrusion Detection Systems (IDS), Metasploit, SIEM, Security Compliance (ISO 27001, NIST)",9.0
+Adani Enterprises,Game Developer,"Shader Programming, Vulkan, Maya, Unreal Engine, C#, Network Programming, C++, Unity, Blender",9.0
+Quasar Data,Network Engineer,"Firewalls, Load Balancers, Juniper, Ansible, VPN, Python, TCP/IP, Network Security",6.7
+Razorpay,Mobile App Developer,"Android SDK, Android Studio, Java, RxSwift, Flutter",8.8
+Tata Digital,Backend Developer,"Django, CI/CD, C#, MongoDB, RabbitMQ, Message Queues, Node.js, PHP",8.8
+Horizon Digital,Game Developer,"Maya, Unity, Vulkan, OpenGL, Shader Programming",6.9
+Ironclad Security,Business Analyst,"Stakeholder Management, User Stories, MS Visio, JIRA, Business Case Development",6.2
+Umbra Technologies,Software Engineer,"Git, Agile, Linux/Unix, Python, Integration Testing, C#",6.2
+EchoSphere,UI/UX Designer,"User Journey Mapping, InVision, User Research, Adobe XD, Figma, Usability Testing, Agile",7.7
+NextGen AI Labs,DevOps Engineer,"Python Scripting, Security, Chef, CI/CD, Ansible, Bash Scripting, Grafana, Jenkins",6.6
+Swiggy,Game Developer,"OpenGL, Shader Programming, Network Programming, Game Physics, C#, Blender, C++, AI for Games",7.8
+Titan Industries,Machine Learning Engineer,"C++, Keras, Caffe, Data Structures, PyTorch, Azure ML, Computer Vision, Python, NumPy",6.7
+Lumina Analytics,Full-Stack Developer,"TypeScript, React, Go, Express.js, AWS, Vue.js, JavaScript, Java",6.4
+CodeCrafters Inc.,Data Scientist,"PyTorch, SQL, Pandas, Machine Learning, NLP, Spark, Tableau, Probability, Hadoop, Data Warehousing",7.1
+Orion Enterprises,Game Developer,"3D Graphics, Vulkan, Network Programming, Game Physics, C#, Unreal Engine",7.8
+Policybazaar,Machine Learning Engineer,"C++, Caffe, Computer Vision, MLOps, TensorFlow, PyTorch, Kubeflow",6.0
+RedShift Technologies,Network Engineer,"VPN, TCP/IP, Firewalls, Python, Network Security, Switching, Juniper, DNS, Routing (BGP, OSPF), Ansible",8.2
+Umbra Technologies,UI/UX Designer,"Zeplin, Prototyping, User Research, Figma, Sketch",6.0
+CRED,Embedded Systems Engineer,"Circuit Design, RTOS, SPI, Assembly Language, UART, I2C, C",7.0
+Foxglove AI,Network Engineer,"Network Monitoring (SNMP), Routing (BGP, OSPF), Python, Ansible, Network Security, TCP/IP",7.2
+DataGenius AI,Game Developer,"Vulkan, Game Physics, 3D Graphics, Blender, Maya, Unreal Engine, Unity, C#, DirectX, C++",8.3
+PhonePe,DevOps Engineer,"Python Scripting, Jenkins, Chef, Azure, Kubernetes, Networking",7.9
+Momentum Dynamics,QA Engineer,"JMeter, LoadRunner, SQL, Appium, JIRA, Bug Tracking, Performance Testing, Manual Testing",8.3
+Tech Mahindra,DevOps Engineer,"Puppet, Terraform, Networking, GitLab CI, Chef, Docker",8.2
+Umbra Technologies,Business Analyst,"Confluence, SWOT Analysis, JIRA, SQL, Stakeholder Management, Requirements Gathering, UML, User Stories",8.1
+X-Factor Solutions,Network Engineer,"TCP/IP, Network Monitoring (SNMP), Firewalls, Python, DNS, Juniper, Network Security, Load Balancers, Switching, Ansible",8.3
+Yellowstone Analytics,UI/UX Designer,"Wireframing, InVision, User Research, HTML/CSS fundamentals, A/B Testing",8.7
+Zephyr Innovations,Cybersecurity Analyst,"Splunk, Penetration Testing, Cryptography, Security Compliance (ISO 27001, NIST), Incident Response",7.9
+Wipro,Systems Administrator,"Virtualization (VMware, Hyper-V), PowerShell, Active Directory, Bash Scripting, System Monitoring, Ansible",7.2
+Flipkart,Cloud Engineer,"CloudFormation, Cost Optimization, Identity and Access Management (IAM), AWS Lambda, Terraform",7.2
+QuantumMetric,Full-Stack Developer,"Express.js, CI/CD, Vue.js, AWS, JavaScript, Java, Flask, System Design",7.7
+Keystone Logic,Mobile App Developer,"Swift, Objective-C, Xamarin, UI/UX Principles, Dart, Android Studio, Flutter, Realm, Core Data, iOS SDK",6.3
+Orion Enterprises,Cloud Engineer,"Docker, Networking (VPC, Subnets), Python, Azure, Cost Optimization, GCP, CloudFormation, Cloud Security, Identity and Access Management (IAM)",8.1
+Tata Consultancy Services (TCS),Database Administrator (DBA),"PostgreSQL, Oracle DB, Backup and Recovery, Microsoft SQL Server, Data Security, Performance Tuning, Replication, Cassandra, MongoDB, Shell Scripting",9.0
+Zephyr Innovations,UI/UX Designer,"User Journey Mapping, InVision, Adobe XD, Wireframing, Prototyping, Zeplin, Agile, A/B Testing",8.2
+Wavefront Labs,Data Scientist,"Deep Learning, Probability, Data Warehousing, SQL, ETL, A/B Testing, Pandas, Machine Learning",7.4
+Uber India,Systems Administrator,"System Monitoring, Virtualization (VMware, Hyper-V), Security Patching, Windows Server, Active Directory, Linux (Red Hat, Ubuntu), Backup Solutions, Ansible, Networking (TCP/IP, DNS, DHCP)",6.2
+Byju's,Mobile App Developer,"Firebase, Dart, RxSwift, Xcode, Android Studio, Android SDK",8.0
+Lionheart Labs,QA Engineer,"Appium, Test Cases, Playwright, LoadRunner, Bug Tracking, Selenium, JIRA, Performance Testing, API Testing, Test Planning",6.6
+CyberGuard Security,Business Analyst,"SWOT Analysis, Stakeholder Management, MS Visio, ExTableau, Requirements Gathering",7.3
+BharatPe,DevOps Engineer,"Chef, Docker, AWS, Networking, Security, Python Scripting, Azure, Google Cloud Platform (GCP)",8.4
+Infosys,Network Engineer,"Ansible, Firewalls, Network Security, Python, DNS, Load Balancers",8.9
+Northstar AI,Data Analyst,"JIRA, Tableau, ETL, Python, Pandas, Looker, A/B Testing",6.2
+Wipro,Software Engineer,"Microservices, C#, Python, Agile, Algorithms, Linux/Unix, System Design",6.4
+Udaan,QA Engineer,"Appium, Automation Testing, Manual Testing, Test Planning, SQL, JIRA, Bug Tracking, Selenium, Performance Testing",7.8
+Obsidian Dynamics,Product Manager,"Stakeholder Communication, Market Research, JIRA, Agile, Confluence, Go-to-Market Strategy, Scrum, Competitive Analysis",8.4
+Hexaware Technologies,Product Manager,"JIRA, Kanban, Competitive Analysis, Data Analysis, SQL, Agile, Roadmap Planning, Go-to-Market Strategy",6.2
+Paytm,Database Administrator (DBA),"Replication, Microsoft SQL Server, Backup and Recovery, PostgreSQL, Performance Tuning, Python, MySQL, MongoDB, Cassandra, Data Security",6.4
+Policybazaar,Backend Developer,"GraphQL, Flask, Docker, NoSQL, PHP, Message Queues",6.8
+Nykaa,DevOps Engineer,"Python Scripting, Jenkins, Terraform, Grafana, Bash Scripting, Prometheus, Networking, CI/CD, Puppet, Security",8.7
+Vedantu,Game Developer,"DirectX, Unreal Engine, Network Programming, AI for Games, Vulkan, C#, 3D Graphics, Unity",8.3
+Xenon Dynamics,DevOps Engineer,"Ansible, Prometheus, Docker, Puppet, Python Scripting, Terraform, Jenkins, Security, Google Cloud Platform (GCP), Grafana",6.0
+DataGenius AI,QA Engineer,"JIRA, API Testing, Performance Testing, JMeter, Test Cases, Postman, Cypress, Regression Testing, Automation Testing",6.0
+Upstox,Data Analyst,"Reporting, Data Cleaning, R, Data Warehousing, Adobe Analytics, Statistics, Looker, Dashboards, Google Analytics",7.6
+X-Factor Solutions,Mobile App Developer,"Firebase, Kotlin, RxSwift, iOS SDK, Android SDK, Dart, Xamarin",9.0
+Diamondback Systems,Database Administrator (DBA),"NoSQL, Microsoft SQL Server, Performance Tuning, Shell Scripting, Cassandra, Database Design, MongoDB, Oracle DB, Data Security, Replication",7.9
+HCL Technologies,Backend Developer,"Spring Boot, Node.js, RabbitMQ, Java, .NET, Message Queues, Docker, Kubernetes, NoSQL",7.0
+Xenon Dynamics,Product Manager,"Data Analysis, A/B Testing, Scrum, Confluence, Roadmap Planning, Market Research, SQL, Agile, JIRA, User Stories",7.3
+Stellar Solutions,UI/UX Designer,"Prototyping, Sketch, Figma, UI/UX Design Principles, Adobe XD, InVision, Wireframing",8.1
+Lionheart Labs,Full-Stack Developer,"Vue.js, Node.js, JavaScript, React, REST APIs",6.2
+Freshworks,Business Analyst,"SQL, MS Visio, Business Case Development, JIRA, Process Mapping, User Stories",8.5
+Nykaa,Frontend Developer,"TypeScript, NPM, Gatsby, Angular, Vuex, Responsive Design, SASS, JavaScript, REST APIs, Vue.js",6.7
+Flipkart,Backend Developer,"SQL, MySQL, MongoDB, Python, REST APIs, PostgreSQL, Redis, Docker, Message Queues, Laravel",6.9
+Horizon Digital,QA Engineer,"Test Cases, JMeter, Regression Testing, Test Planning, Cypress, API Testing",8.3
+Zephyr Innovations,Full-Stack Developer,"Git, JavaScript, Express.js, Django, Azure, PostgreSQL",7.4
+Zomato,Software Engineer,"C++, Unit Testing, Kubernetes, Agile, Microservices, Algorithms, Rust",6.6
+Obsidian Dynamics,Product Manager,"User Stories, Market Research, Data Analysis, SQL, Kanban, Stakeholder Communication, Go-to-Market Strategy, Confluence",7.2
+HCL Technologies,UI/UX Designer,"User Research, A/B Testing, Sketch, Adobe XD, Usability Testing, User Journey Mapping, Agile, HTML/CSS fundamentals",7.6
+Unacademy,Data Scientist,"Scikit-learn, R, ETL, Spark, Data Visualization, Big Data, Airflow",7.2
+Kinetic Flow,Software Engineer,"Kubernetes, Object-Oriented Programming (OOP), Scrum, C#, Algorithms",6.9
+Larsen & Toubro Infotech (LTI),Backend Developer,"Microservices, Python, Docker, C#, RabbitMQ, Kubernetes, Redis, REST APIs, Laravel, GraphQL",7.1
+HCL Technologies,Full-Stack Developer,"TypeScript, GraphQL, Angular, CI/CD, System Design, Django",8.7
+Freshworks,Cloud Engineer,"Networking (VPC, Subnets), Terraform, Serverless, Go, CloudFormation",8.0
+BharatPe,Mobile App Developer,"UI/UX Principles, Core Data, Xamarin, REST APIs, Objective-C, Dart, Flutter, iOS SDK, RxSwift, Kotlin",8.6
+Swiggy,Mobile App Developer,"Swift, React Native, Java, Android SDK, RxSwift, iOS SDK, Flutter",8.8
+Quasar Data,Frontend Developer,"Responsive Design, Babel, Angular, SASS, Web Performance, NPM, Webpack, REST APIs, Vue.js",6.4
+BinaryBridge Technologies,Cybersecurity Analyst,"Metasploit, Security Compliance (ISO 27001, NIST), Splunk, Scripting, Penetration Testing",7.5
+Aperture Science,UI/UX Designer,"Figma, Agile, UI/UX Design Principles, User Research, Usability Testing, Design Systems, HTML/CSS fundamentals",6.3
+Ola Cabs,Frontend Developer,"HTML5, Cypress, REST APIs, Vuex, Web Performance, JavaScript",8.4
+Persistent Systems,Game Developer,"C#, AI for Games, OpenGL, Blender, Maya",6.7
+Mindtree,Full-Stack Developer,"Vue.js, PostgreSQL, GraphQL, CI/CD, Azure, Go, Django, System Design, NoSQL",7.9
+DataGenius AI,Full-Stack Developer,"PostgreSQL, Node.js, Django, GraphQL, JavaScript, Azure, TypeScript, Java, CI/CD",6.6
+Reliance Jio,Mobile App Developer,"RxSwift, Android SDK, Android Studio, UI/UX Principles, Swift, Core Data, Java",6.7
+Pinnacle Innovations,Cybersecurity Analyst,"Splunk, Metasploit, Python, Nmap, Incident Response, Network Security",7.2
+Momentum Dynamics,Data Analyst,"JIRA, Power BI, SQL, Tableau, Adobe Analytics, SAS, ETL",7.2
+Udaan,Full-Stack Developer,"React, TypeScript, Python, Java, System Design, AWS, MongoDB, NoSQL, Azure, Docker",6.9
+BinaryBridge Technologies,Cybersecurity Analyst,"Python, Wireshark, Incident Response, Firewalls, Security Compliance (ISO 27001, NIST), Splunk, SIEM, Intrusion Detection Systems (IDS)",7.8
+Riptide Software,Systems Administrator,"Networking (TCP/IP, DNS, DHCP), Virtualization (VMware, Hyper-V), PowerShell, System Monitoring, Security Patching, Bash Scripting, Windows Server",6.8
+Ola Cabs,UI/UX Designer,"Wireframing, Design Systems, Agile, Figma, HTML/CSS fundamentals, User Journey Mapping, A/B Testing",7.2
+Infinite Loop Development,Business Analyst,"Process Mapping, Confluence, MS Visio, SWOT Analysis, Financial Modeling, UML, JIRA, Scrum",7.8
+Zomato,Data Scientist,"Python, Data Warehousing, TensorFlow, SQL, Deep Learning, Statistics, ETL, Scikit-learn, Probability, Pandas",6.3
+CyberGuard Security,Full-Stack Developer,"NoSQL, Flask, Git, System Design, Azure, REST APIs, MongoDB, Docker",6.7
+Zenith Labs,Backend Developer,"MongoDB, Spring Boot, Express.js, Ruby, Ruby on Rails",7.8
+SilverLining Cloud,Systems Administrator,"Bash Scripting, Active Directory, Backup Solutions, Linux (Red Hat, Ubuntu), System Monitoring, Security Patching, Networking (TCP/IP, DNS, DHCP)",8.1
+Vedantu,Machine Learning Engineer,"Data Structures, NLP, Scikit-learn, Pandas, Algorithms, Keras, Kubernetes, Java",6.7
+Diamondback Systems,Game Developer,"Network Programming, OpenGL, Unreal Engine, C#, Vulkan, Blender, Maya",7.2
+Zomato,Business Analyst,"UML, SQL, User Stories, Confluence, Business Case Development, Process Mapping, Agile",6.6
+Zerodha,Network Engineer,"VPN, Network Security, Ansible, Network Monitoring (SNMP), TCP/IP, Load Balancers, DNS",7.6
+Aperture Science,QA Engineer,"Test Cases, Appium, Manual Testing, Playwright, JIRA, API Testing",7.5
+Delhivery,Cloud Engineer,"Kubernetes, Serverless, Cost Optimization, Identity and Access Management (IAM), AWS Lambda, Azure, Python, CloudFormation, Go",8.3
+CRED,Embedded Systems Engineer,"C++, Assembly Language, SPI, UART, RTOS",6.1
+CRED,Network Engineer,"Load Balancers, Network Security, Switching, Network Monitoring (SNMP), Juniper, TCP/IP, Cisco",8.8
+TerraForm Inc.,UI/UX Designer,"UI/UX Design Principles, Wireframing, Sketch, InVision, User Journey Mapping, HTML/CSS fundamentals, Usability Testing, Adobe XD, Zeplin, Prototyping",8.1
+Unity Systems,Frontend Developer,"Gatsby, Babel, React, LESS, NPM, GraphQL, Next.js, Cypress",8.8
+InMobi,Product Manager,"Agile, Stakeholder Communication, Product Lifecycle Management, Confluence, Scrum, Go-to-Market Strategy, SQL, A/B Testing, Kanban, JIRA",7.0
+Swiggy,Backend Developer,"Flask, CI/CD, Ruby, NoSQL, Python",8.1
+Umbra Technologies,Business Analyst,"Confluence, MS Visio, Agile, ExTableau, SQL, User Stories, Requirements Gathering, Process Mapping",6.2
+SilverLining Cloud,Business Analyst,"Requirements Gathering, Business Case Development, SWOT Analysis, Agile, JIRA",6.7
+BlueSun Corporation,Software Engineer,"Docker, Git, Rust, Agile, Go, C++, Scala, Data Structures, Unit Testing",7.1
+Adani Enterprises,DevOps Engineer,"Prometheus, AWS, Bash Scripting, Google Cloud Platform (GCP), Puppet",8.4
+Nykaa,Backend Developer,"REST APIs, SQL, PHP, Redis, MongoDB, Message Queues, Laravel, Docker",7.3
+HCL Technologies,Cybersecurity Analyst,"Python, Nmap, Network Security, Splunk, SIEM",7.9
+Jade Mountain,DevOps Engineer,"AWS, CI/CD, Jenkins, GitLab CI, Bash Scripting, Puppet, Networking",6.9
+Hexaware Technologies,Embedded Systems Engineer,"Assembly Language, Microcontrollers (ARM, AVR), I2C, Circuit Design, Device Drivers, C",8.7
+Flipkart,Frontend Developer,"Gatsby, Webpack, GraphQL, Jest, Vue.js, TypeScript, Responsive Design, Yarn, CSS3",8.3
+Nykaa,Database Administrator (DBA),"PostgreSQL, Oracle DB, SQL, Shell Scripting, MongoDB, Python",6.1
+Yellowbrick Data,Product Manager,"A/B Testing, Competitive Analysis, Roadmap Planning, Data Analysis, User Stories, Kanban, Agile, JIRA, Market Research, Go-to-Market Strategy",8.3
+PhonePe,Product Manager,"Product Lifecycle Management, Roadmap Planning, Market Research, Scrum, SQL, A/B Testing, Stakeholder Communication, Confluence, Competitive Analysis, Go-to-Market Strategy",6.1
+Udaan,Machine Learning Engineer,"Pandas, Kubeflow, Docker, NumPy, Data Structures",7.1
+Tech Mahindra,Machine Learning Engineer,"Java, Keras, Algorithms, Python, Kubernetes, TensorFlow, Azure ML, Data Structures, C++, Caffe",7.6
+Infosys,Full-Stack Developer,"AWS, Express.js, Git, Node.js, React, Python, GraphQL, Flask",7.3
+SilverLining Cloud,Network Engineer,"Switching, Python, Network Security, Network Monitoring (SNMP), Cisco, Routing (BGP, OSPF), DNS, VPN, TCP/IP, Firewalls",7.0
+CyberGuard Security,Systems Administrator,"Virtualization (VMware, Hyper-V), Ansible, PowerShell, Networking (TCP/IP, DNS, DHCP), Bash Scripting",7.6
+Wipro,QA Engineer,"SQL, Performance Testing, Postman, Playwright, Cypress, Regression Testing, Manual Testing, Selenium",7.2
+PulsePoint,DevOps Engineer,"AWS, Security, Chef, Grafana, Puppet",7.6
+GhostWorks,Data Analyst,"Tableau, Pandas, Adobe Analytics, Python, VBA, Power BI, Qlik Sense, SAS, Reporting, SQL",8.0
+Foxglove AI,DevOps Engineer,"Docker, Bash Scripting, Python Scripting, CI/CD, Jenkins, Kubernetes, Security",7.3
+BlueSun Corporation,Systems Administrator,"Linux (Red Hat, Ubuntu), Ansible, Backup Solutions, PowerShell, Security Patching, Windows Server, System Monitoring, Bash Scripting",7.9
+Hexaware Technologies,Systems Administrator,"System Monitoring, Backup Solutions, Bash Scripting, Active Directory, PowerShell, Ansible, Linux (Red Hat, Ubuntu)",8.6
+Uber India,Data Scientist,"Data Visualization, Machine Learning, Data Warehousing, Spark, Hadoop, Statistics, Deep Learning, PyTorch, NumPy, Hive",8.8
+Diamondback Systems,Frontend Developer,"ES6+, Gatsby, GraphQL, HTML5, CSS3, SASS, TypeScript, LESS, Redux",7.7
+Tech Mahindra,Software Engineer,"Python, C++, Kubernetes, Docker, Java, Scala, Data Structures",7.1
+Titan Industries,Game Developer,"Network Programming, C++, Game Physics, Vulkan, OpenGL, Shader Programming, 3D Graphics, Blender",6.6
+Whisper AI,Data Analyst,"Data Cleaning, Dashboards, Python, Looker, Power BI, ETL, Adobe Analytics, SQL, Google Analytics, Statistics",7.9
+Aperture Science,Systems Administrator,"Backup Solutions, PowerShell, Bash Scripting, Networking (TCP/IP, DNS, DHCP), Linux (Red Hat, Ubuntu), Security Patching, Windows Server, System Monitoring, Virtualization (VMware, Hyper-V)",8.4
+QuantumLeap Analytics,Network Engineer,"Python, Network Monitoring (SNMP), Firewalls, Load Balancers, Juniper, DNS, Switching",8.4
+HCL Technologies,Business Analyst,"JIRA, SQL, Requirements Gathering, Agile, Scrum, User Stories",6.6
+Byju's,Systems Administrator,"System Monitoring, Backup Solutions, Active Directory, Virtualization (VMware, Hyper-V), PowerShell, Security Patching, Bash Scripting",8.3
+Aperture Science,Full-Stack Developer,"Java, NoSQL, SQL, Express.js, PostgreSQL, GraphQL, JavaScript, Go, Vue.js",7.5
+Myntra,Embedded Systems Engineer,"RTOS, VHDL, C++, Device Drivers, Circuit Design, Firmware, UART, SPI",8.2
+Horizon Digital,Machine Learning Engineer,"NLP, NumPy, Scikit-learn, AWS SageMaker, Keras, GCP AI Platform, MLOps",7.0
+PhonePe,Cybersecurity Analyst,"Cryptography, Wireshark, Firewalls, SIEM, Intrusion Detection Systems (IDS), Network Security, Python, Nmap",8.1
+Tata Consultancy Services (TCS),Data Scientist,"R, Big Data, Deep Learning, Pandas, Hive, Tableau, Computer Vision",7.3
+Whisper AI,Machine Learning Engineer,"Kubeflow, Java, Computer Vision, Algorithms, Kubernetes, Keras, Scikit-learn, NLP",7.2
+CyberGuard Security,Game Developer,"Network Programming, AI for Games, Unreal Engine, Game Physics, Shader Programming, Vulkan, C++, 3D Graphics",6.3
+Whisper AI,Systems Administrator,"Security Patching, PowerShell, Virtualization (VMware, Hyper-V), Backup Solutions, Active Directory",6.5
+Lumina Analytics,Network Engineer,"Juniper, Cisco, VPN, TCP/IP, Switching, Ansible",7.3
+Meesho,Cybersecurity Analyst,"Firewalls, Scripting, Network Security, Intrusion Detection Systems (IDS), Penetration Testing, Splunk, Metasploit, Security Compliance (ISO 27001, NIST)",6.3
+Pinnacle Innovations,Cloud Engineer,"Azure Functions, Terraform, Cost Optimization, Kubernetes, Python, AWS Lambda, Cloud Security, Serverless, Azure",8.6
+GhostWorks,Data Scientist,"Data Warehousing, Hadoop, Deep Learning, NLP, SQL, Machine Learning, A/B Testing, R, Big Data, Keras",8.5
+HCL Technologies,Frontend Developer,"Babel, LESS, HTML5, Next.js, Responsive Design, Jest",6.2
+Mindtree,Frontend Developer,"Gatsby, JavaScript, NPM, Babel, SASS, ES6+, Redux, Cypress, GraphQL, Vuex",7.6
+Yellowstone Analytics,Network Engineer,"Network Monitoring (SNMP), Cisco, Routing (BGP, OSPF), DNS, Ansible, Load Balancers, Switching, Python",7.4
+HCL Technologies,Cloud Engineer,"Networking (VPC, Subnets), AWS Lambda, GCP, Terraform, Docker, Cost Optimization, Identity and Access Management (IAM), Go",7.3
+Reliance Jio,Mobile App Developer,"Java, Xcode, Kotlin, RxJava, REST APIs, Xamarin, Dart, Android SDK, Objective-C, Swift",8.7
+Juno Solutions,Backend Developer,"CI/CD, MySQL, SQL, C#, Message Queues, NoSQL, PHP, .NET",8.6
+Larsen & Toubro Infotech (LTI),Systems Administrator,"Linux (Red Hat, Ubuntu), System Monitoring, Virtualization (VMware, Hyper-V), Active Directory, Security Patching, Backup Solutions, Ansible, Networking (TCP/IP, DNS, DHCP), Windows Server, PowerShell",6.2
+PhonePe,Full-Stack Developer,"REST APIs, JavaScript, Docker, React, MongoDB, Angular, Flask, Node.js",8.7
+QuantumLeap Analytics,Software Engineer,"System Design, Rust, Linux/Unix, Git, Unit Testing, Microservices, Algorithms, Integration Testing, Object-Oriented Programming (OOP), Java",7.2
+Myntra,Machine Learning Engineer,"Python, MLOps, Azure ML, Computer Vision, GCP AI Platform, Java, Caffe, Kubernetes",6.0
+Bharti Airtel,Product Manager,"Market Research, Roadmap Planning, SQL, Data Analysis, Kanban",7.5
+Meesho,Systems Administrator,"Virtualization (VMware, Hyper-V), Backup Solutions, Windows Server, Ansible, Security Patching",8.5
+CloudSphere Dynamics,Cybersecurity Analyst,"Cryptography, SIEM, Penetration Testing, Network Security, Scripting, Security Compliance (ISO 27001, NIST), Splunk, Nmap",8.6
+GhostWorks,Product Manager,"A/B Testing, Scrum, Kanban, JIRA, Roadmap Planning, User Stories, Product Lifecycle Management, Stakeholder Communication",6.0
+Pinnacle Innovations,Software Engineer,"Java, Agile, Object-Oriented Programming (OOP), Data Structures, Rust, Integration Testing, System Design, C++, Scala",7.0
+BinaryBridge Technologies,Product Manager,"Agile, JIRA, Roadmap Planning, SQL, Market Research, Competitive Analysis",7.4
+Tech Mahindra,Embedded Systems Engineer,"Assembly Language, Linux Kernel, Device Drivers, UART, Microcontrollers (ARM, AVR), SPI, Firmware",7.1
+Wipro,Data Scientist,"R, Keras, Statistics, Computer Vision, SQL, Data Warehousing, Pandas, Machine Learning",8.5
+BlueSun Corporation,Systems Administrator,"System Monitoring, Windows Server, Linux (Red Hat, Ubuntu), Ansible, Active Directory, Virtualization (VMware, Hyper-V), PowerShell",6.1
+FusionWorks Software,Network Engineer,"Ansible, Network Security, VPN, DNS, Python, Juniper, TCP/IP, Network Monitoring (SNMP), Cisco",6.6
+QuantumLeap Analytics,Game Developer,"C++, 3D Graphics, Blender, Network Programming, Game Physics, Unity",8.2
+TerraForm Inc.,UI/UX Designer,"A/B Testing, Sketch, Agile, User Research, HTML/CSS fundamentals, Adobe XD",8.8
+Umbra Technologies,Mobile App Developer,"Kotlin, REST APIs, Android Studio, Xcode, Dart, Objective-C, iOS SDK, Xamarin, Realm, Core Data",9.0
+Uber India,Data Scientist,"Big Data, Spark, PyTorch, Python, Probability, Power BI, Hive, Statistics, Data Visualization",7.5
+InMobi,Product Manager,"Market Research, Agile, Stakeholder Communication, SQL, Data Analysis, User Stories, Scrum, A/B Testing",6.2
+Swiggy,Network Engineer,"Python, Firewalls, Routing (BGP, OSPF), Switching, VPN, Network Monitoring (SNMP), TCP/IP",7.2
+Swiggy,Database Administrator (DBA),"NoSQL, MongoDB, Performance Tuning, PostgreSQL, Database Design, Backup and Recovery, MySQL, SQL, Oracle DB",7.5
+Bharti Airtel,Systems Administrator,"Ansible, Backup Solutions, Security Patching, Active Directory, System Monitoring, Windows Server",6.2
+Policybazaar,Machine Learning Engineer,"TensorFlow, Kubernetes, NLP, Kubeflow, GCP AI Platform, Keras, PyTorch, Pandas, Computer Vision",6.4
+PhonePe,Cloud Engineer,"AWS Lambda, Docker, CloudFormation, Cost Optimization, Go, Python, Azure Functions",7.8
+CRED,Software Engineer,"Java, Object-Oriented Programming (OOP), Go, Git, Linux/Unix, Rust, Algorithms, Python, C#",7.7
+DataGenius AI,Full-Stack Developer,"AWS, Vue.js, React, Docker, REST APIs, Go, TypeScript, JavaScript",7.6
+Kinetic Flow,Systems Administrator,"Backup Solutions, Ansible, Networking (TCP/IP, DNS, DHCP), Windows Server, Linux (Red Hat, Ubuntu)",7.3
+Aperture Science,Database Administrator (DBA),"Backup and Recovery, Database Design, MySQL, Replication, NoSQL, SQL, Python, Microsoft SQL Server, MongoDB",7.8
+BlueSun Corporation,Frontend Developer,"Babel, Angular, GraphQL, NPM, Redux, React, Yarn, Webpack, CSS3",6.3
+Larsen & Toubro Infotech (LTI),Mobile App Developer,"Xcode, Xamarin, Objective-C, UI/UX Principles, Java, REST APIs, Android Studio",8.4
+Infinite Loop Development,Cybersecurity Analyst,"Cryptography, Firewalls, Metasploit, SIEM, Incident Response, Intrusion Detection Systems (IDS), Security Compliance (ISO 27001, NIST), Python",7.8
+Nykaa,QA Engineer,"JIRA, Postman, Performance Testing, Test Planning, Regression Testing, SQL, API Testing",7.7
+Foxglove AI,QA Engineer,"Postman, Manual Testing, API Testing, Bug Tracking, Appium, Regression Testing, Selenium, LoadRunner, Test Cases, JIRA",7.7
+Crimson Logic,Game Developer,"3D Graphics, AI for Games, Unreal Engine, C#, OpenGL, Unity",8.5
+NextGen AI Labs,Database Administrator (DBA),"Shell Scripting, Performance Tuning, Backup and Recovery, Replication, Oracle DB, Cassandra",7.9
+Larsen & Toubro Infotech (LTI),Database Administrator (DBA),"Shell Scripting, Python, Cassandra, NoSQL, Replication",7.6
+Vortex IO,Database Administrator (DBA),"Cassandra, Data Security, Database Design, PostgreSQL, Performance Tuning, MongoDB, MySQL, Python",8.4
+RedShift Technologies,Backend Developer,"REST APIs, .NET, Kubernetes, MongoDB, Node.js, Redis, Flask, Docker",7.2
+Crimson Logic,DevOps Engineer,"Security, Python Scripting, Google Cloud Platform (GCP), Linux, Ansible, Grafana, CI/CD, Terraform",6.9
+Upstox,Cybersecurity Analyst,"Nmap, Network Security, SIEM, Scripting, Firewalls, Incident Response, Cryptography",6.3
+Zomato,Embedded Systems Engineer,"Circuit Design, Firmware, Microcontrollers (ARM, AVR), I2C, C++, RTOS, Device Drivers, VHDL, Assembly Language, UART",7.9
+Yellowstone Analytics,Network Engineer,"Network Monitoring (SNMP), Cisco, Firewalls, DNS, Routing (BGP, OSPF), Ansible, Switching, Python",7.9
+Vedantu,Product Manager,"Agile, User Stories, Kanban, SQL, Competitive Analysis, A/B Testing, JIRA, Data Analysis, Scrum",8.0
+EchoSphere,Business Analyst,"MS Visio, JIRA, Agile, Stakeholder Management, Process Mapping, Confluence, Financial Modeling, Business Case Development",8.7
+CloudSphere Dynamics,Software Engineer,"System Design, C#, Object-Oriented Programming (OOP), Microservices, Linux/Unix, Unit Testing",7.1
+CRED,Database Administrator (DBA),"Cassandra, Data Security, Backup and Recovery, MySQL, Replication, Python, MongoDB, Performance Tuning, SQL",8.4
+Wavefront Labs,Product Manager,"Market Research, Go-to-Market Strategy, Agile, Kanban, Roadmap Planning, JIRA",8.1
+Vortex IO,Business Analyst,"ExTableau, Confluence, Business Case Development, MS Visio, Financial Modeling, UML, Scrum",8.5
+CodeCrafters Inc.,Network Engineer,"VPN, Network Security, Network Monitoring (SNMP), Switching, Juniper, Firewalls, Load Balancers",6.8
+Diamondback Systems,Network Engineer,"Load Balancers, Network Security, Juniper, Switching, Python, DNS",7.7
+RedShift Technologies,Product Manager,"Data Analysis, Competitive Analysis, Market Research, Product Lifecycle Management, JIRA, Confluence, Stakeholder Communication",7.1
+OYO Rooms,QA Engineer,"Manual Testing, JIRA, Regression Testing, Test Planning, Playwright, LoadRunner, Performance Testing, API Testing",6.6
+Meesho,Cloud Engineer,"Azure, Cloud Security, Azure Functions, Serverless, Docker, AWS Lambda",7.9
+Zephyr Innovations,Cybersecurity Analyst,"Metasploit, SIEM, Splunk, Firewalls, Nmap, Scripting, Network Security",8.6
+Vortex IO,UI/UX Designer,"Adobe XD, Wireframing, Sketch, Figma, User Research, Prototyping",8.7
+Zephyr Innovations,Game Developer,"Network Programming, Blender, Game Physics, OpenGL, DirectX, AI for Games, Unity, Unreal Engine, Vulkan",7.7
+Swiggy,Embedded Systems Engineer,"VHDL, Microcontrollers (ARM, AVR), RTOS, C++, Python, Firmware, UART, C, Assembly Language",8.6
+CodeCrafters Inc.,Data Scientist,"NLP, NumPy, Power BI, Data Warehousing, Big Data, Pandas, Probability, Tableau",7.5
+BharatPe,Cybersecurity Analyst,"Network Security, Wireshark, Penetration Testing, Cryptography, Intrusion Detection Systems (IDS)",7.6
+SilverLining Cloud,Systems Administrator,"Virtualization (VMware, Hyper-V), Ansible, System Monitoring, Active Directory, PowerShell, Security Patching, Networking (TCP/IP, DNS, DHCP), Windows Server, Backup Solutions, Linux (Red Hat, Ubuntu)",7.6
+PulsePoint,Network Engineer,"Cisco, Network Security, Python, Network Monitoring (SNMP), Juniper, Routing (BGP, OSPF), Load Balancers, Ansible, TCP/IP",7.2
+HCL Technologies,Cybersecurity Analyst,"Splunk, Intrusion Detection Systems (IDS), Nmap, Network Security, Incident Response, SIEM, Firewalls",8.1
+Xenon Dynamics,Cybersecurity Analyst,"SIEM, Penetration Testing, Incident Response, Intrusion Detection Systems (IDS), Network Security, Firewalls, Splunk",6.0
+Tata Consultancy Services (TCS),Mobile App Developer,"Xamarin, React Native, Java, Xcode, Android Studio, Dart",7.6
+Wipro,Backend Developer,"Go, Flask, C#, GraphQL, Express.js, Ruby, Redis, Kafka, Microservices",7.8
+BharatPe,Data Scientist,"PyTorch, SQL, Pandas, NLP, A/B Testing, Probability",6.9
+Nebula Corporation,Database Administrator (DBA),"Python, Performance Tuning, Microsoft SQL Server, Replication, Cassandra, Backup and Recovery, Data Security, Oracle DB",7.4
+Stellar Solutions,Frontend Developer,"REST APIs, React, JavaScript, Responsive Design, GraphQL, Cypress",8.4
+HCL Technologies,Game Developer,"Blender, Vulkan, Network Programming, Shader Programming, AI for Games, DirectX, 3D Graphics, Unity, C++",8.0
+Foxglove AI,Business Analyst,"SQL, JIRA, SWOT Analysis, Financial Modeling, UML, Process Mapping, Business Case Development",6.1
+Razorpay,Software Engineer,"C++, Agile, Scala, Docker, Integration Testing, Linux/Unix, Java, Rust, Kubernetes, Python",8.0
+Upstox,Software Engineer,"C++, Object-Oriented Programming (OOP), Docker, Go, Scrum, Microservices",7.7
+Foxglove AI,Business Analyst,"User Stories, Confluence, Business Case Development, ExTableau, UML, Agile, SWOT Analysis, Scrum, JIRA",8.6
+Ola Cabs,Game Developer,"OpenGL, Network Programming, C#, Vulkan, C++, Unreal Engine, AI for Games, DirectX, 3D Graphics",8.6
+SynthCore Robotics,Network Engineer,"Load Balancers, Routing (BGP, OSPF), Python, Ansible, Switching, Network Monitoring (SNMP), TCP/IP, Cisco, DNS, Juniper",8.4
+InnovateTech Solutions,Product Manager,"User Stories, Competitive Analysis, Market Research, Confluence, SQL, Product Lifecycle Management, A/B Testing, Agile, Data Analysis",7.9
+QuantumMetric,Cloud Engineer,"Azure, Terraform, Cost Optimization, Python, Docker, Azure Functions, Networking (VPC, Subnets), AWS",6.2
+Meteor Innovations,Backend Developer,"Go, SQL, MySQL, Ruby, Kubernetes, Node.js, REST APIs",8.5
+Orion Enterprises,Product Manager,"Agile, Product Lifecycle Management, Competitive Analysis, Confluence, A/B Testing, SQL, User Stories, JIRA",6.4
+Lumina Analytics,Frontend Developer,"Angular, Web Performance, Next.js, TypeScript, NPM, CSS3, Gatsby",8.1
+GhostWorks,QA Engineer,"API Testing, Regression Testing, LoadRunner, Performance Testing, JMeter",6.3
+RedShift Technologies,Cloud Engineer,"Go, Cost Optimization, Python, GCP, Cloud Security, Docker, Azure Functions",8.0
+Policybazaar,Product Manager,"JIRA, Go-to-Market Strategy, User Stories, Stakeholder Communication, Competitive Analysis, Scrum",7.7
+SynthCore Robotics,Data Scientist,"NLP, Probability, Tableau, Keras, Big Data, Hadoop, Data Visualization, Power BI",7.3
+Horizon Digital,Machine Learning Engineer,"Python, Distributed Computing, Reinforcement Learning, Pandas, Algorithms, Keras, Data Structures, Java, Kubernetes",8.0
+RedShift Technologies,Mobile App Developer,"Xamarin, Android Studio, React Native, Flutter, Core Data, iOS SDK, Realm, Java",8.5
+Adani Enterprises,Product Manager,"Go-to-Market Strategy, Kanban, Competitive Analysis, A/B Testing, Market Research, JIRA, Product Lifecycle Management, Confluence",8.0
+Tata Digital,Cloud Engineer,"Azure Functions, Azure, Cost Optimization, Kubernetes, Terraform",8.2
+Mphasis,Data Analyst,"Tableau, A/B Testing, SAS, Adobe Analytics, Python, Power BI, Dashboards, Data Cleaning, JIRA, VBA",7.5
+Policybazaar,Full-Stack Developer,"Python, PostgreSQL, Go, CI/CD, GraphQL, Angular",6.6
+Quasar Data,Frontend Developer,"Next.js, GraphQL, Vuex, Vue.js, HTML5, Yarn, JavaScript, CSS3, Responsive Design, Web Performance",7.7
+Obsidian Dynamics,Data Scientist,"Statistics, Data Warehousing, Hadoop, A/B Testing, Tableau, Pandas, Airflow, Hive, SQL, Probability",7.7
+Udaan,Data Analyst,"SQL, Excel, Qlik Sense, SAS, R, Adobe Analytics, Google Analytics, Data Cleaning, Dashboards",8.7
+Wipro,Product Manager,"Kanban, Market Research, Scrum, Data Analysis, SQL, JIRA",8.6
+Meesho,Machine Learning Engineer,"Kubernetes, NLP, Algorithms, GCP AI Platform, MLOps",6.3
+Udaan,Business Analyst,"ExTableau, MS Visio, Requirements Gathering, Business Case Development, Agile, UML, User Stories, Scrum",6.9
+Delhivery,Network Engineer,"Network Security, DNS, Juniper, Load Balancers, Firewalls, Ansible",7.9
+Juno Solutions,Frontend Developer,"ES6+, NPM, Vuex, Redux, JavaScript, Cypress, REST APIs, Babel, Jest",6.1
+Crimson Logic,Product Manager,"Scrum, Stakeholder Communication, JIRA, SQL, Product Lifecycle Management, Data Analysis, Go-to-Market Strategy",8.4
+InMobi,QA Engineer,"Cypress, SQL, Bug Tracking, Manual Testing, Postman, LoadRunner",7.9
+Helios Systems,QA Engineer,"Regression Testing, Test Planning, Performance Testing, Appium, Manual Testing, JMeter, Test Cases",6.4
+Diamondback Systems,Embedded Systems Engineer,"Linux Kernel, UART, Microcontrollers (ARM, AVR), Verilog, SPI, I2C, Device Drivers",7.9
+Jade Mountain,Network Engineer,"Firewalls, Load Balancers, VPN, Switching, Cisco, Routing (BGP, OSPF), Ansible, Network Monitoring (SNMP), Network Security",7.8
+OYO Rooms,Cybersecurity Analyst,"Incident Response, Network Security, Nmap, SIEM, Cryptography",6.5
+Kinetic Flow,Cloud Engineer,"Kubernetes, AWS Lambda, Serverless, Azure Functions, CloudFormation, AWS, Go, Azure",6.5
+Quasar Data,Data Analyst,"Reporting, VBA, Adobe Analytics, Excel, R, Data Warehousing",8.6
+Titan Industries,Full-Stack Developer,"MongoDB, PostgreSQL, REST APIs, Flask, JavaScript, Docker",7.5
+Nebula Corporation,UI/UX Designer,"Prototyping, Wireframing, User Research, UI/UX Design Principles, Design Systems, Sketch, Figma",6.1
+Infosys,Product Manager,"Go-to-Market Strategy, Roadmap Planning, Kanban, A/B Testing, JIRA, Scrum, User Stories, SQL, Market Research",8.0
+Bharti Airtel,QA Engineer,"Test Cases, JMeter, Performance Testing, Manual Testing, Postman, Test Planning, Cypress, Automation Testing",6.6
+Pinnacle Innovations,Frontend Developer,"React, Babel, ES6+, NPM, LESS, GraphQL, Vuex, Cypress",8.5
+NextGen AI Labs,QA Engineer,"Regression Testing, Playwright, Appium, LoadRunner, JMeter",6.4
+Tech Mahindra,Business Analyst,"Financial Modeling, SQL, Stakeholder Management, Scrum, Business Case Development, User Stories, SWOT Analysis, MS Visio, Requirements Gathering, Process Mapping",7.3
+Stellar Solutions,DevOps Engineer,"Security, Ansible, CI/CD, Chef, AWS, Terraform, Azure, Puppet",7.4
+Vanguard Tech,Database Administrator (DBA),"Backup and Recovery, Cassandra, Shell Scripting, SQL, Microsoft SQL Server",8.3
+NextGen AI Labs,Database Administrator (DBA),"SQL, PostgreSQL, Data Security, Replication, MySQL, Performance Tuning, MongoDB, Shell Scripting, Python, Microsoft SQL Server",7.8
+AlphaStream Data,Data Analyst,"Excel, Adobe Analytics, ETL, Data Cleaning, Python",7.2
+HCL Technologies,DevOps Engineer,"Linux, Security, Docker, Jenkins, Puppet, Terraform, Google Cloud Platform (GCP), Azure, Networking",6.8
+QuantumMetric,Mobile App Developer,"Dart, Android SDK, React Native, Kotlin, UI/UX Principles, Realm, RxJava, Core Data",8.7
+OYO Rooms,Frontend Developer,"JavaScript, CSS3, TypeScript, Vue.js, Webpack, LESS, Next.js, Babel",6.2
+CRED,Data Analyst,"Reporting, Pandas, Power BI, Statistics, Adobe Analytics, SQL, Python, VBA",6.4
+CRED,Frontend Developer,"NPM, Yarn, TypeScript, React, Angular, Responsive Design, SASS",7.5
+Diamondback Systems,Backend Developer,"Docker, REST APIs, Kubernetes, Message Queues, C#, NoSQL, MongoDB, PostgreSQL, Express.js",7.9
+Policybazaar,DevOps Engineer,"Chef, Grafana, Google Cloud Platform (GCP), Networking, GitLab CI",7.9
+Umbra Technologies,Network Engineer,"Network Monitoring (SNMP), Ansible, Switching, Juniper, Cisco, Network Security",7.7
+Adani Enterprises,Data Analyst,"SAS, VBA, SQL, Python, ETL, Pandas, Reporting, Adobe Analytics, R, Qlik Sense",8.2
+BlueSun Corporation,Machine Learning Engineer,"Computer Vision, NumPy, GCP AI Platform, Kubeflow, Reinforcement Learning, Python, AWS SageMaker, Keras, Algorithms, Java",6.2
+Yellowbrick Data,Frontend Developer,"REST APIs, Responsive Design, Next.js, Babel, Jest, TypeScript, Vue.js",8.6
+Razorpay,UI/UX Designer,"Agile, UI/UX Design Principles, Adobe XD, Zeplin, User Research, Usability Testing",8.1
+Vortex IO,Cloud Engineer,"AWS, Cloud Security, Serverless, Azure, Identity and Access Management (IAM), Terraform, AWS Lambda, Azure Functions",7.1
+Mphasis,Game Developer,"Blender, Unreal Engine, Shader Programming, Vulkan, AI for Games, 3D Graphics, Network Programming",8.7
+QuantumMetric,Data Scientist,"R, Statistics, Machine Learning, SQL, Python, Computer Vision",7.3
+Meteor Innovations,Embedded Systems Engineer,"Firmware, Microcontrollers (ARM, AVR), VHDL, C, Python, UART, Device Drivers",6.4
+Infosys,Frontend Developer,"CSS3, React, ES6+, Gatsby, Cypress",7.5
+EchoSphere,Database Administrator (DBA),"Backup and Recovery, Microsoft SQL Server, PostgreSQL, Replication, Shell Scripting",8.9
+Bharti Airtel,Full-Stack Developer,"Django, Python, Go, AWS, GraphQL, PostgreSQL",6.9
+CodeCrafters Inc.,Software Engineer,"C#, Docker, Scala, Linux/Unix, Python",6.9
+Infinite Loop Development,Business Analyst,"Agile, UML, ExTableau, MS Visio, User Stories",7.2
+Unacademy,Data Scientist,"Python, Data Visualization, Hadoop, Deep Learning, TensorFlow, Big Data, Probability, Computer Vision, Pandas",6.3
+Razorpay,Data Scientist,"Scikit-learn, Computer Vision, PyTorch, NumPy, R",8.9
+Myntra,Mobile App Developer,"Android Studio, React Native, Xamarin, RxSwift, RxJava, UI/UX Principles, Flutter",6.4
+BlueSun Corporation,QA Engineer,"Bug Tracking, Test Planning, Automation Testing, Playwright, Performance Testing, Selenium, Test Cases, JIRA, Cypress",8.3
+Kinetic Flow,Full-Stack Developer,"AWS, System Design, Java, Flask, Docker, Azure, NoSQL, Git, Angular, Express.js",7.4
+Freshworks,Systems Administrator,"Networking (TCP/IP, DNS, DHCP), Ansible, Linux (Red Hat, Ubuntu), Virtualization (VMware, Hyper-V), Security Patching, PowerShell, Backup Solutions, Bash Scripting, Windows Server",7.4
+RedShift Technologies,Cybersecurity Analyst,"Incident Response, Security Compliance (ISO 27001, NIST), Scripting, Metasploit, Cryptography, Python, Nmap",7.9
+Postman,Systems Administrator,"Virtualization (VMware, Hyper-V), Security Patching, System Monitoring, PowerShell, Windows Server, Active Directory, Linux (Red Hat, Ubuntu), Ansible, Backup Solutions",7.9
+Persistent Systems,Game Developer,"Unity, Unreal Engine, Vulkan, C++, Blender, Shader Programming, Maya, AI for Games, OpenGL, C#",7.9
+X-Factor Solutions,Software Engineer,"Git, Docker, Java, Agile, Microservices, Linux/Unix, Python, C++, C#",8.8
+DataGenius AI,Business Analyst,"MS Visio, ExTableau, Financial Modeling, UML, Scrum, Requirements Gathering, SWOT Analysis, Agile, Stakeholder Management",8.5
+Momentum Dynamics,Network Engineer,"Juniper, Firewalls, Network Monitoring (SNMP), Routing (BGP, OSPF), Cisco, Python, VPN",6.9
+Wavefront Labs,Cybersecurity Analyst,"Incident Response, Security Compliance (ISO 27001, NIST), Nmap, Scripting, Penetration Testing, Splunk",6.0
+BinaryBridge Technologies,Database Administrator (DBA),"Shell Scripting, Microsoft SQL Server, Database Design, SQL, MySQL, Python, NoSQL, Backup and Recovery",8.7
+Tata Consultancy Services (TCS),Frontend Developer,"ES6+, HTML5, Vuex, Angular, Cypress, Redux, Web Performance, React, Vue.js, Webpack",7.8
+HCL Technologies,Frontend Developer,"Angular, Vue.js, Gatsby, SASS, NPM, Babel",7.7
+Diamondback Systems,Business Analyst,"Business Case Development, Agile, JIRA, Confluence, User Stories, UML, SWOT Analysis, SQL",8.9
+Mindtree,Mobile App Developer,"Firebase, Xcode, Swift, iOS SDK, Android Studio",6.9
+Foxglove AI,DevOps Engineer,"Kubernetes, Chef, Prometheus, Python Scripting, Networking",8.3
+Helios Systems,DevOps Engineer,"Azure, Kubernetes, Terraform, Python Scripting, Puppet",7.8
+SilverLining Cloud,Data Analyst,"Statistics, Tableau, Power BI, Data Cleaning, Python",8.8
+Nykaa,Database Administrator (DBA),"Shell Scripting, Database Design, Cassandra, Performance Tuning, SQL, Replication, Backup and Recovery, Python, NoSQL",6.4
+Jade Mountain,Cloud Engineer,"CloudFormation, Kubernetes, AWS Lambda, Azure Functions, Python, Azure, AWS, Cost Optimization, Identity and Access Management (IAM), Serverless",7.7
+EchoSphere,Business Analyst,"User Stories, Requirements Gathering, SWOT Analysis, UML, Financial Modeling, Business Case Development, Confluence, ExTableau, Stakeholder Management",8.8
+Pinnacle Innovations,Frontend Developer,"Gatsby, TypeScript, SASS, Babel, Cypress, NPM, ES6+, Angular, Responsive Design",7.2
+Pinnacle Innovations,Data Scientist,"Data Visualization, Scikit-learn, SQL, R, Hive",6.6
+Tech Mahindra,Mobile App Developer,"Core Data, iOS SDK, RxSwift, Dart, React Native, Swift, Realm, Kotlin",7.3
+X-Factor Solutions,Frontend Developer,"Yarn, JavaScript, Web Performance, Responsive Design, React",8.9
+BharatPe,Frontend Developer,"JavaScript, Next.js, HTML5, SASS, CSS3, Yarn",6.3
+HCL Technologies,Mobile App Developer,"Flutter, REST APIs, Swift, Xcode, iOS SDK, Firebase, Dart",7.5
+Persistent Systems,Frontend Developer,"Vuex, Redux, Yarn, Vue.js, Angular, HTML5, CSS3, LESS, TypeScript, SASS",6.7
+CRED,Mobile App Developer,"Kotlin, Xamarin, Objective-C, RxJava, Xcode",6.6
+Pinnacle Innovations,Business Analyst,"ExTableau, UML, Requirements Gathering, Financial Modeling, Confluence, Stakeholder Management",7.6
+Wipro,UI/UX Designer,"UI/UX Design Principles, Wireframing, User Research, Agile, HTML/CSS fundamentals, InVision, Zeplin, Design Systems",6.7
+Riptide Software,Data Analyst,"Adobe Analytics, Reporting, Data Warehousing, VBA, Python, A/B Testing, SQL",8.1
+Nebula Corporation,Mobile App Developer,"Realm, Android Studio, React Native, Dart, iOS SDK, Java, Core Data, RxSwift, Kotlin",7.8
+Wipro,Mobile App Developer,"Objective-C, Android Studio, iOS SDK, Xcode, Kotlin, REST APIs, Firebase, Core Data",8.1
+Hexaware Technologies,Data Scientist,"Computer Vision, Keras, Hadoop, Airflow, SQL, Machine Learning, NLP, Pandas",6.8
+CloudSphere Dynamics,Machine Learning Engineer,"Keras, AWS SageMaker, Caffe, Computer Vision, Algorithms, Docker, Distributed Computing, Kubernetes, TensorFlow",7.0
+Adani Enterprises,Software Engineer,"Docker, Agile, Linux/Unix, Kubernetes, Scrum, Go",7.3
+Helios Systems,Network Engineer,"Network Monitoring (SNMP), Routing (BGP, OSPF), Firewalls, DNS, Python, Load Balancers, VPN, TCP/IP",8.3
+Titan Industries,Cybersecurity Analyst,"Python, SIEM, Network Security, Nmap, Wireshark, Intrusion Detection Systems (IDS), Cryptography, Security Compliance (ISO 27001, NIST), Incident Response",8.0
+Whisper AI,Embedded Systems Engineer,"Firmware, Linux Kernel, Circuit Design, Python, Verilog, RTOS, Microcontrollers (ARM, AVR)",8.1
+Freshworks,QA Engineer,"Performance Testing, Test Cases, Manual Testing, LoadRunner, Cypress, JIRA, Playwright, Bug Tracking, Selenium",6.9
+InnovateTech Solutions,Machine Learning Engineer,"Python, GCP AI Platform, PyTorch, C++, Computer Vision, Kubeflow, Azure ML, Distributed Computing",7.6
+Paytm,Machine Learning Engineer,"Kubeflow, Java, TensorFlow, Distributed Computing, Azure ML, Kubernetes",6.9
+Lionheart Labs,Product Manager,"Roadmap Planning, Scrum, Go-to-Market Strategy, Data Analysis, Agile, Confluence, Stakeholder Communication, SQL, JIRA, Product Lifecycle Management",7.7
+Horizon Digital,Mobile App Developer,"iOS SDK, Flutter, Kotlin, Xamarin, React Native, UI/UX Principles, Dart, Realm, Core Data",8.4
+Mphasis,UI/UX Designer,"Sketch, InVision, UI/UX Design Principles, Wireframing, Adobe XD",7.6
+Tech Mahindra,Network Engineer,"TCP/IP, Python, Juniper, Network Security, Load Balancers",7.3
+Momentum Dynamics,Frontend Developer,"Webpack, Angular, REST APIs, Cypress, ES6+, HTML5, LESS, Vue.js, Next.js",7.9
+EchoSphere,Cloud Engineer,"Cost Optimization, Azure Functions, CloudFormation, Python, Go, Terraform, Serverless",7.1
+Tata Digital,QA Engineer,"Selenium, LoadRunner, API Testing, Manual Testing, Test Cases, Bug Tracking, Playwright, Cypress",6.6
+Pinnacle Innovations,Business Analyst,"Stakeholder Management, Requirements Gathering, SQL, SWOT Analysis, Business Case Development, User Stories, ExTableau",7.7
+BinaryBridge Technologies,Business Analyst,"MS Visio, ExTableau, User Stories, Business Case Development, JIRA, SWOT Analysis",8.1
+Lumina Analytics,Mobile App Developer,"React Native, Java, RxSwift, Android Studio, Xcode, Objective-C, Realm",8.3
+NextGen AI Labs,QA Engineer,"Manual Testing, Automation Testing, JMeter, Bug Tracking, JIRA, Postman, Playwright",6.3
+Riptide Software,DevOps Engineer,"Networking, Puppet, Bash Scripting, Ansible, AWS, Docker, Azure, Kubernetes, Terraform",7.6
+Paytm,Embedded Systems Engineer,"RTOS, I2C, Circuit Design, C++, VHDL",7.7
+PhonePe,Mobile App Developer,"Dart, REST APIs, Firebase, RxJava, Android SDK, React Native, Android Studio",7.6
+Zenith Labs,Business Analyst,"Business Case Development, MS Visio, ExTableau, SWOT Analysis, Agile, Process Mapping, Stakeholder Management, Scrum, Confluence, SQL",7.1
+Zerodha,Game Developer,"Unreal Engine, OpenGL, Network Programming, C#, AI for Games, Maya, Game Physics",7.3
+Orion Enterprises,Full-Stack Developer,"CI/CD, Python, PostgreSQL, System Design, Go, React, Vue.js, Node.js",8.6
+Infosys,Software Engineer,"Java, Docker, C#, System Design, Microservices, Object-Oriented Programming (OOP), Scrum, Python",8.5
+Foxglove AI,QA Engineer,"SQL, Manual Testing, Regression Testing, Selenium, Test Planning, Postman, Test Cases",9.0
+BlueSun Corporation,Systems Administrator,"Security Patching, Networking (TCP/IP, DNS, DHCP), Ansible, Active Directory, Bash Scripting",6.7
+Meteor Innovations,Network Engineer,"DNS, TCP/IP, Network Security, Ansible, Firewalls, Network Monitoring (SNMP), Cisco, Routing (BGP, OSPF), Python, Load Balancers",8.3
+Meteor Innovations,Mobile App Developer,"Xcode, Android SDK, Java, Xamarin, Swift, Dart, Kotlin, Core Data",7.7
+QuantumLeap Analytics,Machine Learning Engineer,"Docker, Pandas, Computer Vision, Algorithms, Caffe, Kubeflow, Kubernetes",7.4
+CyberGuard Security,Data Analyst,"R, A/B Testing, Reporting, JIRA, Qlik Sense, ETL, Statistics, Power BI, Pandas",8.1
+Umbra Technologies,Database Administrator (DBA),"Shell Scripting, Data Security, NoSQL, Backup and Recovery, Performance Tuning, Replication",6.9
+Flipkart,Backend Developer,"Go, CI/CD, Java, Kafka, Redis, Docker, MongoDB, Node.js, Ruby",8.2
+AlphaStream Data,Frontend Developer,"Vue.js, Redux, GraphQL, Vuex, Next.js",6.9
+Larsen & Toubro Infotech (LTI),Backend Developer,"Kubernetes, Python, Django, PostgreSQL, Flask, Go, Docker",7.1
+PulsePoint,Systems Administrator,"Virtualization (VMware, Hyper-V), PowerShell, Networking (TCP/IP, DNS, DHCP), Bash Scripting, Ansible",6.9
+Reliance Jio,Game Developer,"Blender, 3D Graphics, DirectX, Shader Programming, Game Physics",6.8
+BinaryBridge Technologies,Product Manager,"JIRA, Competitive Analysis, Kanban, A/B Testing, Agile",6.1
+Nebula Corporation,Full-Stack Developer,"Python, REST APIs, System Design, Vue.js, TypeScript, Flask, CI/CD, Git, Docker",8.6
+CyberGuard Security,UI/UX Designer,"Design Systems, Wireframing, InVision, User Journey Mapping, A/B Testing, Zeplin, Sketch, Figma, UI/UX Design Principles, Adobe XD",6.0
+InnovateTech Solutions,Embedded Systems Engineer,"VHDL, Verilog, I2C, SPI, Circuit Design, Firmware",6.6
+Tata Digital,Network Engineer,"Ansible, VPN, Python, Firewalls, DNS, Network Security, Load Balancers, Switching",6.1
+Ironclad Security,Frontend Developer,"Cypress, LESS, React, GraphQL, NPM, Redux, Babel, CSS3, Web Performance",6.3
+Lionheart Labs,Cybersecurity Analyst,"Python, Wireshark, Nmap, Scripting, Splunk, Security Compliance (ISO 27001, NIST), Intrusion Detection Systems (IDS), SIEM",6.0
+Zenith Labs,Network Engineer,"Cisco, Network Security, Juniper, Network Monitoring (SNMP), Load Balancers, DNS, TCP/IP, Switching",6.7
+Xenon Dynamics,DevOps Engineer,"Puppet, Terraform, Python Scripting, Chef, CI/CD, Linux, Grafana, Networking, Security",7.3
+Udaan,Frontend Developer,"ES6+, Angular, LESS, Webpack, Jest, Redux, Responsive Design",8.8
+Jade Mountain,Machine Learning Engineer,"MLOps, Distributed Computing, NumPy, Algorithms, Caffe, Kubeflow, AWS SageMaker, C++",8.1
+BlueSun Corporation,Data Scientist,"ETL, Tableau, Pandas, Hadoop, Airflow, Computer Vision, Spark, NumPy",7.2
+Ola Cabs,Backend Developer,"Django, Node.js, RabbitMQ, Docker, SQL, Message Queues",7.6
+FusionWorks Software,Cybersecurity Analyst,"Wireshark, Splunk, Firewalls, Intrusion Detection Systems (IDS), Nmap, Python",7.8
+Ironclad Security,Business Analyst,"Confluence, Process Mapping, Business Case Development, User Stories, Stakeholder Management",6.2
+Razorpay,Software Engineer,"Integration Testing, Git, C++, Kubernetes, Rust, Scala",7.3
+HCL Technologies,QA Engineer,"Bug Tracking, Selenium, JIRA, Performance Testing, Playwright, LoadRunner, Automation Testing, SQL, Appium, Manual Testing",7.2
+FusionWorks Software,Software Engineer,"Unit Testing, Scala, Algorithms, Integration Testing, Object-Oriented Programming (OOP), Agile, C++, Go, Python",8.4
+Unity Systems,Software Engineer,"Data Structures, Object-Oriented Programming (OOP), Go, Linux/Unix, Kubernetes, System Design, Unit Testing, Algorithms, Java, Integration Testing",8.8
+Foxglove AI,Product Manager,"SQL, Agile, Market Research, Product Lifecycle Management, A/B Testing, Competitive Analysis, Scrum, User Stories, Roadmap Planning, Data Analysis",7.6
+Policybazaar,Business Analyst,"JIRA, ExTableau, MS Visio, User Stories, Business Case Development, Scrum, Financial Modeling, Stakeholder Management, Confluence, SWOT Analysis",6.6
+Wipro,UI/UX Designer,"Usability Testing, HTML/CSS fundamentals, User Research, A/B Testing, UI/UX Design Principles",7.5
+Wipro,DevOps Engineer,"Bash Scripting, Azure, GitLab CI, Security, Networking, CI/CD, Python Scripting, Linux",6.8
+BlueSun Corporation,Mobile App Developer,"iOS SDK, React Native, RxJava, UI/UX Principles, Flutter, Android SDK, RxSwift, Firebase, Xcode, Core Data",7.5
+Quasar Data,Database Administrator (DBA),"MongoDB, Data Security, Oracle DB, Microsoft SQL Server, Replication, Backup and Recovery",6.4
+Vedantu,Machine Learning Engineer,"Distributed Computing, GCP AI Platform, TensorFlow, Kubeflow, Data Structures, Python",8.9
+PhonePe,Backend Developer,"MongoDB, REST APIs, Message Queues, NoSQL, GraphQL, Go, MySQL, C#, RabbitMQ, Ruby",6.2
+Mindtree,Database Administrator (DBA),"Cassandra, Performance Tuning, Python, Data Security, NoSQL, Backup and Recovery, Oracle DB, Shell Scripting",8.9
+EchoSphere,Full-Stack Developer,"REST APIs, SQL, Docker, CI/CD, AWS",8.9
+CRED,Backend Developer,"PostgreSQL, Docker, MongoDB, Node.js, C#, REST APIs, RabbitMQ, GraphQL",7.1
+Keystone Logic,Network Engineer,"Load Balancers, Network Monitoring (SNMP), Switching, Cisco, DNS, TCP/IP, VPN, Firewalls, Juniper, Network Security",8.5
+SilverLining Cloud,Network Engineer,"Firewalls, VPN, Network Monitoring (SNMP), TCP/IP, Network Security, DNS, Juniper, Load Balancers, Python",7.0
+Udaan,Software Engineer,"Docker, Data Structures, System Design, Algorithms, Scrum, Git, Go",6.8
+Meesho,Machine Learning Engineer,"Reinforcement Learning, Computer Vision, Algorithms, Azure ML, Python, MLOps, AWS SageMaker",8.5
+Jade Mountain,Backend Developer,"REST APIs, GraphQL, MySQL, Docker, Ruby on Rails, .NET, Node.js, Kubernetes, Message Queues",6.2
+BinaryBridge Technologies,Cloud Engineer,"Python, Docker, Go, Cloud Security, Identity and Access Management (IAM), Cost Optimization, Azure, Networking (VPC, Subnets), Serverless",8.4
+Tata Digital,Full-Stack Developer,"MongoDB, TypeScript, Git, Python, Node.js, System Design",7.6
+Unacademy,UI/UX Designer,"Prototyping, HTML/CSS fundamentals, User Journey Mapping, InVision, Adobe XD, Sketch, A/B Testing, Usability Testing, Zeplin, UI/UX Design Principles",8.9
+Uber India,Database Administrator (DBA),"SQL, Replication, MongoDB, Cassandra, PostgreSQL, Shell Scripting, Performance Tuning, Backup and Recovery",7.9
+HCL Technologies,DevOps Engineer,"Bash Scripting, Kubernetes, Chef, Security, GitLab CI, Puppet, Google Cloud Platform (GCP), Linux",8.3
+Byju's,Database Administrator (DBA),"Replication, Oracle DB, Backup and Recovery, Performance Tuning, MySQL, Microsoft SQL Server, Python",7.8
+InMobi,Frontend Developer,"GraphQL, SASS, NPM, Redux, Gatsby, HTML5",8.2
+BinaryBridge Technologies,Machine Learning Engineer,"Docker, Algorithms, C++, Computer Vision, Distributed Computing, PyTorch, Kubeflow, Python",7.8
+EchoSphere,Frontend Developer,"Babel, LESS, Cypress, Next.js, REST APIs",8.3
+Pinnacle Innovations,Backend Developer,"Laravel, Kafka, RabbitMQ, Docker, Microservices, Django, .NET, Ruby on Rails",7.5
+Tata Consultancy Services (TCS),QA Engineer,"Test Planning, LoadRunner, Appium, Bug Tracking, JMeter, SQL, Postman, Playwright, Regression Testing",7.9
+HCL Technologies,Data Analyst,"SAS, Pandas, Tableau, Adobe Analytics, Statistics, Power BI",7.2
+Orion Enterprises,Network Engineer,"Juniper, DNS, Load Balancers, Network Monitoring (SNMP), Cisco, Firewalls, TCP/IP, Network Security",6.2

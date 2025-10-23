@@ -1,0 +1,113 @@
+body {
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+.footer-main {
+    background-color: rgba(1, 44, 66, 0.692);
+}
+
+.footer-logo {
+    position: relative;
+    left: 10%;
+    font-size: 40px;
+    font-weight: 900;
+    color: black;
+    letter-spacing: 2px;
+    margin: 30px;
+    display: inline-block;
+}
+.footer-logo a{
+    text-decoration: none;
+    color: black;
+}
+
+.footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-evenly;
+    padding-bottom: 2em;
+}
+
+.footer-data {
+    align-items: center;
+    padding: 50px;
+}
+
+.footer-links {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+.refer{
+    margin-top: 70px;
+    font-size: 18px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    letter-spacing: 2;
+    font-weight: bold;
+}
+
+.footer-links a {
+    text-decoration: none;
+    color: inherit;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.footer-links a:hover {
+    color: cyan;
+}
+
+.mid-section {
+    padding: 30px;
+
+}
+
+.mid-section p {
+    font-size: 18px;
+    color: white;
+    font-weight: bold;
+    margin-bottom:40px ;
+}
+
+.foot-button {
+    padding: 1em;
+    border-radius: 20px;
+    background-color: black;
+    color: white;
+    border: none;
+    font-weight: bold;
+    font-size: 14px;
+    transition: all 0.2s ease-in;
+}
+
+.foot-button:hover {
+    background-image: linear-gradient(120deg, cyan, blue);
+    border: none;
+    transform: scale(1.1);
+
+}
+
+.footer-right {
+    width: 400px;
+    height: fit-content;
+    background-color: rgba(7, 206, 206, 0.886);
+    text-align: center;
+    border-radius: 30px;
+}
+.footer-right p{
+    font-size: 19px;
+    font-weight: 700;
+}
+.info{
+    color: white;
+    letter-spacing: 2px;
+}

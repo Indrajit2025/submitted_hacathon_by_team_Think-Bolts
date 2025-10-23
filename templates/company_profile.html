@@ -1,0 +1,305 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ company.company_name }} Profile - ElevatR{% endblock %}
+
+{% block head_extra %}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+<style>
+    /* --- Keyframes (Kept from original) --- */
+    @keyframes subtle-glow {
+        0%,
+        100% {
+            box-shadow: 0 0 15px rgba(139, 92, 246, 0.3), 0 0 5px rgba(56, 189, 248, 0.2);
+        }
+
+        50% {
+            box-shadow: 0 0 25px rgba(139, 92, 246, 0.5), 0 0 10px rgba(56, 189, 248, 0.4);
+        }
+    }
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+    @keyframes slideUp {
+        from { opacity: 0; transform: translateY(30px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* --- Main Container --- */
+    /* (Body styles and navbar styles are removed as they come from base.html) */
+    .profile-container {
+        padding: 0 2rem 2rem 2rem; /* Removed top padding, base.html's main handles it */
+        animation: fadeIn 1s ease-out;
+    }
+
+    /* --- Glass Card Base (MODIFIED for black theme) --- */
+    .glass-card {
+        background: rgba(0, 0, 0, 0.3); /* Black background */
+        backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.1); /* Faint white border like base.html navbar */
+        border-radius: 1.5rem;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        animation: slideUp 0.8s ease-out forwards;
+    }
+    .glass-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 15px 40px rgba(79, 70, 229, 0.3); /* Indigo glow (theme color) */
+        border-color: rgba(79, 70, 229, 0.4);
+    }
+
+    /* --- Welcome Header (Unchanged) --- */
+    .welcome-text {
+        font-size: 2.8rem;
+        font-weight: 800;
+        background: linear-gradient(90deg, #a5b4fc, #6366f1, #0ea5e9);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        text-shadow: 0 2px 10px rgba(99, 102, 241, 0.2);
+        animation: fadeIn 1s ease-out 0.2s backwards;
+    }
+
+    /* --- Buttons --- */
+    .btn-action {
+        border-radius: 0.75rem;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-weight: 600;
+        text-sm;
+        padding: 0.6rem 1.2rem;
+        transition: all 0.3s ease;
+    }
+    .btn-edit {
+        background: rgba(165, 180, 252, 0.1);
+        border: 1px solid rgba(165, 180, 252, 0.3);
+        color: #c7d2fe;
+    }
+    .btn-edit:hover {
+        background: rgba(165, 180, 252, 0.2);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 10px rgba(165, 180, 252, 0.1);
+    }
+
+    /* --- Post Job Button (MODIFIED) --- */
+    .btn-post-job {
+        background: linear-gradient(to right, #4f46e5, #06b6d4); /* Indigo-600 to Cyan-600 (theme color) */
+        box-shadow: 0 6px 20px rgba(79, 70, 229, 0.3); /* Indigo shadow */
+        color: white;
+        font-size: 1.1rem;
+        padding: 1rem;
+        /* animation: float 3s ease-in-out infinite; (REMOVED - now constant) */
+    }
+    .btn-post-job:hover {
+        /* animation-play-state: paused; (REMOVED) */
+        transform: translateY(-3px) scale(1.03);
+        box-shadow: 0 10px 25px rgba(79, 70, 229, 0.4); /* Deeper indigo shadow */
+    }
+
+    /* --- View Applicants Button (MODIFIED for theme) --- */
+    .btn-view-applicants {
+        background: rgb(255, 255, 255); /* Sky blue background */
+        border: 1px solid rgba(56, 189, 248, 0.3);
+        color: #000000; /* Sky blue text */
+    }
+    .btn-view-applicants:hover {
+        background: rgb(24, 205, 255);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 10px rgba(56, 189, 248, 0.1);
+        color: white;
+    }
+
+    /* --- Company Info Card (Unchanged) --- */
+    .company-logo {
+        border-radius: 1rem;
+        object-fit: cover;
+        height: 250px;
+        width: 100%;
+        filter: saturate(1.1);
+        transition: all 0.4s ease;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+    .company-logo:hover {
+        transform: scale(1.03);
+        filter: saturate(1.2);
+    }
+
+    /* --- Job Card (MODIFIED for black theme) --- */
+    .job-card {
+        background: rgba(0, 170, 255, 0.351); /* Black background */
+        border: 1px solid rgba(255, 255, 255, 0.1); /* Faint white border */
+        border-radius: 1rem;
+        transition: all 0.3s ease;
+        opacity: 0;
+        transform: translateY(20px);
+        animation: slideUp 0.6s ease-out forwards;
+       
+    }
+    .job-card:hover {
+        background: rgba(0, 187, 255, 0.999); /* Darker black on hover */
+        border-color: rgba(79, 70, 229, 0.3); /* Indigo border */
+        transform: translateY(-5px);
+    }
+    /* Stagger animation (Unchanged) */
+    {% for i in range(jobs|length) %}
+    .job-card:nth-child({{ loop.index }}) {
+        animation-delay: {{ loop.index * 0.1 }}s;
+    }
+    {% endfor %}
+
+    /* --- Badges --- */
+    .skill-badge {
+        background: #7b2cbf;
+        border: 1px solid rgba(99, 102, 241, 0.3);
+        color: #ffffff;
+        padding: 0.25rem 0.75rem;
+        border-radius: 9999px;
+        font-size: 0.75rem;
+        margin: 2px;
+        display: inline-block;
+        transition: all 0.2s ease;
+        cursor: default;
+    }
+    .skill-badge:hover {
+        background: rgb(7, 11, 244);
+        transform: scale(1.05);
+        color: #06b6d4;
+
+    }
+    
+    /* MODIFIED for theme */
+    .location-badge {
+        background: rgba(7, 225, 72, 0.5); /* Cyan */
+        border: 1px solid rgba(6, 182, 212, 0.3);
+        color: #ffffff; /* cyan-300 */
+        font-size: 0.75rem;
+        padding: 0.15rem 0.6rem;
+        border-radius: 9999px;
+        font-weight: 500;
+    }
+    
+    /* MODIFIED for theme */
+    .applicants-badge {
+        background: rgb(255, 255, 255); /* Pink */
+        border: 1px solid rgba(219, 39, 119, 0.3);
+        color: #ff0044; /* pink-300 */
+        font-size: 0.75rem;
+        padding: 0.15rem 0.6rem;
+        border-radius: 9999px;
+        font-weight: 500;
+    }
+
+    /* --- Scrollbar (Unchanged) --- */
+    .scrollbar-custom::-webkit-scrollbar {
+        width: 8px;
+    }
+    .scrollbar-custom::-webkit-scrollbar-track {
+        background: rgba(17, 24, 39, 0.5);
+        border-radius: 4px;
+    }
+    .scrollbar-custom::-webkit-scrollbar-thumb {
+        background: rgba(99, 102, 241, 0.4);
+        border-radius: 4px;
+    }
+    .scrollbar-custom::-webkit-scrollbar-thumb:hover {
+        background: rgba(99, 102, 241, 0.6);
+    }
+
+    /* --- Icons Alignment (Unchanged) --- */
+    .bi {
+        vertical-align: -0.125em;
+    }
+</style>
+{% endblock %}
+
+
+{% block content %}
+<div class="profile-container">
+    <div class="container mx-auto px-4">
+        <div class="flex justify-between items-center mb-10 flex-wrap gap-4">
+            <h2 class="welcome-text">Welcome, {{ company.company_name }}! ✨</h2>
+            <a href="{{ url_for('company_edit_profile') }}" class="btn-action btn-edit">
+                <i class="bi bi-pencil-square"></i>
+                <span>Edit Profile</span>
+            </a>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-8">
+            <div class="md:col-span-4 space-y-8">
+                <div class="glass-card overflow-hidden">
+                    {% if company.logo %}
+                    <img src="{{ url_for('static', filename='uploads/' + company.logo) }}" class="company-logo"
+                        alt="Company Logo">
+                    {% else %}
+                    <div
+                        class="h-[250px] w-full bg-gradient-to-br from-slate-700 to-slate-800 flex items-center justify-center">
+                        <span class="text-slate-500 text-lg italic">No Logo Uploaded</span>
+                    </div>
+                    {% endif %}
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-3 text-indigo-300">About Us</h3>
+                        <p class="text-gray-300 text-sm leading-relaxed">
+                            {{ company.description or "No description provided. Click 'Edit Profile' to add one!" }}
+                        </p>
+                    </div>
+                </div>
+                
+                <a href="{{ url_for('post_job') }}" class="btn-action btn-post-job w-full justify-center">
+                    <i class="bi bi-plus-circle-fill"></i>
+                    <span>Post a New Job</span>
+                </a>
+            </div>
+
+            <div class="md:col-span-8">
+                <h3 class="text-2xl font-bold text-gray-200 mb-6 flex items-center gap-2 animation-slideUp"
+                    style="animation-delay: 0.3s;">
+                    <i class="bi bi-briefcase-fill text-cyan-400"></i> Posted Jobs
+                </h3>
+                <div class="space-y-5 max-h-[70vh] overflow-y-auto scrollbar-custom pr-3">
+                    {% for job in jobs %}
+                    <div class="job-card p-6">
+                        <div class="flex justify-between items-start mb-3 gap-2">
+                            <div>
+                                <h4 class="text-xl font-bold text-gray-100 mb-1">{{ job.job_role }}</h4>
+                                <div class="location-badge inline-flex items-center gap-1">
+                                    <i class="bi bi-geo-alt-fill text-xs "></i> {{ job.location }}
+                                </div>
+                            </div>
+                            <div class="applicants-badge inline-flex items-center gap-1 mt-1 flex-shrink-0">
+                                <i class="bi bi-people-fill text-xs"></i> {{ job.applications|length }} Applicant(s)
+                            </div>
+                        </div>
+                        <div>
+                            <p class="text-sm font-medium text-white-300 mb-1">Required Skills:</p>
+                            <div class="flex flex-wrap">
+                                {% set skills_list = job.required_skills | fromjson %}
+                                {% if skills_list %}
+                                {% for skill in skills_list %}
+                                <span class="skill-badge">{{ skill }}</span>
+                                {% endfor %}
+                                {% else %}
+                                <span class="text-gray-500 text-xs italic">Not specified</span>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="text-right mt-4">
+                            <a href="{{ url_for('applicants', job_id=job.id) }}" class="btn-action btn-view-applicants">
+                                <i class="bi bi-eye-fill"></i> View Applicants
+                            </a>
+                        </div>
+                    </div>
+                    {% else %}
+                    <div class="text-center py-16 glass-card opacity-0"
+                        style="animation: fadeIn 1s ease-out 0.5s forwards;">
+                        <i class="bi bi-cloud-slash text-6xl text-slate-600 mb-4"></i>
+                        <p class="text-gray-400 text-lg">You haven't posted any jobs yet.</p>
+                        <p class="text-gray-500 mt-2">Click the "Post a New Job" button to find talent!</p>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

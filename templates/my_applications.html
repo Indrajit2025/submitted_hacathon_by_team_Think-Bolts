@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block title %}My Applications{% endblock %}
+
+{% block content %}
+<div class="container mx-auto px-4 py-8 max-w-5xl">
+    <h2 class="text-3xl font-bold mb-6 text-center bg-gradient-to-r from-white to-cyan-400 bg-clip-text text-transparent">
+        My Applications
+    </h2>
+    <div class="space-y-4">
+        {% for app in applications %}
+        <div class="bg-gray-800/60 backdrop-blur-lg border border-white/10 rounded-xl p-4 flex justify-between items-center">
+            <div>
+                <h3 class="font-semibold text-lg">{{ app.job_posting.job_role }}</h3>
+                <p class="text-sm text-gray-400">{{ app.job_posting.company.company_name }} - <span class="text-xs italic">{{ app.applied_at.strftime('%d %b %Y') }}</span></p>
+            </div>
+            <div class="flex items-center gap-4">
+                {% if app.status == 'Applied' %}
+                    <span class="px-3 py-1 text-sm font-medium text-yellow-300 bg-yellow-900/50 rounded-full">Applied</span>
+                {% elif app.status == 'Accepted' %}
+                    <span class="px-3 py-1 text-sm font-medium text-green-300 bg-green-900/50 rounded-full">Accepted</span>
+                    <a href="{{ url_for('conversation', application_id=app.id) }}" class="bg-cyan-600 hover:bg-cyan-700 text-white font-semibold py-2 px-4 rounded-lg transition">
+                        View Conversation
+                    </a>
+                {% elif app.status == 'Rejected' %}
+                    <span class="px-3 py-1 text-sm font-medium text-red-300 bg-red-900/50 rounded-full">Rejected</span>
+                {% endif %}
+            </div>
+        </div>
+        {% else %}
+        <p class="text-center text-gray-400">You haven't applied to any jobs yet.</p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login / Sign Up</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/login_register_style.css') }}">
+    {# Add other necessary head elements if needed #}
+    <style>
+      <style>
+        /* Small style adjustment for register form height */
+        .sign-up-container form {
+             padding: 0 40px; /* Adjusted padding slightly */
+        }
+         .sign-up-container input,
+         .sign-up-container select { /* Apply margin to select too */
+             margin: 6px 0; /* Reduced margin */
+         }
+         /* REMOVED the min-height rule below */
+         /*
+         .container.right-panel-active {
+            min-height: 580px; // Remove this line
+         }
+         */
+          {# Adjust position if footer is removed/added #}
+         /* footer { margin-top: 20px; } */
+    </style>
+    </style>
+</head>
+<body class="register-body"> {# Added class for potential body style override #}
+    <h2>Student Portal</h2>
+    <div class="container right-panel-active" id="container"> {# Start with sign-up active #}
+
+        {# Sign Up container with Flask form #}
+        <div class="form-container sign-up-container">
+             <form method="POST" action="{{ url_for('student_register') }}">
+                <h1>Create Account</h1>
+                {# Social links can be kept or removed #}
+                
+                <span>or use your email for registration</span>
+
+                 {# --- Flash Messages --- #}
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                    {% if messages %}
+                        <div class="flash-messages" style="padding: 5px; width: 100%;">
+                        {% for category, message in messages %}
+                            <p style="text-align: center; font-size: 12px; color: {% if category == 'success' %}green{% else %}red{% endif %}; margin-bottom: 3px;">
+                                {{ message }}
+                            </p>
+                        {% endfor %}
+                        </div>
+                    {% endif %}
+                {% endwith %}
+                {# --- End Flash Messages --- #}
+
+                <input type="text" name="full_name" placeholder="Full Name" required />
+                <input type="email" name="email" placeholder="Email" required />
+               
+                 {# Select College - Keep existing dropdown or style it similarly #}
+                 <select name="college" required style="background-color: #eee; border: none; padding: 12px 15px; margin: 6px 0; width: 100%;">
+                    <option selected disabled value="">Choose College...</option>
+                    {% for college in colleges %}
+                        <option value="{{ college }}">{{ college }}</option>
+                    {% endfor %}
+                </select>
+                <input type="text" name="registration_number" placeholder="Registration No. (10 digits)" required pattern="[0-9]{10}" />
+                <input type="password" name="password" placeholder="Password" required />
+                <button type="submit">Register</button>
+            </form>
+        </div>
+
+         {# Sign In container is included for structure but links to login page #}
+        <div class="form-container sign-in-container">
+            <form action="#"> {# Dummy form for structure #}
+                <h1>Sign in</h1>
+                
+                <span>or use your account</span>
+                 {# Placeholder inputs, actual login is on another page #}
+                <h3>Already Have Account 🐥</h3>
+                 <a href="{{ url_for('student_login') }}"><button type="button">Open Login Form</button></a> {# Link to actual login page #}
+            </form>
+        </div>
+
+        <div class="overlay-container">
+            <div class="overlay">
+                <div class="overlay-panel overlay-left">
+                    <h1>Welcome Back!</h1>
+                    <p>To keep connected with us please login with your personal info</p>
+                    <button class="ghost" id="signIn">Sign In</button> {# This button toggles the view #}
+                </div>
+                <div class="overlay-panel overlay-right">
+                    <h1>Hello, Friend!</h1>
+                    <p>Enter your personal details and start journey with us</p>
+                     <button class="ghost" id="signUp">Register</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+     {# Removed footer or add back if needed #}
+
+    <script src="{{ url_for('static', filename='js/login_register_script.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Company Registration - ElevatR</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        @keyframes gradient-animation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: #f0f0f0;
+            background: linear-gradient(-45deg, #0a0a1a, #1e1b4b, #4f46e5, #06b6d4);
+            background-size: 400% 400%;
+            animation: gradient-animation 20s ease infinite;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 2rem;
+        }
+        .glass-card {
+            background: rgba(17, 24, 39, 0.7); /* Darker blue-gray */
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            max-width: 500px; /* Limit card width */
+            width: 100%;
+        }
+        .form-input {
+            background-color: rgba(31, 41, 55, 0.8); /* gray-800 */
+            border: 1px solid rgba(71, 85, 105, 0.5); /* gray-600 */
+            color: #f0f0f0;
+            transition: all 0.3s ease;
+        }
+        .form-input:focus {
+            background-color: rgba(55, 65, 81, 0.8); /* gray-700 */
+            border-color: #6366f1; /* indigo-500 */
+            box-shadow: 0 0 15px rgba(99, 102, 241, 0.5);
+            outline: none;
+        }
+         .btn-gradient {
+            background-image: linear-gradient(to right, #6366f1, #22d3ee); /* indigo-500 to cyan-400 */
+            border: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+        }
+        .btn-gradient:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(99, 102, 241, 0.5);
+        }
+        .flash-message {
+            margin-bottom: 1rem;
+            padding: 0.75rem 1rem;
+            border-radius: 0.5rem;
+            font-size: 0.875rem;
+        }
+        .flash-success {
+            background-color: rgba(16, 185, 129, 0.2); /* emerald-500 */
+            color: #6ee7b7; /* emerald-300 */
+            border: 1px solid rgba(16, 185, 129, 0.4);
+        }
+        .flash-error {
+            background-color: rgba(239, 68, 68, 0.2); /* red-500 */
+            color: #fca5a5; /* red-300 */
+            border: 1px solid rgba(239, 68, 68, 0.4);
+        }
+    </style>
+</head>
+<body>
+    <div class="glass-card rounded-2xl shadow-2xl p-8">
+        <h2 class="text-3xl font-bold mb-6 text-center bg-gradient-to-r from-white to-cyan-400 bg-clip-text text-transparent">Company Registration</h2>
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="flash-message flash-{{ category }}" role="alert">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        <form method="POST" action="{{ url_for('company_register') }}" class="space-y-5">
+            <div>
+                <label for="company_name" class="block mb-2 text-sm font-medium text-gray-300">Company Name</label>
+                <input type="text" id="company_name" name="company_name" class="form-input w-full rounded-lg p-3 text-sm" required>
+            </div>
+            <div>
+                <label for="email" class="block mb-2 text-sm font-medium text-gray-300">Official Email Address</label>
+                <input type="email" id="email" name="email" class="form-input w-full rounded-lg p-3 text-sm" required>
+            </div>
+            <div>
+                <label for="password" class="block mb-2 text-sm font-medium text-gray-300">Password</label>
+                <input type="password" id="password" name="password" class="form-input w-full rounded-lg p-3 text-sm" required>
+            </div>
+            <button type="submit" class="w-full btn-gradient text-white font-semibold py-3 px-6 rounded-xl text-lg">Register</button>
+        </form>
+         <div class="mt-6 text-center">
+            <small class="text-gray-400">Already registered? <a href="{{ url_for('company_login') }}" class="text-indigo-400 hover:text-indigo-300 font-medium">Login here</a></small>
+        </div>
+    </div>
+</body>
+</html>

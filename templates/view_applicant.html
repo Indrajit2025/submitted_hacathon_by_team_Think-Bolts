@@ -1,0 +1,122 @@
+{% extends 'base.html' %}
+{% block title %}Applicant: {{ student.full_name }}{% endblock %}
+
+{% block head_extra %}
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.0.0/flowbite.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+<style>
+    body {
+        margin: 0; padding: 0; min-height: 100vh; background: #0a0a1a;
+    }
+    .profile-container {
+        min-height: 100vh; padding: 2rem; padding-top: 6rem; position: relative; z-index: 1; background: transparent;
+    }
+    .glass-card {
+        background: rgba(30, 41, 59, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(71, 85, 105, 0.3); border-radius: 16px; box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4); animation: slideUp 0.6s ease forwards;
+    }
+    .skill-badge {
+        background: rgba(99, 102, 241, 0.1); border: 1px solid rgba(99, 102, 241, 0.2); color: #e2e8f0; padding: 0.35rem 0.75rem; border-radius: 9999px; font-size: 0.875rem;
+    }
+    .project-card {
+        background: rgba(30, 41, 59, 0.5); border: 1px solid rgba(71, 85, 105, 0.2); border-radius: 12px;
+    }
+    .stats-card {
+        background: rgba(30, 41, 59, 0.4); border: 1px solid rgba(71, 85, 105, 0.2); border-radius: 12px;
+    }
+    @keyframes slideUp { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="profile-container">
+    <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+            <div class="glass-card p-6 sm:p-8">
+                <div class="flex items-center space-x-4 mb-8">
+                    
+                    {% if student.profile_photo %}
+                        <img src="{{ url_for('static', filename='uploads/' + student.profile_photo) }}" alt="Profile Photo" class="w-20 h-20 rounded-full object-cover border-2 border-indigo-400">
+                    {% else %}
+                        <div class="w-20 h-20 rounded-full bg-gradient-to-br from-indigo-500 to-purple-500 flex items-center justify-center text-white text-2xl font-bold">
+                            {{ student.full_name[:2].upper() }}
+                        </div>
+                    {% endif %}
+                    <div>
+                        <h1 class="text-3xl font-bold text-gray-200">{{ student.full_name }}</h1>
+                        <p class="text-gray-400 mt-1">{{ student.college }}</p>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+                    <div class="stats-card p-4"><p class="text-gray-400 text-sm">Email</p><p class="text-gray-200 font-medium truncate">{{ student.email }}</p></div>
+                    <div class="stats-card p-4"><p class="text-gray-400 text-sm">Mobile</p><p class="text-gray-200 font-medium">{{ student.mobile }}</p></div>
+                    <div class="stats-card p-4"><p class="text-gray-400 text-sm">CGPA</p><p class="text-gray-200 font-medium">{{ student.cgpa }}</p></div>
+                </div>
+
+                <div class="mb-8">
+                    <h2 class="text-xl font-semibold text-gray-200 mb-4">Skills</h2>
+                    <div class="flex flex-wrap gap-2">
+                        {% for skill in skills %}<span class="skill-badge">{{ skill }}</span>{% endfor %}
+                    </div>
+                </div>
+
+                <div>
+                    <h2 class="text-xl font-semibold text-gray-200 mb-4 flex items-center gap-2">
+                        <i class="bi bi-folder text-indigo-400"></i> Projects
+                    </h2>
+                    <div class="space-y-4">
+                        {% for project in projects %}
+                            <div class="project-card p-6 transition-all duration-300 hover:border-indigo-500/50 hover:bg-gray-700/40">
+                                <h3 class="text-lg font-semibold text-gray-200 mb-2">{{ project.project_title }}</h3>
+                                <p class="text-gray-400 mb-4 text-sm leading-relaxed">{{ project.description }}</p>
+                                {# --- ADDED LINKS SECTION --- #}
+                                <div class="flex flex-wrap gap-3 mt-3">
+                                    {% if project.github_link %}
+                                    <a href="{{ project.github_link }}" target="_blank"
+                                       class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium bg-gray-600/50 hover:bg-gray-500/50 text-gray-300 transition-colors">
+                                        <i class="bi bi-github"></i> GitHub
+                                    </a>
+                                    {% endif %}
+                                    {% if project.site_link %}
+                                    <a href="{{ project.site_link }}" target="_blank"
+                                       class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium bg-cyan-600/30 hover:bg-cyan-500/40 text-cyan-300 transition-colors">
+                                        <i class="bi bi-link-45deg"></i> Live Site
+                                    </a>
+                                    {% endif %}
+                                    {% if project.youtube_link %}
+                                    <a href="{{ project.youtube_link }}" target="_blank"
+                                       class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium bg-red-600/30 hover:bg-red-500/40 text-red-300 transition-colors">
+                                        <i class="bi bi-youtube"></i> YouTube
+                                    </a>
+                                    {% endif %}
+                                </div>
+                                {# --- END ADDED LINKS SECTION --- #}
+                            </div>
+                        {% else %}
+                            <div class="text-center py-8"><p class="text-gray-400">This student has not added any projects yet.</p></div>
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <div class="mt-8">
+                    <h2 class="text-xl font-semibold text-gray-200 mb-4">Certificates</h2>
+                    <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                        {% for cert in certificates %}
+                            <div class="project-card p-4 text-center">
+                                <a href="{{ url_for('static', filename='uploads/' + cert.filename) }}" target="_blank">
+                                    <img src="{{ url_for('static', filename='uploads/' + cert.filename) }}" alt="{{ cert.title }}" class="rounded-lg object-cover w-full h-32 mb-2">
+                                </a>
+                                <h3 class="text-md font-semibold text-gray-300">{{ cert.title }}</h3>
+                            </div>
+                        {% else %}
+                            <div class="text-center py-8 col-span-full"><p class="text-gray-400">This student has not added any certificates yet.</p></div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.0.0/flowbite.min.js"></script>
+{% endblock %}

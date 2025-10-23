@@ -1,0 +1,412 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}ElevatR - BPUT Placement Portal{% endblock %}</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif']
+                    },
+                    animation: {
+                        'scroll-vertical': 'scroll-vertical 40s linear infinite',
+                        'scroll-horizontal': 'scroll-horizontal 40s linear infinite',
+                    },
+                    keyframes: {
+                        'scroll-vertical': {
+                            '0%': { transform: 'translateY(0)' },
+                            '100%': { transform: 'translateY(-50%)' },
+                        },
+                        'scroll-horizontal': {
+                            '0%': { transform: 'translateX(0)' },
+                            '100%': { transform: 'translateX(-50%)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+
+    <link rel="stylesheet" href="https://unpkg.com/simplebar@5.3.4/dist/simplebar.min.css">
+
+
+    <link href="https://cdn.jsdelivr.net/npm/micromodal@0.4.6/dist/micromodal.min.css" rel="stylesheet">
+
+
+    <link rel="stylesheet" href="https://unpkg.com/kursor@0.1.6/dist/kursor.css">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+    {# --- ADDED GEMINI SDK IMPORT MAP --- #}
+    <script type="importmap">
+      {
+        "imports": {
+          "@google/generative-ai": "https://esm.run/@google/generative-ai"
+        }
+      }
+    </script>
+    {# --- END --- #}
+
+    {% block head_extra %}{% endblock %}
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.birds.min.js"></script>
+</head>
+
+<body class="overflow-x-hidden text-[#f9fafc]" style="font-family: 'Poppins', sans-serif; background-color: #07192f;">
+
+    <div id="vanta-bg" class="fixed inset-0 w-full h-full"></div>
+
+
+    <div class="relative z-10">
+        <nav
+            class="navbar fixed top-5 left-1/2 -translate-x-1/2 w-11/12 max-w-5xl bg-black/30 backdrop-filter backdrop-blur-xl z-50 shadow-2xl rounded-full border border-white/10 hover:border-indigo-500/30 transition-all duration-300">
+            <div class="container mx-auto px-8 py-3 flex justify-between items-center">
+                <a href="{{ url_for('landing') }}" class="flex items-center gap-2 group">
+                    <div
+                        class="w-10 h-10 bg-gradient-to-br from-indigo-500 to-cyan-500 rounded-full flex items-center justify-center transform group-hover:scale-110 group-hover:rotate-12 transition-all duration-300 shadow-lg shadow-indigo-500/50">
+                        <span class="text-white font-black text-lg">E</span>
+                    </div>
+                    <span
+                        class="text-2xl font-blue text-white bg-gradient-to-r from-indigo-400 to-cyan-400 bg-clip-text text-transparent">ElevetR</span>
+                </a>
+                <div class="hidden md:flex gap-x-8 items-center">
+
+                    {% set active_class = 'active' %}
+
+                    {% if session.logged_in %}
+                    {% if session.role == 'student' %}
+                    <a href="{{ url_for('landing') }}"
+                        class="nav-link text-gray-300 hover:text-white relative group px-2 py-1 {{ active_class if request.endpoint == 'landing' else '' }}">
+                        <span class="relative z-10">Home</span>
+                        <span
+                            class="absolute inset-0 bg-gradient-to-r from-indigo-600 to-cyan-600 rounded-lg opacity-0 group-hover:opacity-20 transition-opacity duration-300"></span>
+                    </a>
+                    <a href="{{ url_for('student_profile') }}"
+                        class="nav-link text-gray-300 hover:text-white relative group px-2 py-1 {{ active_class if request.endpoint == 'student_profile' else '' }}">
+                        <span class="relative z-10">Profile</span>
+                        <span
+                            class="absolute inset-0 bg-gradient-to-r from-indigo-600 to-cyan-600 rounded-lg opacity-0 group-hover:opacity-20 transition-opacity duration-300"></span>
+                    </a>
+                    <a href="{{ url_for('all_internship_opportunity') }}"
+                        class="nav-link text-gray-300 hover:text-white relative group px-2 py-1 {{ active_class if request.endpoint == 'all_internship_opportunity' else '' }}">
+                        <span class="relative z-10">Internships</span>
+                        <span
+                            class="absolute inset-0 bg-gradient-to-r from-indigo-600 to-cyan-600 rounded-lg opacity-0 group-hover:opacity-20 transition-opacity duration-300"></span>
+                    </a>
+
+                    <a href="{{ url_for('my_applications') }}"
+                        class="nav-link text-gray-300 hover:text-white relative group px-2 py-1 {{ active_class if request.endpoint == 'my_applications' else '' }}">
+                        <span class="relative z-10">My Applications</span>
+                        <span
+                            class="absolute inset-0 bg-gradient-to-r from-indigo-600 to-cyan-600 rounded-lg opacity-0 group-hover:opacity-20 transition-opacity duration-300"></span>
+                    </a>
+                    <a href="{{ url_for('resources') }}"
+                        class="nav-link text-gray-300 hover:text-white relative group px-2 py-1 {{ active_class if request.endpoint == 'my_applications' else '' }}">
+                        <span class="relative z-10">Resources</span>
+                        <span
+                            class="absolute inset-0 bg-gradient-to-r from-indigo-600 to-cyan-600 rounded-lg opacity-0 group-hover:opacity-20 transition-opacity duration-300"></span>
+                    </a>
+
+
+                    <a href="{{ url_for('logout') }}"
+                        class="text-white bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 px-5 py-2 rounded-full text-sm font-semibold transform hover:scale-105 transition-all duration-300 shadow-lg shadow-red-500/30">Logout</a>
+                    {% elif session.role == 'company' %}
+                    <a href="{{ url_for('landing') }}"
+                        class="nav-link text-gray-300 hover:text-white relative group px-2 py-1 {{ active_class if request.endpoint == 'landing' else '' }}">
+                        <span class="relative z-10">Home</span>
+                        <span
+                            class="absolute inset-0 bg-gradient-to-r from-indigo-600 to-cyan-600 rounded-lg opacity-0 group-hover:opacity-20 transition-opacity duration-300"></span>
+                    </a>
+                    <a href="{{ url_for('company_profile') }}"
+                        class="nav-link text-gray-300 hover:text-white relative group px-2 py-1 {{ active_class if request.endpoint == 'company_profile' else '' }}">
+                        <span class="relative z-10">Dashboard</span>
+                        <span
+                            class="absolute inset-0 bg-gradient-to-r from-indigo-600 to-cyan-600 rounded-lg opacity-0 group-hover:opacity-20 transition-opacity duration-300"></span>
+                    </a>
+                    <a href="{{ url_for('post_job') }}"
+                        class="nav-link text-gray-300 hover:text-white relative group px-2 py-1 {{ active_class if request.endpoint == 'post_job' else '' }}">
+                        <span class="relative z-10">Post Job</span>
+                        <span
+                            class="absolute inset-0 bg-gradient-to-r from-indigo-600 to-cyan-600 rounded-lg opacity-0 group-hover:opacity-20 transition-opacity duration-300"></span>
+                    </a>
+                    <a href="{{ url_for('logout') }}"
+                        class="text-white bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 px-5 py-2 rounded-full text-sm font-semibold transform hover:scale-105 transition-all duration-300 shadow-lg shadow-red-500/30">Logout</a>
+                    {% elif session.role == 'university' %}
+                    <a href="{{ url_for('landing') }}"
+                        class="nav-link text-gray-300 hover:text-white relative group px-2 py-1 {{ active_class if request.endpoint == 'landing' else '' }}">
+                        <span class="relative z-10">Home</span>
+                        <span
+                            class="absolute inset-0 bg-gradient-to-r from-indigo-600 to-cyan-600 rounded-lg opacity-0 group-hover:opacity-20 transition-opacity duration-300"></span>
+                    </a>
+                    <a href="{{ url_for('university_dashboard') }}"
+                        class="nav-link text-gray-300 hover:text-white relative group px-2 py-1 {{ active_class if request.endpoint == 'university_dashboard' else '' }}">
+                        <span class="relative z-10">Dashboard</span>
+                        <span
+                            class="absolute inset-0 bg-gradient-to-r from-indigo-600 to-cyan-600 rounded-lg opacity-0 group-hover:opacity-20 transition-opacity duration-300"></span>
+                    </a>
+                    <a href="{{ url_for('logout') }}"
+                        class="text-white bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 px-5 py-2 rounded-full text-sm font-semibold transform hover:scale-105 transition-all duration-300 shadow-lg shadow-red-500/30">Logout</a>
+                    {% elif session.role == 'college' %}
+                    <a href="{{ url_for('landing') }}"
+                        class="nav-link text-gray-300 hover:text-white relative group px-2 py-1 {{ active_class if request.endpoint == 'landing' else '' }}">
+                        <span class="relative z-10">Home</span>
+                        <span
+                            class="absolute inset-0 bg-gradient-to-r from-indigo-600 to-cyan-600 rounded-lg opacity-0 group-hover:opacity-20 transition-opacity duration-300"></span>
+                    </a>
+                    <a href="{{ url_for('college_dashboard') }}"
+                        class="nav-link text-gray-300 hover:text-white relative group px-2 py-1 {{ active_class if request.endpoint == 'college_dashboard' else '' }}">
+                        <span class="relative z-10">Dashboard</span>
+                        <span
+                            class="absolute inset-0 bg-gradient-to-r from-indigo-600 to-cyan-600 rounded-lg opacity-0 group-hover:opacity-20 transition-opacity duration-300"></span>
+                    </a>
+                    <a href="{{ url_for('logout') }}"
+                        class="text-white bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 px-5 py-2 rounded-full text-sm font-semibold transform hover:scale-105 transition-all duration-300 shadow-lg shadow-red-500/30">Logout</a>
+                    {% endif %}
+                    {% else %}
+              
+                    <a href="{{ url_for('landing') }}#home"
+                        class="nav-link text-gray-300 hover:text-white relative group px-2 py-1">
+                        <span class="relative z-10">Home</span>
+                        <span
+                            class="absolute inset-0 bg-gradient-to-r from-indigo-600 to-cyan-600 rounded-lg opacity-0 group-hover:opacity-20 transition-opacity duration-300"></span>
+                    </a>
+                    <a href="{{ url_for('landing') }}#about"
+                        class="nav-link text-gray-300 hover:text-white relative group px-2 py-1">
+                        <span class="relative z-10">About</span>
+                        <span
+                            class="absolute inset-0 bg-gradient-to-r from-indigo-600 to-cyan-600 rounded-lg opacity-0 group-hover:opacity-20 transition-opacity duration-300"></span>
+                    </a>
+                    <a href="{{ url_for('landing') }}#features"
+                        class="nav-link text-gray-300 hover:text-white relative group px-2 py-1">
+                        <span class="relative z-10">Features</span>
+                        <span
+                            class="absolute inset-0 bg-gradient-to-r from-indigo-600 to-cyan-600 rounded-lg opacity-0 group-hover:opacity-20 transition-opacity duration-300"></span>
+                    </a>
+                    <a href="{{ url_for('landing') }}#testimonials"
+                        class="nav-link text-gray-300 hover:text-white relative group px-2 py-1">
+                        <span class="relative z-10">Reviews</span>
+                        <span
+                            class="absolute inset-0 bg-gradient-to-r from-indigo-600 to-cyan-600 rounded-lg opacity-0 group-hover:opacity-20 transition-opacity duration-300"></span>
+                    </a>
+
+
+                    <div class="relative dropdown-wrapper">
+                        <button
+                            class="text-gray-300 hover:text-white flex items-center gap-1 px-4 py-2 rounded-full bg-gradient-to-r from-indigo-600 to-cyan-600 hover:from-indigo-600/40 hover:to-cyan-600/40 border border-indigo-500/30 hover:border-indigo-500/50 transition-all duration-300 font-semibold dropdown-trigger transform hover:scale-105">
+                            <i class="material-icons text-base">login</i>
+                            Login
+                            <i class="material-icons text-sm">arrow_drop_down</i>
+                        </button>
+                        <div class="input absolute top-full mt-2 right-0 dropdown-content">
+                            <a href="{{ url_for('student_login') }}" class="value">
+                                <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" data-name="Layer 2">
+                                    <path fill="#7D8590"
+                                        d="m1.5 13v1a.5.5 0 0 0 .3379.4731 18.9718 18.9718 0 0 0 6.1621 1.0269 18.9629 18.9629 0 0 0 6.1621-1.0269.5.5 0 0 0 .3379-.4731v-1a6.5083 6.5083 0 0 0 -4.461-6.1676 3.5 3.5 0 1 0 -4.078 0 6.5083 6.5083 0 0 0 -4.461 6.1676zm4-9a2.5 2.5 0 1 1 2.5 2.5 2.5026 2.5026 0 0 1 -2.5-2.5zm2.5 3.5a5.5066 5.5066 0 0 1 5.5 5.5v.6392a18.08 18.08 0 0 1 -11 0v-.6392a5.5066 5.5066 0 0 1 5.5-5.5z">
+                                    </path>
+                                </svg>
+                                Student
+                            </a>
+                            <a href="{{ url_for('company_login') }}" class="value">
+                                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill="#7D8590"
+                                        d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14zm-7-2h2v-4h4v-2h-4V7h-2v4H8v2h4z" />
+                                </svg>
+                                Company
+                            </a>
+                            <a href="{{ url_for('college_login') }}" class="value">
+                                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill="#7D8590"
+                                        d="M12 3L1 9l11 6 9-4.91V17h2V9L12 3zm0 13.09l-7-3.82V18l7 3.82L19 18v-5.73l-7 3.82z" />
+                                </svg>
+                                College
+                            </a>
+                            <a href="{{ url_for('university_login') }}" class="value">
+                                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill="#7D8590"
+                                        d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z" />
+                                </svg>
+                                University
+                            </a>
+                        </div>
+                    </div>
+
+
+                    <div class="relative dropdown-wrapper">
+                        <button
+                            class="text-white flex items-center gap-1 px-4 py-2 rounded-full bg-gradient-to-r from-indigo-600 to-cyan-600 hover:from-indigo-700 hover:to-cyan-700 transition-all duration-300 font-semibold dropdown-trigger transform hover:scale-105 shadow-lg shadow-indigo-500/30">
+                            <i class="material-icons text-base">person_add</i>
+                            Register
+                            <i class="material-icons text-sm">arrow_drop_down</i>
+                        </button>
+                        <div class="input absolute top-full mt-2 right-0 dropdown-content">
+                            <a href="{{ url_for('student_register') }}" class="value">
+                                <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" data-name="Layer 2">
+                                    <path fill="#7D8590"
+                                        d="m1.5 13v1a.5.5 0 0 0 .3379.4731 18.9718 18.9718 0 0 0 6.1621 1.0269 18.9629 18.9629 0 0 0 6.1621-1.0269.5.5 0 0 0 .3379-.4731v-1a6.5083 6.5083 0 0 0 -4.461-6.1676 3.5 3.5 0 1 0 -4.078 0 6.5083 6.5083 0 0 0 -4.461 6.1676zm4-9a2.5 2.5 0 1 1 2.5 2.5 2.5026 2.5026 0 0 1 -2.5-2.5zm2.5 3.5a5.5066 5.5066 0 0 1 5.5 5.5v.6392a18.08 18.08 0 0 1 -11 0v-.6392a5.5066 5.5066 0 0 1 5.5-5.5z">
+                                    </path>
+                                </svg>
+                                Student
+                            </a>
+                            <a href="{{ url_for('company_register') }}" class="value">
+                                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill="#7D8590"
+                                        d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14zm-7-2h2v-4h4v-2h-4V7h-2v4H8v2h4z" />
+                                </svg>
+                                Company
+                            </a>
+                            <a href="{{ url_for('college_register') }}" class="value">
+                                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill="#7D8590"
+                                        d="M12 3L1 9l11 6 9-4.91V17h2V9L12 3zm0 13.09l-7-3.82V18l7 3.82L19 18v-5.73l-7 3.82z" />
+                                </svg>
+                                College
+                            </a>
+                            <a href="{{ url_for('university_register') }}" class="value">
+                                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill="#7D8590"
+                                        d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z" />
+                                </svg>
+                                University
+                            </a>
+                        </div>
+                    </div>
+                    {% endif %}
+                </div>
+                <div class="md:hidden">
+                    <button class="text-white focus:outline-none">
+                        <i class="material-icons">menu</i>
+                    </button>
+                </div>
+            </div>
+        </nav>
+
+        <main class="mt-24 min-h-screen">
+            <div class="flash-messages container mx-auto px-6 my-4 max-w-5xl">
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                {% for category, message in messages %}
+                <div class="p-4 mb-4 text-sm rounded-lg {% if category == 'success' %} bg-green-900 text-green-300 border border-green-700 {% else %} bg-red-900 text-red-300 border border-red-700 {% endif %}"
+                    role="alert">
+                    {{ message }}
+                </div>
+                {% endfor %}
+                {% endif %}
+                {% endwith %}
+            </div>
+
+            {% block content %}{% endblock %}
+        </main>
+        <a href="/chatbot"
+            class="fixed bottom-5 right-5 bg-gradient-to-r from-indigo-600 to-cyan  text-white p-8 rounded-full shadow-lg hover:bg-blue-700">
+            Ai Chatbot
+        </a>
+
+        <footer class="bg-gray-900 mt-16">
+            <div class="container mx-auto py-8 px-6 text-center">
+                <h3 class="text-1xl md:text-3xl font-bold text-white mb-4" data-aos="fade-down">
+                    Your future is data-driven. Let AI guide the way.
+                </h3>
+
+                <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center">
+                    <p class="text-gray-500 mb-4 md:mb-0">&copy; 2025 ElevetR. All Rights Reserved.</p>
+                    <div class="flex gap-6">
+                        <a href="#" class="text-gray-500 hover:text-white">About</a>
+                        <a href="#" class="text-gray-500 hover:text-white">Contact</a>
+                        <a href="#" class="text-gray-500 hover:text-white">Privacy</a>
+                        <a href="#" class="text-gray-500 hover:text-white">LinkedIn</a>
+                        <a href="#" class="text-gray-500 hover:text-white">GitHub</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+        <script src="https://unpkg.com/simplebar@5.3.4/dist/simplebar.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/micromodal@0.4.6/dist/micromodal.min.js"></script>
+        <script src="https://unpkg.com/kursor@0.1.6/dist/kursor.js"></script>
+        <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+        <script>AOS.init({ duration: 1000, once: true });</script>
+
+
+        <script>
+
+            document.querySelectorAll('.dropdown-trigger').forEach(button => {
+                button.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const dropdown = button.nextElementSibling;
+                    dropdown.style.display =
+                        dropdown.style.display === 'block' ? 'none' : 'block';
+                });
+            });
+
+
+            document.addEventListener('click', () => {
+                document.querySelectorAll('.dropdown-content').forEach(menu => {
+                    menu.style.display = 'none';
+                });
+            });
+        </script>
+
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                if (typeof VANTA !== 'undefined') {
+                    VANTA.BIRDS({
+                        el: "#vanta-bg",
+                        mouseControls: true,
+                        touchControls: true,
+                        gyroControls: false,
+                        minHeight: 200.00,
+                        minWidth: 200.00,
+                        scale: 1.00,
+                        scaleMobile: 1.00,
+                        backgroundColor: 0x7192f,
+                        backgroundAlpha: 1,
+                        color1: 0x20ff,
+                        color2: 0xd1ff,
+                        colorMode: "varianceGradient",
+                        quantity: 5,
+                        birdSize: 1,
+                        wingSpan: 30,
+                        speedLimit: 5,
+                        separation: 20,
+                        alignment: 20,
+                        cohesion: 20
+                    });
+                } else {
+                    console.error('Vanta.js or Three.js not loaded');
+                }
+            });
+        </script>
+
+        {% block scripts_extra %}{% endblock %} {# Added this block #}
+
+    </div>
+</body>
+
+</html>

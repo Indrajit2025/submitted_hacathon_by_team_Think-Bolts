@@ -1,0 +1,454 @@
+{% extends 'base.html' %}
+{% block title %}{{ student.full_name }}'s Profile - ElevatR{% endblock %}
+
+{% block head_extra %}
+<style>
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes slideInLeft {
+    from { opacity: 0; transform: translateX(-50px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+  @keyframes slideInRight {
+    from { opacity: 0; transform: translateX(50px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+  @keyframes pulseGlow {
+    0%, 100% { box-shadow: 0 0 20px rgba(99, 102, 241, 0.4); }
+    50% { box-shadow: 0 0 30px rgba(99, 102, 241, 0.8); }
+  }
+  @keyframes shimmer {
+    0% { background-position: -1000px 0; }
+    100% { background-position: 1000px 0; }
+  }
+  @keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+  .animate-spin { animation: spin 1s linear infinite; }
+  .animate-fadeInUp { animation: fadeInUp 0.6s ease-out; }
+  .animate-slideInLeft { animation: slideInLeft 0.8s ease-out; }
+  .animate-slideInRight { animation: slideInRight 0.8s ease-out; }
+  .profile-img-glow { animation: pulseGlow 3s ease-in-out infinite; }
+  .progress-bar-shimmer::before {
+    content: ''; position: absolute; top: 0; left: 0; bottom: 0; right: 0;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    animation: shimmer 2s infinite;
+  }
+  .glass-card {
+    background: rgba(0, 0, 0, 0.445); backdrop-filter: blur(20px);
+    border: 3px solid rgb(0, 170, 255);
+    border-radius: 1.5rem;
+    padding: 1.5rem;
+  }
+  .skill-badge-hover { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+  .skill-badge-hover:hover { transform: translateY(-3px); box-shadow: 0 5px 20px rgba(99, 102, 241, 0.4); }
+  .card-lift { transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+  .card-lift:hover { transform: translateY(-8px); box-shadow: 0 20px 60px rgba(99, 102, 241, 0.3); }
+  .material-icons { vertical-align: middle; line-height: inherit; }
+  .fab { vertical-align: middle; }
+  .improvement-plan {
+    text-align: left; border-left: 3px solid #6366f1;
+    padding-left: 1rem; margin-top: 1rem;
+  }
+  .improvement-plan ul { padding-left: 1.5rem; list-style-type: disc; }
+  .improvement-plan li { margin-bottom: 0.5rem; color: #d1d5db; }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container mx-auto px-4 py-8 max-w-7xl">
+  <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+    <div class="lg:col-span-1">
+      <div class="glass-card text-center sticky top-28 animate-slideInLeft card-lift">
+        {% if student.profile_photo %}
+        <img src="{{ url_for('static', filename='uploads/' + student.profile_photo) }}"
+             class="w-40 h-40 rounded-full object-cover mx-auto mb-4 border-4 border-indigo-500 profile-img-glow"
+             alt="Profile Photo">
+        {% else %}
+        <img src="https://ui-avatars.com/api/?name={{ student.full_name | replace(' ', '+') }}&size=160&background=6366f1&color=fff&font-size=0.33"
+             class="w-40 h-40 rounded-full object-cover mx-auto mb-4 border-4 border-indigo-500 profile-img-glow"
+             alt="Default Photo">
+        {% endif %}
+
+        <h2 class="text-2xl font-bold bg-gradient-to-r from-white to-cyan-400 bg-clip-text text-transparent mb-2">
+          {{ student.full_name }}
+        </h2>
+        <p class="text-gray-400 mb-4">{{ student.college }}</p>
+
+        <hr class="border-gray-700/30 my-4">
+
+        <div class="text-left space-y-3">
+          <div class="flex items-center gap-2">
+            <i class="material-icons text-indigo-400 text-xl">school</i>
+            <span class="text-sm font-medium">CGPA:</span>
+            <span class="ml-auto px-3 py-1 bg-gradient-to-r from-green-500 to-emerald-600 rounded-full text-sm font-semibold">
+              {{ student.cgpa if student.cgpa else 'N/A' }}
+            </span>
+          </div>
+          <div class="flex items-start gap-2">
+            <i class="material-icons text-indigo-400 text-xl">email</i>
+            <div class="flex-1">
+              <span class="text-sm font-medium block">Email</span>
+              <span class="text-gray-400 text-xs break-all">{{ student.email }}</span>
+            </div>
+          </div>
+          <div class="flex items-start gap-2">
+            <i class="material-icons text-indigo-400 text-xl">phone</i>
+            <div class="flex-1">
+              <span class="text-sm font-medium block">Mobile</span>
+              <span class="text-gray-400 text-xs">{{ student.mobile }}</span>
+            </div>
+          </div>
+          <div class="pt-2">
+            <div class="flex items-center gap-2 mb-3">
+              <i class="material-icons text-indigo-400 text-xl">build</i>
+              <span class="text-sm font-medium">Skills</span>
+            </div>
+            <div class="flex flex-wrap gap-2">
+              {% if skills %}
+                {% for skill in skills %}
+                  <span class="skill-badge-hover px-3 py-1 bg-gradient-to-r from-indigo-500/20 to-purple-500/20 border border-indigo-500/30 rounded-full text-xs font-medium hover:border-indigo-400 cursor-pointer">
+                    {{ skill }}
+                  </span>
+                {% endfor %}
+              {% else %}
+                <span class="text-gray-400 text-sm italic">No skills added.</span>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+
+        <a href="{{ url_for('student_edit_profile') }}"
+           class="mt-6 w-full inline-flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-r from-indigo-600 to-cyan-600 hover:from-indigo-700 hover:to-cyan-700 rounded-xl font-semibold transform hover:scale-105 transition-all duration-300 shadow-lg shadow-indigo-500/30">
+          <i class="material-icons text-lg">edit</i>
+          Edit Profile
+        </a>
+      </div>
+    </div>
+
+    <div class="lg:col-span-2 space-y-6">
+      <div class="glass-card overflow-hidden animate-slideInRight card-lift">
+        <div class="bg-gradient-to-r from-indigo-500/15 to-purple-500/15 border-b border-white/10 px-6 py-4">
+          <h3 class="text-xl font-bold flex items-center gap-2">
+            <i class="material-icons text-yellow-400">star</i>
+            Recommended Opportunities
+          </h3>
+        </div>
+        <div class="p-6">
+          {% if recommendations %}
+          <div class="space-y-4">
+            {% for rec in recommendations %}
+            <div class="group bg-white/5 hover:bg-gradient-to-r hover:from-indigo-500/10 hover:to-purple-500/10 border border-white/10 hover:border-indigo-500 rounded-xl p-4 transition-all duration-300 hover:translate-x-2">
+              <div class="flex justify-between items-start mb-3">
+                <div class="flex-1 pr-4">
+                  <h4 class="font-semibold text-lg mb-1">{{ rec.job.job_role }}</h4>
+                  <p class="text-white-400 text-sm mb-2">{{ rec.job.company.company_name }} - <span class="text-xs italic">{{ rec.job.location }}</span></p>
+                  {% set required_skills_list = rec.job.required_skills | fromjson %}
+                  {% if required_skills_list %}
+                  <div class="mt-2 flex flex-wrap gap-1.5" title="Required Skills">
+                    {% for skill in required_skills_list %}
+                    <span class="px-2 py-0.5 bg-gray-700/60 border border-gray-600/80 rounded-full text-xs font-medium text-gray-300">{{ skill }}</span>
+                    {% endfor %}
+                  </div>
+                  {% endif %}
+                </div>
+                {% set applied = False %}
+                {% if student and student.applications %}
+                  {% for app in student.applications %}
+                    {% if app.job_id == rec.job.id %}
+                      {% set applied = True %}
+                    {% endif %}
+                  {% endfor %}
+                {% endif %}
+                {% if applied %}
+                  <button disabled class="px-4 py-2 bg-gradient-to-r from-gray-600 to-gray-700 rounded-lg text-sm font-semibold flex items-center gap-1 opacity-70 cursor-not-allowed whitespace-nowrap">
+                    <i class="material-icons text-sm">check_circle</i> Applied
+                  </button>
+                {% else %}
+                  <a href="{{ url_for('apply_job', job_id=rec.job.id) }}" class="px-4 py-2 bg-gradient-to-r from-cyan-600 to-cyan-700 hover:from-cyan-700 hover:to-cyan-800 rounded-lg text-sm font-semibold transform hover:scale-105 transition-all duration-300 flex items-center gap-1 shadow-lg shadow-cyan-500/30 whitespace-nowrap">
+                    <i class="material-icons text-sm">send</i> Apply
+                  </a>
+                {% endif %}
+              </div>
+              <div class="flex items-center gap-3">
+                <span class="text-xs text-green-400 font-medium">Match Score:</span>
+                <div class="flex-1 max-w-xs h-3 bg-gray-700/50 rounded-full overflow-hidden relative">
+                  <div class="progress-bar-shimmer h-full bg-gradient-to-r from-green-500 to-green-500 rounded-full relative" style="width: {{rec.score}}%"></div>
+                </div>
+                <span class="text-sm font-semibold text-pink-100">{{ "%.1f"|format(rec.score) }}%</span>
+              </div>
+
+              {% if rec.roadmap and rec.roadmap|length > 0 %}
+              <div class="mt-4 pt-3 border-t border-white/10">
+                <h5 class="text-xs font-semibold text-yellow-400 mb-2 flex items-center gap-1">
+                  <i class="material-icons text-sm" style="font-size: 1.1em;">model_training</i> AI-SUGGESTED ROADMAP:
+                </h5>
+                <div class="flex flex-wrap gap-2">
+                  {% for item in rec.roadmap %}
+                  <a href="{{ item.link }}" target="_blank" rel="noopener noreferrer" class="skill-badge-hover px-3 py-1 bg-gradient-to-r from-yellow-500/20 to-orange-500/20 border border-yellow-500/30 rounded-full text-xs font-medium text-yellow-300 hover:border-yellow-400 hover:text-white flex items-center gap-1 transition-all duration-300">
+                    <i class="material-icons text-sm" style="font-size: 1em;">play_circle_filled</i>
+                    <span>Learn {{ item.skill }}</span>
+                  </a>
+                  {% endfor %}
+                </div>
+              </div>
+              {% endif %}
+
+              <div class="mt-4 pt-3 border-t border-white/10 text-right">
+                <button
+                  type="button"
+                  data-index="{{ loop.index0 }}"
+                  data-job-role="{{ rec.job.job_role }}"
+                  data-company="{{ rec.job.company.company_name }}"
+                  data-student-skills="{{ student.skills | tojson | escape }}"
+                  data-job-skills="{{ rec.job.required_skills | escape }}"
+                  class="generate-plan-btn px-4 py-2 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 rounded-lg text-sm font-semibold transform hover:scale-105 transition-all duration-300 flex items-center gap-1 shadow-lg shadow-purple-500/30"
+                >
+                  <span>✨ Generate Improvement Plan</span>
+                </button>
+              </div>
+              <div id="plan-placeholder-{{ loop.index0 }}" class="improvement-plan mt-3 p-3 bg-gray-800/50 border border-gray-700 rounded-lg text-sm text-gray-300" style="display: none;"></div>
+            </div>
+            {% endfor %}
+          </div>
+          {% else %}
+          <div class="text-center py-12">
+            <i class="material-icons text-6xl text-gray-600 mb-4">inbox</i>
+            <p class="text-gray-400">No recommendations available. Update your skills and projects in 'Edit Profile' for better matches!</p>
+          </div>
+          {% endif %}
+        </div>
+      </div>
+
+      <div class="glass-card overflow-hidden animate-slideInRight card-lift" style="animation-delay: 0.2s;">
+        <div class="bg-gradient-to-r from-indigo-500/15 to-purple-500/15 border-b border-white/10 px-6 py-4">
+          <h3 class="text-xl font-bold flex items-center gap-2">
+            <i class="material-icons text-indigo-400">code</i> My Projects
+          </h3>
+        </div>
+        <div class="p-6">
+          {% if projects %}
+          <div class="space-y-4">
+            {% for project in projects %}
+            <div class="group bg-white/5 hover:bg-gradient-to-r hover:from-indigo-500/10 hover:to-purple-500/10 border border-white/10 hover:border-indigo-500 rounded-xl p-5 transition-all duration-300 hover:-translate-y-1">
+              <h4 class="font-semibold text-lg mb-2 flex items-center gap-2">
+                <i class="material-icons text-indigo-400">folder_open</i> {{ project.project_title }}
+              </h4>
+              <p class="text-gray-400 text-sm mb-4 leading-relaxed">{{ project.description }}</p>
+              <div class="flex flex-wrap gap-2">
+                {% if project.github_link %}
+                <a href="{{ project.github_link }}" target="_blank" class="px-4 py-2 bg-gradient-to-r from-gray-800 to-gray-900 hover:from-gray-700 hover:to-gray-800 rounded-lg text-sm font-semibold transform hover:scale-105 transition-all duration-300 flex items-center gap-1 shadow-lg">
+                  <i class="fab fa-github"></i> GitHub
+                </a>
+                {% endif %}
+                {% if project.site_link %}
+                <a href="{{ project.site_link }}" target="_blank" class="px-4 py-2 bg-gradient-to-r from-cyan-600 to-cyan-700 hover:from-cyan-700 hover:to-cyan-800 rounded-lg text-sm font-semibold transform hover:scale-105 transition-all duration-300 flex items-center gap-1 shadow-lg shadow-cyan-500/30">
+                  <i class="material-icons text-sm">link</i> Live Site
+                </a>
+                {% endif %}
+                {% if project.youtube_link %}
+                <a href="{{ project.youtube_link }}" target="_blank" class="px-4 py-2 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 rounded-lg text-sm font-semibold transform hover:scale-105 transition-all duration-300 flex items-center gap-1 shadow-lg shadow-red-500/30">
+                  <i class="fab fa-youtube"></i> YouTube
+                </a>
+                {% endif %}
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+          {% else %}
+          <div class="text-center py-12">
+            <i class="material-icons text-6xl text-gray-600 mb-4">folder_off</i>
+            <p class="text-gray-400">No projects added yet. Click 'Edit Profile' to showcase your work.</p>
+          </div>
+          {% endif %}
+        </div>
+      </div>
+
+      <div class="glass-card overflow-hidden animate-slideInRight card-lift" style="animation-delay: 0.4s;">
+        <div class="bg-gradient-to-r from-indigo-500/15 to-purple-500/15 border-b border-white/10 px-6 py-4">
+          <h3 class="text-xl font-bold flex items-center gap-2">
+            <i class="material-icons text-green-400">workspace_premium</i> My Certificates
+          </h3>
+        </div>
+        <div class="p-6">
+          {% if certificates %}
+          <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+            {% for cert in certificates %}
+            <div class="group">
+              <a href="{{ url_for('static', filename='uploads/' + cert.filename) }}" target="_blank">
+                <img src="{{ url_for('static', filename='uploads/' + cert.filename) }}" alt="{{ cert.title }}" class="rounded-lg object-cover w-full h-32 transition-transform duration-300 group-hover:scale-105">
+              </a>
+              <p class="text-center text-sm mt-2 text-gray-300">{{ cert.title }}</p>
+            </div>
+            {% endfor %}
+          </div>
+          {% else %}
+          <div class="text-center py-12">
+            <i class="material-icons text-6xl text-gray-600 mb-4">school</i>
+            <p class="text-gray-400">No certificates added yet. Click 'Edit Profile' to add your achievements.</p>
+          </div>
+          {% endif %}
+        </div>
+      </div>
+
+      <a href="{{ url_for('all_internship_opportunity') }}" class="block w-full px-8 py-4 bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 rounded-xl text-center font-bold text-lg transform hover:scale-105 transition-all duration-300 shadow-lg shadow-green-500/30 flex items-center justify-center gap-2">
+        <i class="material-icons">work</i> Browse All Opportunities
+      </a>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts_extra %}
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  // Progress bar animation
+  const progressBars = document.querySelectorAll(".progress-bar-shimmer");
+  progressBars.forEach((bar) => {
+    const width = bar.style.width;
+    if (width && width !== "0") {
+      bar.style.width = "0";
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          bar.style.transition = "width 1s ease-out";
+          bar.style.width = width;
+        });
+      });
+    }
+  });
+
+  // Gemini API Configuration
+  const API_KEY = "AIzaSyBWiFcxA2Hi5eyjr5wUuLmxl7TsKkc_FaE";
+  const API_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent";
+
+  // Add click event listeners to all generate plan buttons
+  const generateButtons = document.querySelectorAll('.generate-plan-btn');
+  
+  generateButtons.forEach(button => {
+    button.addEventListener('click', async function() {
+      console.log('Button clicked!');
+      
+      const index = this.dataset.index;
+      const jobRole = this.dataset.jobRole;
+      const company = this.dataset.company;
+      const studentSkillsJson = this.dataset.studentSkills;
+      const jobSkillsJson = this.dataset.jobSkills;
+      
+      console.log('Index:', index);
+      console.log('Job Role:', jobRole);
+      console.log('Company:', company);
+      
+      
+      this.disabled = true;
+      this.innerHTML = '<i class="material-icons text-sm animate-spin">sync</i> <span>Generating...</span>';
+      
+      const placeholderDiv = document.getElementById(`plan-placeholder-${index}`);
+      placeholderDiv.style.display = "block";
+      placeholderDiv.innerHTML = "<p><em>Generating personalized improvement plan...</em></p>";
+      
+      try {
+        
+        let studentSkills = [];
+        let jobSkills = [];
+        
+        try {
+          studentSkills = JSON.parse(studentSkillsJson || "[]");
+          if (!Array.isArray(studentSkills)) studentSkills = [];
+        } catch (e) {
+          console.error("Error parsing student skills:", e);
+        }
+        
+        try {
+          jobSkills = JSON.parse(jobSkillsJson || "[]");
+          if (!Array.isArray(jobSkills)) jobSkills = [];
+        } catch (e) {
+          console.error("Error parsing job skills:", e);
+        }
+        
+        console.log('Student Skills:', studentSkills);
+        console.log('Job Skills:', jobSkills);
+        
+        const studentSkillsString = studentSkills.join(", ") || "No skills listed";
+        const jobSkillsString = jobSkills.join(", ") || "No specific skills listed";
+        
+        // Find missing skills
+        const missingSkills = jobSkills.filter(
+          skill => !studentSkills.map(s => s.toLowerCase()).includes(skill.toLowerCase())
+        );
+        const missingSkillsString = missingSkills.join(", ") || "None (Good match!)";
+        
+        // Create prompt
+        const prompt = `Generate a concise, actionable improvement plan for a student aiming for a '${jobRole}' role at '${company}'.
+
+Student's current skills: ${studentSkillsString}
+Required skills for the job: ${jobSkillsString}
+Identified skill gaps: ${missingSkillsString}
+
+Provide 3-5 specific, actionable steps focused on bridging the gaps. Include:
+- Specific online courses (e.g., "Python for Data Science on Coursera")
+- Project ideas (e.g., "Build a REST API using Flask")
+- Certifications (e.g., "AWS Cloud Practitioner")
+- Learning resources
+
+Format as bullet points. Be brief and encouraging. Start directly with the plan.`;
+
+        console.log('Sending request to Gemini API...');
+        
+        // Call Gemini API with correct headers
+        const response = await fetch(API_URL, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "x-goog-api-key": API_KEY
+          },
+          body: JSON.stringify({
+            contents: [{
+              parts: [{
+                text: prompt
+              }]
+            }]
+          })
+        });
+        
+        if (!response.ok) {
+          const errorText = await response.text();
+          throw new Error(`API Error: ${response.status} - ${errorText}`);
+        }
+        
+        const data = await response.json();
+        console.log('API Response:', data);
+        
+        // Extract text
+        const text = data?.candidates?.[0]?.content?.parts?.[0]?.text || "No response generated.";
+        
+        // Format response
+        let formattedText = text
+          .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+          .replace(/^\* (.+)$/gm, '<li>$1</li>')
+          .replace(/^(\d+)\. (.+)$/gm, '<li>$2</li>')
+          .replace(/\n\n/g, '</p><p>')
+          .replace(/\n/g, '<br>');
+        
+        if (formattedText.includes('<li>')) {
+          formattedText = formattedText.replace(/(<li>.*<\/li>)/s, '<ul>$1</ul>');
+        }
+        
+        placeholderDiv.innerHTML = `<div class="text-gray-200">${formattedText}</div>`;
+        this.innerHTML = '<span>✅ Plan Generated!</span>';
+        
+      } catch (error) {
+        console.error('Error:', error);
+        placeholderDiv.innerHTML = `<p class="text-red-400">⚠️ Error generating plan: ${error.message}</p>`;
+        this.disabled = false;
+        this.innerHTML = '<span>✨ Generate Improvement Plan</span>';
+      }
+    });
+  });
+  
+  console.log('Generate Plan buttons initialized:', generateButtons.length);
+});
+</script>
+{% endblock %}

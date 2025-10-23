@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ElevatR Chatbot 🤖</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      background: radial-gradient(circle at top left, #e0f2fe, #f8fafc);
+      font-family: 'Inter', sans-serif;
+    }
+    #chat-box {
+      scrollbar-width: thin;
+      scrollbar-color: #94a3b8 transparent;
+    }
+    .chat-bubble {
+      animation: fadeIn 0.3s ease-in-out;
+    }
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(6px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+  </style>
+</head>
+<body class="flex justify-center items-center h-screen bg-gray-50">
+
+  <div class="w-full max-w-md bg-white/90 backdrop-blur-md rounded-3xl shadow-2xl border border-blue-100 overflow-hidden">
+
+    <div class="flex items-center gap-3 px-4 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-md">
+      <div class="w-10 h-10 bg-gradient-to-br from-indigo-500 to-cyan-500 rounded-full flex items-center justify-center transform transition-all duration-300 shadow-lg shadow-indigo-500/50">
+        <span class="text-white font-black text-lg">E</span>
+      </div>
+      <div>
+        <h1 class="font-semibold text-lg">ElevatR Chatbot 🤖</h1>
+        <p class="text-xs opacity-90">Your  Assistantant offerd by Team Think-Bolts</p>
+      </div>
+    </div>
+
+    <!-- Chat Box -->
+    <div id="chat-box" class="p-4 h-[28rem] overflow-y-auto bg-gray-50 space-y-2">
+    
+      <div class="text-center text-gray-500 mt-24 animate-pulse select-none">
+        👋 Hi there! You can ask me anything you need — from job help to placement tips 💼
+      </div>
+    </div>
+
+
+    <div class="p-3 flex border-t border-gray-200 bg-white">
+      <input id="msg" 
+             class="flex-grow text-gray-700 border border-gray-300 rounded-l-xl p-2 focus:outline-none focus:ring-1 focus:ring-blue-400" 
+             placeholder="Hi user 👋  you can ask me anything you need..." 
+             autocomplete="off">
+      <button id="send" 
+              class="bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-5 rounded-r-xl hover:opacity-90 transition-all">
+        Send
+      </button>
+    </div>
+  </div>
+
+  <script>
+    const chatBox = document.getElementById("chat-box");
+    const msgInput = document.getElementById("msg");
+    const sendBtn = document.getElementById("send");
+
+    async function sendMessage() {
+      const msg = msgInput.value.trim();
+      if (!msg) return;
+
+    
+      const placeholder = chatBox.querySelector('.text-center');
+      if (placeholder) placeholder.remove();
+
+      
+      const userDiv = document.createElement("div");
+      userDiv.className = "text-right";
+      userDiv.innerHTML = `<div class='inline-block bg-blue-600 text-white px-3 py-2 rounded-xl chat-bubble'>${msg}</div>`;
+      chatBox.appendChild(userDiv);
+      chatBox.scrollTop = chatBox.scrollHeight;
+      msgInput.value = "";
+
+    
+      try {
+        const res = await fetch("/chatbot_api", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ message: msg })
+        });
+        const data = await res.json();
+
+        const botDiv = document.createElement("div");
+        botDiv.className = "text-left";
+        botDiv.innerHTML = `<div class='inline-block bg-gray-200 text-gray-800 px-3 py-2 rounded-xl chat-bubble'>${data.reply}</div>`;
+        chatBox.appendChild(botDiv);
+        chatBox.scrollTop = chatBox.scrollHeight;
+
+      } catch (error) {
+        const errDiv = document.createElement("div");
+        errDiv.className = "text-left text-red-600";
+        errDiv.textContent = "⚠️ Error connecting to chatbot.";
+        chatBox.appendChild(errDiv);
+      }
+    }
+
+    sendBtn.addEventListener("click", sendMessage);
+    msgInput.addEventListener("keypress", (e) => {
+      if (e.key === "Enter") sendMessage();
+    });
+  </script>
+
+</body>
+</html>

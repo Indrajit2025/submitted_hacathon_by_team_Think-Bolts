@@ -1,0 +1,239 @@
+{% extends 'base.html' %}
+
+{% block title %}Internship Opportunities - ElevatR{% endblock %}
+
+{% block head_extra %}
+<style>
+    /* Inherited styles from base.html provide the background and font */
+
+    /* Card Styling for Better Clarity */
+    .job-card {
+        background: rgba(30, 41, 59, 0.75); /* Slightly less transparent */
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.15); /* Brighter border */
+        border-radius: 1rem; /* 16px */
+        transition: all 0.3s ease-out;
+        display: flex; /* Use flexbox for layout */
+        flex-direction: column; /* Stack elements vertically */
+        height: 100%; /* Make cards in a row the same height */
+    }
+    .job-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3), 0 0 15px rgba(99, 102, 241, 0.3); /* Dark shadow + Subtle glow */
+        border-color: rgba(99, 102, 241, 0.4); /* Indigo glow on border */
+    }
+
+    /* Filter Card Styling */
+    .filter-card {
+        background: rgba(17, 24, 39, 0.8); /* Darker background for filter */
+        backdrop-filter: blur(15px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 1rem;
+    }
+
+    /* Form Select Styling (Dark Theme) */
+    .form-select {
+        background-color: rgba(31, 41, 55, 0.9); /* gray-800 more opaque */
+        border: 1px solid rgba(71, 85, 105, 0.6); /* gray-600 */
+        color: #e5e7eb; /* gray-200 */
+        appearance: none;
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%239ca3af' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+        background-position: right 0.7rem center; background-repeat: no-repeat; background-size: 1.5em 1.5em; padding-right: 2.8rem;
+    }
+    .form-select:focus {
+        background-color: rgba(55, 65, 81, 0.9); /* gray-700 */
+        border-color: #6366f1; /* indigo-500 */
+        box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.3);
+        outline: none;
+    }
+    .form-select option { background: #1f2937; color: #e5e7eb; } /* gray-800 background for options */
+
+    /* Button Styling */
+    .btn-gradient-primary {
+        background-image: linear-gradient(to right, #6366f1, #22d3ee); border: none;
+        box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3); color: white;
+        transition: all 0.3s ease;
+    }
+    .btn-gradient-primary:hover { transform: scale(1.03); box-shadow: 0 6px 20px rgba(99, 102, 241, 0.5); }
+
+    .btn-secondary-dim {
+         background-color: rgba(107, 114, 128, 0.3); border: 1px solid rgba(107, 114, 128, 0.5); color: #9ca3af; /* gray-400 */
+         cursor: not-allowed;
+    }
+
+    /* Skill Badge Styling with Margins */
+    .skill-badge {
+        padding: 0.25rem 0.75rem;
+        background-color: rgba(59, 130, 246, 0.15); /* blue-500 lighter */
+        border: 1px solid rgba(59, 130, 246, 0.3);
+        color: #93c5fd; /* blue-300 */
+        border-radius: 9999px; font-size: 0.75rem; font-weight: 500;
+        display: inline-block; /* Ensure margins work */
+        margin-right: 0.25rem; /* 4px */
+        margin-bottom: 0.25rem; /* 4px */
+    }
+    .skill-badge-alt { /* Alternate color */
+        background-color: rgba(16, 185, 129, 0.15); border-color: rgba(16, 185, 129, 0.3); color: #6ee7b7; /* emerald */
+    }
+
+    /* Match Score Styling */
+    .match-score-text { font-weight: 600; color: #67e8f9; } /* cyan-300 */
+    .progress-container { height: 0.5rem; background-color: rgba(17, 24, 39, 0.7); border-radius: 9999px; overflow: hidden; border: 1px solid rgba(255, 255, 255, 0.1); }
+    .progress-bar { height: 100%; background: linear-gradient(to right, #4f46e5, #22d3ee); border-radius: 9999px; transition: width 0.6s ease-out; }
+
+    /* Ensure icons align */
+    .material-icons { vertical-align: middle; line-height: inherit; }
+
+    /* Line Clamp */
+    .line-clamp-3 {
+        overflow: hidden; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container mx-auto px-4 py-8 max-w-7xl">
+    {# Page Title #}
+    <h2 class="text-3xl font-bold mb-6 text-center bg-gradient-to-r from-white to-cyan-400 bg-clip-text text-transparent">
+        {{ page_title }}
+    </h2>
+
+    {# Filter Section #}
+    <div class="filter-card p-6 mb-8">
+        <form method="GET" action="{{ url_for('all_internship_opportunity') }}" class="flex flex-col md:flex-row items-end gap-4">
+            <div class="flex-grow w-full md:w-auto">
+                <label for="location" class="block text-sm font-medium text-gray-300 mb-1">Filter by City</label>
+                <select class="form-select w-full rounded-lg p-3 text-sm" id="location" name="location">
+                    <option value="">{{ 'Select city...' if not selected_location else 'Show Recommendations' }}</option>
+                    {% for city in cities %}
+                        <option value="{{ city }}" {% if city == selected_location %}selected{% endif %}>{{ city }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="w-full md:w-auto flex-shrink-0"> {# Prevent button shrinking #}
+                <button type="submit" class="w-full btn-gradient-primary py-3 px-6 rounded-lg text-sm font-semibold inline-flex items-center justify-center gap-1">
+                    <i class="material-icons text-lg">filter_list</i> Filter / Show All
+                </button>
+            </div>
+        </form>
+         {% if not selected_location %}
+             <p class="text-xs text-indigo-300 mt-2 italic text-center md:text-left">Showing top recommendations. Select a city to browse all jobs there.</p>
+         {% endif %}
+    </div>
+
+    {# Job Listings Grid #}
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {# Loop through jobs with scores #}
+        {% for item in jobs_with_scores %}
+        {% set job = item.job %}
+        {% set score = item.score %}
+
+        <div class="job-card"> {# Applied flex column layout here #}
+            {# Card Header #}
+            <div class="border-b border-white/10 px-6 py-4">
+                <div class="flex justify-between items-start gap-3">
+                    <div class="flex-1"> {# Allow text to wrap #}
+                        <h3 class="font-bold text-xl mb-1 text-gray-100">{{ job.job_role }}</h3>
+                        <p class="text-indigo-300 text-sm font-medium">{{ job.company.company_name }}</p>
+                    </div>
+                    <span class="flex-shrink-0 px-3 py-1 bg-cyan-500/10 border border-cyan-500/20 text-cyan-300 rounded-full text-xs font-semibold whitespace-nowrap inline-flex items-center mt-1">
+                        <i class="material-icons text-sm mr-1">location_on</i>{{ job.location }}
+                    </span>
+                </div>
+            </div>
+
+            {# Card Body #}
+            <div class="p-6 flex-grow"> {# flex-grow allows this section to expand #}
+                <p class="text-gray-300 text-sm mb-4 leading-relaxed line-clamp-3">
+                   {{ job.description or "No description provided." }}
+                </p>
+                <div class="mb-4">
+                    <h4 class="text-sm font-semibold mb-2 text-indigo-300 flex items-center gap-1">
+                       <i class="material-icons text-base">build</i> Skills Required
+                    </h4>
+                    <div class="flex flex-wrap"> {# Skills will wrap #}
+                        {% set skills_list = job.required_skills | fromjson %}
+                        {% if skills_list %}
+                            {% for skill in skills_list %}
+                                <span class="skill-badge {{ 'skill-badge-alt' if loop.index is odd else '' }}">{{ skill }}</span>
+                            {% endfor %}
+                        {% else %}
+                            <span class="text-gray-500 text-xs italic">Not specified</span>
+                        {% endif %}
+                    </div>
+                </div>
+
+                 {# Grid for CGPA, Salary, Score #}
+                 <div class="grid grid-cols-3 gap-3 text-sm mb-3">
+                     <div>
+                         <span class="text-gray-400 block text-xs font-medium">Min CGPA</span>
+                         <span class="font-semibold text-gray-100">{{ job.cgpa_required }}</span>
+                     </div>
+                      <div class="text-center"> {# Centered Salary #}
+                         <span class="text-gray-400 block text-xs font-medium">Job type(Est.)</span>
+                         <span class="font-semibold text-gray-100 text-xs"> {# Smaller salary text #}
+                             {% if job.salary_min and job.salary_max and job.salary_min > 0 %}
+                                 ₹{{ "{:,.0f}".format(job.salary_min) }} - ₹{{ "{:,.0f}".format(job.salary_max) }}
+                             {% elif job.salary_min and job.salary_min > 0 %}
+                                 Starts at ₹{{ "{:,.0f}".format(job.salary_min) }}
+                             {% elif job.salary_max and job.salary_max > 0 %}
+                                 Up to ₹{{ "{:,.0f}".format(job.salary_max) }}
+                             {% else %}
+                                 Internship
+                             {% endif %}
+                         </span>
+                     </div>
+                     <div class="text-right"> {# Right-aligned score #}
+                        <span class="text-gray-400 block text-xs font-medium">Your Match</span>
+                        <span class="match-score-text">{{ "%.1f"|format(score) }}%</span>
+                     </div>
+                 </div>
+
+                 {# Progress Bar for Score #}
+                 <div class="progress-container">
+                     <div class="progress-bar" style="width: {{ score }}%"></div>
+                 </div>
+            </div>
+
+            {# Card Footer - mt-auto pushes to bottom #}
+            <div class="border-t border-white/10 px-6 py-4 mt-auto">
+                 <div class="text-right">
+                    {% if job.id in applied_job_ids %}
+                        <button class="btn-secondary-dim px-4 py-2 rounded-lg text-sm font-semibold inline-flex items-center gap-1" disabled>
+                            <i class="material-icons text-base">check_circle</i> Applied
+                        </button>
+                    {% else %}
+                        <a href="{{ url_for('apply_job', job_id=job.id) }}" class="btn-gradient-primary py-2 px-5 rounded-lg text-sm font-semibold inline-flex items-center gap-1">
+                             <i class="material-icons text-base">send</i> Apply Now
+                        </a>
+                    {% endif %}
+                 </div>
+            </div>
+        </div>
+        {% endfor %}
+
+        {# Message if no jobs are found #}
+        {% if not jobs_with_scores %}
+            <div class="md:col-span-2 lg:col-span-3 job-card p-8 text-center"> {# Reused card style #}
+                 <i class="material-icons text-6xl text-gray-600 mb-4">sentiment_dissatisfied</i>
+                 <p class="text-gray-400">
+                     {% if selected_location %}
+                         No jobs currently listed for <span class="font-semibold text-indigo-300">{{ selected_location }}</span>. Try another city or check recommendations.
+                     {% else %}
+                         No recommendations found. Ensure your profile is updated or select a city to browse jobs.
+                     {% endif %}
+                 </p>
+                 {% if selected_location %}
+                     <a href="{{ url_for('all_internship_opportunity') }}" class="mt-4 inline-flex items-center gap-1 text-indigo-400 hover:text-indigo-300 transition-colors duration-300">
+                        <i class="material-icons">arrow_back</i> Show Recommendations
+                    </a>
+                 {% endif %}
+            </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts_extra %}
+{# No extra scripts needed for this layout change #}
+{% endblock %}

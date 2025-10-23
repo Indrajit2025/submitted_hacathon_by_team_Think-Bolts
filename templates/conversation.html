@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+{% block title %}Conversation with {{ other_party_name }}{% endblock %}
+
+{% block head_extra %}
+<style>
+    .chat-container {
+        max-width: 800px;
+        margin: auto;
+        display: flex;
+        flex-direction: column;
+        height: 75vh;
+    }
+
+    .chat-header {
+        background: rgba(30, 41, 59, 0.7);
+        backdrop-filter: blur(12px);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .chat-messages {
+        flex-grow: 1;
+        overflow-y: auto;
+    }
+
+    .message {
+        max-width: 70%;
+    }
+
+    .sent {
+        margin-left: auto;
+        background-color: #4f46e5;
+    }
+
+    .received {
+        margin-right: auto;
+        background-color: #374151;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container mx-auto px-4 py-8">
+    <div class="chat-container bg-gray-900/50 border border-white/10 rounded-2xl overflow-hidden">
+        <div class="chat-header p-4 text-center">
+            <h2 class="font-bold text-xl">Conversation Regarding: {{ application.job_posting.job_role }}</h2>
+            <p class="text-sm text-gray-400">with {{ other_party_name }}</p>
+            <div class="chat-header p-4 text-center">
+                
+
+                {# --- ADD THIS BUTTON --- #}
+                {% if application.video_room_url %}
+                <a href="{{ application.video_room_url }}" target="_blank"
+                    class="mt-2 inline-block bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-4 rounded-lg text-sm transition">
+                    <i class="material-icons text-sm align-middle">videocam</i> Join Video Call
+                </a>
+                {% endif %}
+                {# --------------------- #}
+            </div>
+        </div>
+
+        <div class="chat-messages p-6 space-y-4">
+            {% for message in messages %}
+            <div
+                class="message p-3 rounded-lg {% if message.sender_id == session.user_id and message.sender_role == session.role %}sent{% else %}received{% endif %}">
+                <p>{{ message.content }}</p>
+                <span class="text-xs text-gray-400 block text-right mt-1">{{ message.timestamp.strftime('%d %b, %H:%M')
+                    }}</span>
+            </div>
+            {% endfor %}
+        </div>
+
+        <div class="p-4 border-t border-white/10">
+            <form method="POST" class="flex gap-2">
+                <textarea name="content" rows="1"
+                    class="flex-grow bg-gray-800 border border-gray-700 rounded-lg p-2 text-white focus:ring-indigo-500 focus:border-indigo-500"
+                    placeholder="Type your message..."></textarea>
+                <button type="submit"
+                    class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded-lg">Send</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

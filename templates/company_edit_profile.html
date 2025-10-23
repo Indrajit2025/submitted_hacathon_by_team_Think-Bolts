@@ -1,0 +1,143 @@
+{% extends 'base.html' %}
+{% block title %}Edit Company Profile{% endblock %}
+
+{% block head_extra %}
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.0.0/flowbite.min.css" rel="stylesheet" />
+
+<style>
+    /* Update body background */
+    body {
+        margin: 0;
+        padding: 0;
+        min-height: 100vh;
+        background: #0a0a1a;
+    }
+
+    .edit-profile-container {
+        min-height: 100vh;
+        padding: 2rem;
+        padding-top: 6rem;
+        position: relative;
+        z-index: 1;
+        background: transparent;
+    }
+
+    .glass-card {
+        background: rgba(30, 41, 59, 0.7);
+        backdrop-filter: blur(12px);
+        border: 1px solid rgba(71, 85, 105, 0.3);
+        border-radius: 16px;
+        box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
+        transition: all 0.3s ease;
+        animation: slideUp 0.6s ease forwards;
+    }
+
+    .glass-card:hover {
+        box-shadow: 0 12px 40px rgba(99, 102, 241, 0.2);
+        border-color: rgba(99, 102, 241, 0.2);
+    }
+
+    .form-control {
+        background: rgba(30, 41, 59, 0.5) !important;
+        border: 1px solid rgba(71, 85, 105, 0.3) !important;
+        color: #e2e8f0 !important;
+        transition: all 0.3s ease;
+    }
+
+    .form-control:focus {
+        background: rgba(30, 41, 59, 0.7) !important;
+        border-color: rgba(99, 102, 241, 0.5) !important;
+        box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2) !important;
+        outline: none;
+    }
+
+    .form-control::placeholder {
+        color: rgba(226, 232, 240, 0.4);
+    }
+
+    input[type="file"]::file-selector-button {
+        background: rgba(99, 102, 241, 0.1) !important;
+        border: 1px solid rgba(99, 102, 241, 0.2) !important;
+        color: #e2e8f0 !important;
+        transition: all 0.3s ease;
+    }
+
+    input[type="file"]::file-selector-button:hover {
+        background: rgba(99, 102, 241, 0.2) !important;
+        transform: translateY(-1px);
+    }
+
+    @keyframes slideUp {
+        from {
+            transform: translateY(20px);
+            opacity: 0;
+        }
+        to {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="edit-profile-container">
+    <div class="container mx-auto px-4">
+        <div class="max-w-2xl mx-auto">
+            <div class="glass-card p-6 sm:p-8">
+                <div class="text-center mb-8">
+                    <h2 class="text-3xl font-bold text-gray-200">Edit Company Profile</h2>
+                    <p class="text-gray-400 mt-2">Update your company information</p>
+                </div>
+
+                <form method="POST" action="{{ url_for('company_edit_profile') }}" enctype="multipart/form-data" class="space-y-6">
+                    <div>
+                        <label for="description" class="block mb-2 text-sm font-medium text-gray-300">
+                            Company Description
+                        </label>
+                        <textarea 
+                            id="description" 
+                            name="description" 
+                            rows="5" 
+                            class="form-control w-full rounded-lg p-3 text-sm"
+                            placeholder="Describe your company..."
+                        >{{ company.description or '' }}</textarea>
+                    </div>
+
+                    <div>
+                        <label for="logo" class="block mb-2 text-sm font-medium text-gray-300">
+                            Company Logo
+                        </label>
+                        <input 
+                            type="file" 
+                            id="logo" 
+                            name="logo" 
+                            class="form-control block w-full text-sm rounded-lg cursor-pointer"
+                            accept="image/*"
+                        >
+                        <p class="mt-1 text-sm text-gray-400">PNG, JPG or GIF (MAX. 800x400px)</p>
+                    </div>
+
+                    <button 
+                        type="submit" 
+                        class="w-full text-white bg-gradient-to-r from-indigo-500 to-indigo-600 hover:bg-gradient-to-br focus:ring-4 focus:ring-indigo-300 dark:focus:ring-indigo-800 font-medium rounded-lg text-sm px-5 py-4 text-center transition-all duration-300 hover:transform hover:-translate-y-1"
+                    >
+                        Save Changes
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.0.0/flowbite.min.js"></script>
+{% endblock %}
